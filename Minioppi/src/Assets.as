@@ -2,14 +2,15 @@ package
 {
 	import flash.display.Bitmap;
 	import flash.utils.Dictionary;
+	import com.greensock.TweenLite;
 	
 	public class Assets
 	{
 		// Muistipeli
-		[Embed(source = "../Grafiikka/Muistipeli/LehtiBack.png")]
+		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Back.png")]
 		public static const LehtiBack:Class;
 		
-		[Embed(source = "../Grafiikka/Muistipeli/LehtiFront.png")]
+		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Front.png")]
 		public static const LehtiFront:Class;
 		
 		
