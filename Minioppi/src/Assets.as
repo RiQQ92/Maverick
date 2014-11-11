@@ -2,11 +2,30 @@ package
 {
 	import flash.display.Bitmap;
 	import flash.utils.Dictionary;
+	import com.greensock.TweenLite;
 	
 	public class Assets
 	{
-		[Embed(source = "../Grafiikka/Muistipeli/LehtiBack.png")]
+		// Muistipeli
+		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Back.png")]
 		public static const LehtiBack:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Front.png")]
+		public static const LehtiFront:Class;
+		
+		
+		// Alkumenu
+		[Embed(source = "../Grafiikka/alkuvalikko/labyrintti_nappi.png")]
+		public static const LabyBtn:Class;
+		
+		[Embed(source = "../Grafiikka/alkuvalikko/metsastys_nappi.png")]
+		public static const MetsaBtn:Class;
+		
+		[Embed(source = "../Grafiikka/alkuvalikko/muistipeli_nappi.png")]
+		public static const MuistiBtn:Class;
+		
+		[Embed(source = "../Grafiikka/alkuvalikko/tausta_kuva.png")]
+		public static const Tausta:Class;
 		
 		private static var gameTextures:Dictionary = new Dictionary();
 		
