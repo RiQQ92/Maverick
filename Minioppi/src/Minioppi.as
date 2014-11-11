@@ -1,5 +1,9 @@
 package
 {
+	import UIelements.Button;
+	import UIelements.GameButton;
+	import UIelements.SlideList;
+	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -9,11 +13,18 @@ package
 	{
 		private var rewinding:Boolean = false;
 		private var backwards:Boolean = true;
+		
+		public var listTest:SlideList;
+		
 		public var kortti:Bitmap;
 		public var tausta:Bitmap;
-		public var labyBtn:Bitmap;
-		public var metsaBtn:Bitmap;
-		public var muistiBtn:Bitmap;
+		
+		public var labyBtn:GameButton = new GameButton("Labyrintti");
+		public var metsaBtn:GameButton = new GameButton("Metsastys");
+		public var muistiBtn:GameButton = new GameButton("Muistipeli");
+		
+		public var leftArw:Button = new Button("ArrowLeft");
+		public var rightArw:Button = new Button("ArrowRight");
 		
 		public function Minioppi()
 		{
@@ -21,35 +32,47 @@ package
 			tausta.scaleX = 1;
 			tausta.scaleY = 1;
 			this.addChild(tausta);
+			
+			listTest = new SlideList(stage.stageWidth, 200, true);
+			listTest.x = 0;
+			listTest.y = stage.stageHeight/2 - listTest.ySize/2;
+			this.addChild(listTest);
 			/*
-			labyBtn = Assets.getTexture("LabyBtn");
+			//labyBtn = Assets.getTexture("LabyBtn");
 			labyBtn.scaleX = 0.3;
 			labyBtn.scaleY = 0.3;
 			labyBtn.x = stage.stageWidth/2 - labyBtn.width/2;
 			labyBtn.y = stage.stageHeight/2 - labyBtn.height/2;
 			this.addChild(labyBtn);
-			*/
-			kortti = Assets.getTexture("LehtiBack");
+			
+			/*
 			kortti.scaleX = 1;
 			kortti.scaleY = 1;
 			kortti.x = stage.stageWidth/2 - kortti.width/2;
 			kortti.y = stage.stageHeight/2 - kortti.height/2;
 			kortti.addEventListener(Event.ENTER_FRAME, loopCard);
 			this.addChild(kortti);
-			
-			metsaBtn = Assets.getTexture("MetsaBtn");
+			//
 			metsaBtn.scaleX = 0.3;
 			metsaBtn.scaleY = 0.3;
 			metsaBtn.x = stage.stageWidth/5 - metsaBtn.width/2;
 			metsaBtn.y = stage.stageHeight/2 - metsaBtn.height/2;
 			this.addChild(metsaBtn);
 			
-			muistiBtn = Assets.getTexture("MuistiBtn");
 			muistiBtn.scaleX = 0.3;
 			muistiBtn.scaleY = 0.3;
 			muistiBtn.x = (stage.stageWidth -stage.stageWidth/5) - muistiBtn.width/2;
 			muistiBtn.y = stage.stageHeight/2 - muistiBtn.height/2;
 			this.addChild(muistiBtn);
+			
+			leftArw.x = stage.stageWidth/10 -rightArw.width;
+			leftArw.y = stage.stageHeight/2;
+			this.addChild(leftArw);
+			
+			rightArw.x = stage.stageWidth -stage.stageWidth/10;
+			rightArw.y = stage.stageHeight/2;
+			this.addChild(rightArw);
+			*/
 		}
 		
 		public function loopCard(event:Event):void
