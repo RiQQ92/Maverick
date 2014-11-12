@@ -15,38 +15,52 @@ package UIelements
 		public var xSize:int;
 		public var ySize:int;
 		
+		private var isPowerOfTwo:Boolean = false;
+		
 		private var itemAmount:int;
+		private var amountOfGaps:int;
 		private var listPosition:int;
 		
+		private var centerX:Number;
+		private var centerY:Number;
 		private var menuPrefix:Number;
+		private var itemListWidth:Number;
+		private var itemGap:Number;
 		private var averageItemSize:Number;
 		
 		private var forward:Button;
 		private var rewind:Button;
 		
+		private var listLocations:Vector.<int>;
 		private var itemList:Dictionary;
 		
 		public function SlideList(width:int, height:int, isVertical:Boolean)
 		{
 			super();
-			trace("avautu");
 			
 			this.xSize = width;
 			this.ySize = height;
+			this.centerX = this.x + width/2;
+			this.centerY = this.y + height/2;
 			
+			itemListWidth = 0;
 			menuPrefix = 0;
 			listPosition = 0;
 			itemAmount = 0;
+			itemGap = 10;
 			averageItemSize = 0;
 			
+			listLocations = new Vector.<int>();
 			itemList = new Dictionary();
 			
 			forward = new Button("ArrowRight");
-			forward.addEventListener(MouseEvent.CLICK, scrollForward);
+			forward.addEventListener(MouseEvent.CLICK, scrollBack);
+			forward.visible = false;
 			this.addChild(forward);
 			
 			rewind = new Button("ArrowLeft");
-			rewind.addEventListener(MouseEvent.CLICK, scrollBack);
+			rewind.addEventListener(MouseEvent.CLICK, scrollForward);
+			rewind.visible = false;
 			this.addChild(rewind);
 			
 			if(isVertical)
@@ -71,31 +85,21 @@ package UIelements
 		
 		protected function update(event:Event):void
 		{
-			if((averageItemSize * itemAmount) < this.xSize)
-			{
-				forward.visible = false;
-				rewind.visible = false;
-			}
-			else
-			{
-				forward.visible = true;
-				rewind.visible = true;
-			}
-			
 			for(var i:int; i < itemAmount; i++)
 			{
 				if(scrollVertical)
 				{
-					if(itemList[i].x != menuPrefix + ((averageItemSize * i)+averageItemSize/10))
+					//                x = Keskikohta - (kuvanKoko*kuvienMäärä/2) - (VälinKoko*VälienMäärä) + (moneskoKuvaa*(kuvanKoko+Välinkoko));
+					if(itemList[i].x != (itemListWidth * listLocations[i]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (i*(averageItemSize+itemGap)))
 					{
-						com.greensock.TweenLite.to(itemList[i], 0.5, {x:menuPrefix * listPosition * i, y:itemList[i].y});
+						com.greensock.TweenLite.to(itemList[i], 0.5, {x:(itemListWidth * listLocations[i]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (i*(averageItemSize+itemGap)), y:itemList[i].y});
 					}
 				}
 				else
 				{
-					if(itemList[i].y != menuPrefix + ((averageItemSize * i)+averageItemSize/10))
+					if(itemList[i].y != menuPrefix + this.centerX - (((itemAmount/2)* averageItemSize) + (averageItemSize/10/2))*i- averageItemSize/10/2)
 					{
-						com.greensock.TweenLite.to(itemList[i], 0.5, {x:itemList[i].x, y:menuPrefix * listPosition * i});
+						com.greensock.TweenLite.to(itemList[i], 0.5, {x:itemList[i].x, y:this.centerY - (((itemAmount/2)* averageItemSize) + (averageItemSize/10/2))*i- averageItemSize/10/2});
 					}
 				}
 			}
@@ -104,21 +108,53 @@ package UIelements
 		protected function scrollBack(event:MouseEvent):void
 		{
 			listPosition--;
-			menuPrefix = (listPosition*averageItemSize) + (averageItemSize/10);
+			listLocations[Math.abs(listPosition%itemAmount)]--;
+			itemList[Math.abs(listPosition%itemAmount)].x = (itemListWidth * listLocations[Math.abs(listPosition%itemAmount)]) + itemList[Math.abs(listPosition%itemAmount)].x;
+			//if(listPosition < 0)
+			//	listPosition = itemAmount-1;
+			menuPrefix = (listPosition*(itemGap+averageItemSize));
+			trace("scroll back. List position: "+ listPosition + " _menu prefix: "+ menuPrefix);
 		}
 		
 		protected function scrollForward(event:MouseEvent):void
 		{
 			listPosition++;
-			menuPrefix = (listPosition*averageItemSize) + (averageItemSize/10);
+			listLocations[Math.abs(itemAmount - listPosition%itemAmount)]++;
+			itemList[Math.abs(itemAmount - listPosition%itemAmount)].x = (itemListWidth * listLocations[Math.abs(itemAmount - listPosition%itemAmount)]) + itemList[Math.abs(itemAmount - listPosition%itemAmount)].x;
+			//if(listPosition >= itemAmount)
+			//	listPosition = 0;
+			menuPrefix = (listPosition*(itemGap+averageItemSize));
+			trace("scroll forward. List position: "+ listPosition + " _menu prefix: "+ menuPrefix);
 		}
 		
 		public function addItem(item:*):void
 		{
 			itemList[itemAmount] = item;
+			listLocations.push(0);
 			itemAmount++;
+			if(itemAmount %2 == 0)
+				isPowerOfTwo = true;
+			else
+				isPowerOfTwo = false;
 			
 			checkPositioning();
+		}
+		
+		
+		public function removeItem(index:int):void
+		{
+			if(itemList[index] != null)
+			{
+				itemList[index] = null;
+				listLocations.splice(index, 1);
+				itemAmount--;
+				if(itemAmount %2 == 0)
+					isPowerOfTwo = true;
+				else
+					isPowerOfTwo = false;
+				
+				checkPositioning();
+			}
 		}
 		
 		private function checkPositioning():void
@@ -149,15 +185,38 @@ package UIelements
 				}
 				averageItemSize = items / itemAmount;
 			}
-		}
-		
-		public function removeItem(index:int):void
-		{
-			if(itemList[index] != null)
+			
+			if((averageItemSize * itemAmount +((itemAmount * (averageItemSize/10)))-averageItemSize/10) < this.xSize)
 			{
-				itemList[index] = null;
-				itemAmount--;
+				forward.visible = false;
+				rewind.visible = false;
 			}
+			else
+			{
+				forward.visible = true;
+				rewind.visible = true;
+			}
+			
+			if(isPowerOfTwo)
+			{
+				for(var c:int; c < itemAmount; c++)
+				{
+					itemList[c].x = this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (c*(averageItemSize+itemGap));
+					itemList[c].y = this.centerY;
+				}
+			}
+			else
+			{
+				for(var d:int; d < itemAmount; d++)
+				{
+					itemList[d].x = this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (d*(averageItemSize+itemGap));
+					itemList[d].y = this.centerY;
+				}
+			}
+			
+			itemGap = averageItemSize/10;
+			amountOfGaps = itemAmount-1;
+			itemListWidth = (averageItemSize*itemAmount + amountOfGaps*itemGap);
 		}
 	}
 }

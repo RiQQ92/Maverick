@@ -22,8 +22,8 @@ package
 			menu.y = 0;
 			this.addChild(menu);
 			
-			menu.Destruct();
-			this.removeChild(menu);
+			//menu.Destruct();
+			//this.removeChild(menu);
 			/*
 			kortti.scaleX = 1;
 			kortti.scaleY = 1;
