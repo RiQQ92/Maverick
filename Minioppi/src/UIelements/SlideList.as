@@ -1,5 +1,7 @@
 package UIelements
 {
+	import com.greensock.TweenLite;
+	
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -13,22 +15,27 @@ package UIelements
 		public var xSize:int;
 		public var ySize:int;
 		
-		private var itemList:Dictionary;
-		
-		private var selectedItem:int;
 		private var itemAmount:int;
+		private var listPosition:int;
+		
+		private var menuPrefix:Number;
 		private var averageItemSize:Number;
 		
 		private var forward:Button;
 		private var rewind:Button;
 		
+		private var itemList:Dictionary;
+		
 		public function SlideList(width:int, height:int, isVertical:Boolean)
 		{
 			super();
+			trace("avautu");
+			
 			this.xSize = width;
 			this.ySize = height;
 			
-			selectedItem = 0;
+			menuPrefix = 0;
+			listPosition = 0;
 			itemAmount = 0;
 			averageItemSize = 0;
 			
@@ -75,17 +82,35 @@ package UIelements
 				rewind.visible = true;
 			}
 			
-			
+			for(var i:int; i < itemAmount; i++)
+			{
+				if(scrollVertical)
+				{
+					if(itemList[i].x != menuPrefix + ((averageItemSize * i)+averageItemSize/10))
+					{
+						com.greensock.TweenLite.to(itemList[i], 0.5, {x:menuPrefix * listPosition * i, y:itemList[i].y});
+					}
+				}
+				else
+				{
+					if(itemList[i].y != menuPrefix + ((averageItemSize * i)+averageItemSize/10))
+					{
+						com.greensock.TweenLite.to(itemList[i], 0.5, {x:itemList[i].x, y:menuPrefix * listPosition * i});
+					}
+				}
+			}
 		}
 		
 		protected function scrollBack(event:MouseEvent):void
 		{
-			selectedItem--;
+			listPosition--;
+			menuPrefix = (listPosition*averageItemSize) + (averageItemSize/10);
 		}
 		
 		protected function scrollForward(event:MouseEvent):void
 		{
-			selectedItem++;
+			listPosition++;
+			menuPrefix = (listPosition*averageItemSize) + (averageItemSize/10);
 		}
 		
 		public function addItem(item:*):void
