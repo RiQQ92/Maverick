@@ -15,17 +15,31 @@ package
 		
 		
 		// Alkumenu
-		[Embed(source = "../Grafiikka/alkuvalikko/labyrintti_nappi.png")]
-		public static const LabyBtn:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/labyrintti_nappi.png")]
+		public static const Labyrintti_nappi:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/labyrintti_kuva.png")]
+		public static const Labyrintti_kuva:Class;
 		
-		[Embed(source = "../Grafiikka/alkuvalikko/metsastys_nappi.png")]
-		public static const MetsaBtn:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/metsastys_nappi.png")]
+		public static const Metsastys_nappi:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/metsastys_kuva.png")]
+		public static const Metsastys_kuva:Class;
 		
-		[Embed(source = "../Grafiikka/alkuvalikko/muistipeli_nappi.png")]
-		public static const MuistiBtn:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/muistipeli_nappi.png")]
+		public static const Muistipeli_nappi:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/muistipeli_kuva.png")]
+		public static const Muistipeli_kuva:Class;
+		
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/ketju.png")]
+		public static const Ketju:Class;
 		
 		[Embed(source = "../Grafiikka/alkuvalikko/tausta_kuva.png")]
 		public static const Tausta:Class;
+		
+		[Embed(source = "../Grafiikka/alkuvalikko/nuoli_vasemmalle.png")]
+		public static const ArrowLeft:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/nuoli_oikealle.png")]
+		public static const ArrowRight:Class;
 		
 		private static var gameTextures:Dictionary = new Dictionary();
 		
@@ -33,12 +47,9 @@ package
 		{
 			//[Embed(source = "../Grafiikka/Muistipeli/"+ textureName +".png")]
 			
-			if(gameTextures[textureName] == undefined)
-			{
-				var bitmap:Bitmap = new Assets[textureName]();
-				gameTextures[textureName] = bitmap;
-			}
-			
+			var bitmap:Bitmap = new Assets[textureName]();
+			gameTextures[textureName] = bitmap;
+				
 			return gameTextures[textureName];
 		}
 	}
