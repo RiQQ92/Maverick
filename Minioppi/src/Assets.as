@@ -13,6 +13,12 @@ package
 		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Front.png")]
 		public static const LehtiFront:Class;
 		
+		[Embed(source = "../Grafiikka/Muistipeli/Bg_Kanto.png")]
+		public static const BgKanto:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Muistipeli_UI.png")]
+		public static const UiMuistipeli:Class;
+		
 		
 		// Alkumenu
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/labyrintti_nappi.png")]

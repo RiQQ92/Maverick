@@ -1,7 +1,7 @@
 package UIelements
 {
 	import flash.display.Bitmap;
-	import flash.display.Sprite
+	import flash.display.Sprite;
 	
 	public class GameButton extends Sprite
 	{
