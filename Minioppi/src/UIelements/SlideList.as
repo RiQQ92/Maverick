@@ -34,6 +34,7 @@ package UIelements
 		private var listLocations:Vector.<int>;
 		private var itemList:Dictionary;
 		
+		// alustus/constructor
 		public function SlideList(width:int, height:int, isVertical:Boolean)
 		{
 			super();
@@ -83,6 +84,7 @@ package UIelements
 			this.addEventListener(Event.ENTER_FRAME, update);
 		}
 		
+		// joka frame päivitys
 		protected function update(event:Event):void
 		{
 			for(var i:int; i < itemAmount; i++)
@@ -104,29 +106,44 @@ package UIelements
 				}
 			}
 		}
-		
+
+		// liu'uttaa lsitaa taaksepäin
 		protected function scrollBack(event:MouseEvent):void
 		{
 			listPosition--;
-			listLocations[Math.abs(listPosition%itemAmount)]--;
-			itemList[Math.abs(listPosition%itemAmount)].x = (itemListWidth * listLocations[Math.abs(listPosition%itemAmount)]) + itemList[Math.abs(listPosition%itemAmount)].x;
-			//if(listPosition < 0)
-			//	listPosition = itemAmount-1;
+			var temp:int = Math.abs(itemAmount-(listPosition%itemAmount))%itemAmount-1;
+			
+			//trace("temp at first "+temp);
+			if(temp == -1)
+				temp = 4;
+			if(temp < 0 || temp > 4)
+				temp= temp%5;
+			//trace(listPosition + "  " + itemAmount);
+			//trace(temp);
+			listLocations[temp]++;
 			menuPrefix = (listPosition*(itemGap+averageItemSize));
-			trace("scroll back. List position: "+ listPosition + " _menu prefix: "+ menuPrefix);
+			itemList[temp].x = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp+1)*(averageItemSize+itemGap));
+			//trace("scroll back. List position: "+ listPosition + " _menu prefix: "+ menuPrefix);
 		}
-		
+		// liu'uttaa lsitaa eteenpäin
 		protected function scrollForward(event:MouseEvent):void
 		{
 			listPosition++;
-			listLocations[Math.abs(itemAmount - listPosition%itemAmount)]++;
-			itemList[Math.abs(itemAmount - listPosition%itemAmount)].x = (itemListWidth * listLocations[Math.abs(itemAmount - listPosition%itemAmount)]) + itemList[Math.abs(itemAmount - listPosition%itemAmount)].x;
-			//if(listPosition >= itemAmount)
-			//	listPosition = 0;
+			var temp:int = Math.abs(itemAmount-(listPosition%itemAmount));
+			//trace("temp at first "+temp);
+			if(temp == 5)
+				temp = 0;
+			if(temp < 0 || temp > 4)
+				temp= temp%5;
+			//trace(listPosition + "  " + itemAmount);
+			//trace(temp);
+			listLocations[temp]--;
 			menuPrefix = (listPosition*(itemGap+averageItemSize));
-			trace("scroll forward. List position: "+ listPosition + " _menu prefix: "+ menuPrefix);
+			itemList[temp].x = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
+			//trace("scroll forward. List position: "+ listPosition + " _menu prefix: "+ menuPrefix);
 		}
 		
+		// lisää objektin listaan
 		public function addItem(item:*):void
 		{
 			itemList[itemAmount] = item;
@@ -140,7 +157,7 @@ package UIelements
 			checkPositioning();
 		}
 		
-		
+		// poistaa objektin listasta
 		public function removeItem(index:int):void
 		{
 			if(itemList[index] != null)
@@ -157,6 +174,7 @@ package UIelements
 			}
 		}
 		
+		// laskee listan sisällön sijainnin ja koot
 		private function checkPositioning():void
 		{
 			if(itemAmount >= 3)
@@ -216,7 +234,7 @@ package UIelements
 			
 			itemGap = averageItemSize/10;
 			amountOfGaps = itemAmount-1;
-			itemListWidth = (averageItemSize*itemAmount + amountOfGaps*itemGap);
+			itemListWidth = (averageItemSize*itemAmount + itemAmount*itemGap);
 		}
 	}
 }
