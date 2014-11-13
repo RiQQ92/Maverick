@@ -16,7 +16,6 @@ package screens
 		
 		public var tausta:Bitmap;
 		
-		public var muistiPeli:GameButton = new GameButton("Muistipeli");
 		public var labyBtn:GameButton = new GameButton("Labyrintti");
 		public var labyBtn2:GameButton = new GameButton("Labyrintti");
 		public var metsaBtn:GameButton = new GameButton("Metsastys");
@@ -39,24 +38,84 @@ package screens
 			tausta.x = 0;
 			tausta.y = 0;
 			
-			muistiPeli.scaleX = 0.4;
-			muistiPeli.scaleY = 0.4;
-			muistiPeli.addEventListener(MouseEvent.CLICK, muistipeliClicked);
 			labyBtn.scaleX = 0.4;
 			labyBtn.scaleY = 0.4;
+			labyBtn.button.addListener(
+				function(event:MouseEvent):void
+				{
+					/*
+					Tähän kooodi
+					mikä siirtää 
+					muistipeliin
+					*/
+					
+					trace("Labyrintti click'd");
+				}
+			);
+			
 			labyBtn2.scaleX = 0.4;
 			labyBtn2.scaleY = 0.4;
+			labyBtn2.button.addListener(
+				function(event:MouseEvent):void
+				{
+					/*
+					Tähän kooodi
+					mikä siirtää 
+					muistipeliin
+					*/
+					
+					trace("Labyrintti click'd");
+				}
+			);
+			
 			metsaBtn.scaleX = 0.4;
 			metsaBtn.scaleY = 0.4;
+			metsaBtn.button.addListener(
+				function(event:MouseEvent):void
+				{
+					/*
+					Tähän kooodi
+					mikä siirtää 
+					muistipeliin
+					*/
+					
+					trace("Metsapeli click'd");
+				}
+			);
+			
 			metsaBtn2.scaleX = 0.4;
 			metsaBtn2.scaleY = 0.4;
+			metsaBtn2.button.addListener(
+				function(event:MouseEvent):void
+				{
+					/*
+					Tähän kooodi
+					mikä siirtää 
+					muistipeliin
+					*/
+					
+					trace("Metsapeli click'd");
+				}
+			);
+			
 			muistiBtn.scaleX = 0.4;
 			muistiBtn.scaleY = 0.4;
+			muistiBtn.button.addListener(
+				function(event:MouseEvent):void
+				{
+					/*
+					Tähän kooodi
+					mikä siirtää 
+					muistipeliin
+					*/
+					
+					trace("Muistipeli click'd");
+				}
+			);
 			
 			listTest = new SlideList(myStage.stageWidth, 200, true);
 			listTest.x = 0;
 			listTest.y = myStage.stageWidth/2 - listTest.ySize/2;
-			
 			listTest.addItem(labyBtn);
 			listTest.addItem(metsaBtn);
 			listTest.addItem(muistiBtn);
@@ -64,6 +123,28 @@ package screens
 			listTest.addItem(metsaBtn2);
 			
 			Draw();
+		}
+		
+		protected function metsapeliClicked(event:MouseEvent):void
+		{
+			/*
+			Tähän kooodi
+			mikä siirtää 
+			muistipeliin
+			*/
+			
+			trace("Metsapeli click'd");
+		}
+		
+		protected function labyrinttipeliClicked(event:MouseEvent):void
+		{
+			/*
+			Tähän kooodi
+			mikä siirtää 
+			muistipeliin
+			*/
+			
+			trace("Labyrintti click'd");
 		}
 		
 		protected function muistipeliClicked(event:MouseEvent):void
@@ -89,13 +170,12 @@ package screens
 		private function Draw():void
 		{
 			this.addChild(tausta);
-			//this.addChild(labyBtn);
-			//this.addChild(labyBtn2);
-			//this.addChild(metsaBtn);
-			//this.addChild(metsaBtn2);
-			//this.addChild(muistiBtn);
-			//this.addChild(listTest);
-			this.addChild(muistiPeli);
+			this.addChild(labyBtn);
+			this.addChild(labyBtn2);
+			this.addChild(metsaBtn);
+			this.addChild(metsaBtn2);
+			this.addChild(muistiBtn);
+			this.addChild(listTest);
 		}
 	}
 }

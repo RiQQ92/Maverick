@@ -6,7 +6,7 @@ package UIelements
 	public class GameButton extends Sprite
 	{
 		private var board:Bitmap;
-		private var button:Bitmap;
+		public var button:Button;
 		private var chain1:Bitmap;
 		private var chain2:Bitmap;
 		
@@ -14,7 +14,7 @@ package UIelements
 		{
 			super();
 			
-			button = Assets.getTexture(gameName+"_nappi");
+			button = new Button(gameName+"_nappi");
 			chain1 = Assets.getTexture("Ketju");
 			chain2 = Assets.getTexture("Ketju");
 			board = Assets.getTexture(gameName+"_kuva");
