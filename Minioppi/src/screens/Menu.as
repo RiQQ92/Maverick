@@ -1,5 +1,5 @@
 package screens
-{
+{	
 	import UIelements.Button;
 	import UIelements.GameButton;
 	import UIelements.SlideList;
@@ -9,8 +9,12 @@ package screens
 	import flash.display.Stage;
 	import flash.events.MouseEvent;
 	
+	import utility.ScreenHandler;
+	
 	public class Menu extends Sprite
 	{
+		private var screenHandler:ScreenHandler;
+		
 		public var myStage:Stage;
 		public var listTest:SlideList;
 		
@@ -26,9 +30,10 @@ package screens
 		public var metsaBtn3:GameButton = new GameButton("Metsastys");
 		public var muistiBtn3:GameButton = new GameButton("Muistipeli");
 		
-		public function Menu(_stage:Stage)
+		public function Menu(_stage:Stage, _parent:ScreenHandler)
 		{
 			//constructor, kutsutaan joka kerta kun luokka luodaan voi käyttää samana kun Initialize
+			screenHandler = _parent;
 			myStage = _stage;
 			Initialize();
 		}
@@ -41,6 +46,8 @@ package screens
 			tausta.scaleY = 1;
 			tausta.x = 0;
 			tausta.y = 0;
+			
+			
 			
 			labyBtn.scaleX = 0.4;
 			labyBtn.scaleY = 0.4;
