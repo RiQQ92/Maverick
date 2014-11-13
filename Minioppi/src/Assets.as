@@ -1,8 +1,9 @@
 package
 {
+	import com.greensock.TweenLite;
+	
 	import flash.display.Bitmap;
 	import flash.utils.Dictionary;
-	import com.greensock.TweenLite;
 	
 	public class Assets
 	{
