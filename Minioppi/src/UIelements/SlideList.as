@@ -41,8 +41,9 @@ package UIelements
 			
 			this.xSize = width;
 			this.ySize = height;
-			this.centerX = this.x + width/2;
-			this.centerY = this.y + height/2;
+			this.scrollVertical = isVertical;
+			this.centerX = xSize/2;
+			this.centerY = ySize/2;
 			
 			itemListWidth = 0;
 			menuPrefix = 0;
@@ -91,17 +92,17 @@ package UIelements
 			{
 				if(scrollVertical)
 				{
-					//                x = Keskikohta - (kuvanKoko*kuvienMäärä/2) - (VälinKoko*VälienMäärä) + (moneskoKuvaa*(kuvanKoko+Välinkoko));
+					//             x = (listanKoko * kuvanSijaintiLista[i]) + Keskikohta - (kuvanKoko*kuvienMäärä/2) - (VälinKoko*VälienMäärä) + (moneskoKuvaa*(kuvanKoko+Välinkoko));
 					if(itemList[i].x != (itemListWidth * listLocations[i]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (i*(averageItemSize+itemGap)))
 					{
-						com.greensock.TweenLite.to(itemList[i], 0.5, {x:(itemListWidth * listLocations[i]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (i*(averageItemSize+itemGap)), y:itemList[i].y});
+						com.greensock.TweenLite.to(itemList[i], 0.5, {x:(itemListWidth * listLocations[i]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (i*(averageItemSize+itemGap)), y:this.y + this.centerY - itemList[i].height/2});
 					}
 				}
 				else
 				{
-					if(itemList[i].y != menuPrefix + this.centerX - (((itemAmount/2)* averageItemSize) + (averageItemSize/10/2))*i- averageItemSize/10/2)
+					if(itemList[i].y != (itemListWidth * listLocations[i]) + menuPrefix + this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (i*(averageItemSize+itemGap)))
 					{
-						com.greensock.TweenLite.to(itemList[i], 0.5, {x:itemList[i].x, y:this.centerY - (((itemAmount/2)* averageItemSize) + (averageItemSize/10/2))*i- averageItemSize/10/2});
+						com.greensock.TweenLite.to(itemList[i], 0.5, {x:this.x + this.centerX - itemList[i].width/2, y:(itemListWidth * listLocations[i]) + menuPrefix + this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (i*(averageItemSize+itemGap))});
 					}
 				}
 			}
@@ -113,34 +114,36 @@ package UIelements
 			listPosition--;
 			var temp:int = Math.abs(itemAmount-(listPosition%itemAmount))%itemAmount-1;
 			
-			//trace("temp at first "+temp);
 			if(temp == -1)
-				temp = 4;
+				temp = itemAmount-1;
 			if(temp < 0 || temp > 4)
-				temp= temp%5;
-			//trace(listPosition + "  " + itemAmount);
-			//trace(temp);
+				temp= temp%itemAmount;
+			
 			listLocations[temp]++;
 			menuPrefix = (listPosition*(itemGap+averageItemSize));
-			itemList[temp].x = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp+1)*(averageItemSize+itemGap));
-			//trace("scroll back. List position: "+ listPosition + " _menu prefix: "+ menuPrefix);
+			if(scrollVertical)
+				itemList[temp].x = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
+			else
+				itemList[temp].y = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
 		}
+		
 		// liu'uttaa lsitaa eteenpäin
 		protected function scrollForward(event:MouseEvent):void
 		{
 			listPosition++;
 			var temp:int = Math.abs(itemAmount-(listPosition%itemAmount));
-			//trace("temp at first "+temp);
-			if(temp == 5)
+			
+			if(temp == itemAmount)
 				temp = 0;
-			if(temp < 0 || temp > 4)
-				temp= temp%5;
-			//trace(listPosition + "  " + itemAmount);
-			//trace(temp);
+			if(temp < 0 || temp > (itemAmount-1))
+				temp= temp%itemAmount;
+			
 			listLocations[temp]--;
 			menuPrefix = (listPosition*(itemGap+averageItemSize));
-			itemList[temp].x = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
-			//trace("scroll forward. List position: "+ listPosition + " _menu prefix: "+ menuPrefix);
+			if(scrollVertical)
+				itemList[temp].x = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
+			else
+				itemList[temp].y = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
 		}
 		
 		// lisää objektin listaan
@@ -215,20 +218,17 @@ package UIelements
 				rewind.visible = true;
 			}
 			
-			if(isPowerOfTwo)
+			for(var c:int; c < itemAmount; c++)
 			{
-				for(var c:int; c < itemAmount; c++)
+				if(scrollVertical)
 				{
 					itemList[c].x = this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (c*(averageItemSize+itemGap));
 					itemList[c].y = this.centerY;
 				}
-			}
-			else
-			{
-				for(var d:int; d < itemAmount; d++)
+				else
 				{
-					itemList[d].x = this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (d*(averageItemSize+itemGap));
-					itemList[d].y = this.centerY;
+					itemList[c].x = this.centerX;
+					itemList[c].y = this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (c*(averageItemSize+itemGap));
 				}
 			}
 			
