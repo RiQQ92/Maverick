@@ -7,6 +7,7 @@ package screens
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.MouseEvent;
 	
 	public class Menu extends Sprite
 	{
@@ -15,6 +16,7 @@ package screens
 		
 		public var tausta:Bitmap;
 		
+		public var muistiPeli:GameButton = new GameButton("Muistipeli");
 		public var labyBtn:GameButton = new GameButton("Labyrintti");
 		public var labyBtn2:GameButton = new GameButton("Labyrintti");
 		public var metsaBtn:GameButton = new GameButton("Metsastys");
@@ -37,6 +39,9 @@ package screens
 			tausta.x = 0;
 			tausta.y = 0;
 			
+			muistiPeli.scaleX = 0.4;
+			muistiPeli.scaleY = 0.4;
+			muistiPeli.addEventListener(MouseEvent.CLICK, muistipeliClicked);
 			labyBtn.scaleX = 0.4;
 			labyBtn.scaleY = 0.4;
 			labyBtn2.scaleX = 0.4;
@@ -61,6 +66,17 @@ package screens
 			Draw();
 		}
 		
+		protected function muistipeliClicked(event:MouseEvent):void
+		{
+			/*
+				Tähän kooodi
+				mikä siirtää 
+				muistipeliin
+			*/
+			
+			trace("Muistipeli click'd");
+		}
+		
 		// kutsutaan ulkoa kun halutaan poistaa screeni
 		// poistetaan kaikki luodut lapset ja muu varattu muisti
 		public function Destruct():void
@@ -73,12 +89,13 @@ package screens
 		private function Draw():void
 		{
 			this.addChild(tausta);
-			this.addChild(labyBtn);
-			this.addChild(labyBtn2);
-			this.addChild(metsaBtn);
-			this.addChild(metsaBtn2);
-			this.addChild(muistiBtn);
-			this.addChild(listTest);
+			//this.addChild(labyBtn);
+			//this.addChild(labyBtn2);
+			//this.addChild(metsaBtn);
+			//this.addChild(metsaBtn2);
+			//this.addChild(muistiBtn);
+			//this.addChild(listTest);
+			this.addChild(muistiPeli);
 		}
 	}
 }
