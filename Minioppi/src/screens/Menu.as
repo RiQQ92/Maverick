@@ -105,7 +105,7 @@ package screens
 				{
 					/*
 					Tähän kooodi
-					mikä siirtää 
+					mikä siirtää
 					muistipeliin
 					*/
 					

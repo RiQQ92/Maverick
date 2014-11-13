@@ -89,12 +89,16 @@ package
 			kortti.y = stage.stageHeight/2 - kortti.height/2;
 		}
 		*/
-		
 		public function screenChange(screen:String):void
 		{
 			if (inScreen != null)
 			{
-				menu.Destruct();
+				if (inScreen == "menu"){
+					menu.Destruct();
+				}
+				if (inScreen == "muistipeli"){
+					muistipeli.Destruct();
+				}
 			}
 			
 			if (screen == "menu")

@@ -58,5 +58,10 @@ package screens
 			cards.push(tatti);
 			cards.push(tattiText);
 		}
+		
+		public function Destruct():void
+		{
+			
+		}
 	}
 }
