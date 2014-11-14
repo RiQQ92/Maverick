@@ -25,7 +25,7 @@ package objects
 			super();
 			
 			myStage = _stage;
-			image = Assets.getTexture("LehtiBack");
+			image = Assets.getTexture("Labyrintti_pelaaja");
 			this.addChild(image);
 		}
 		

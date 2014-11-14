@@ -2,6 +2,7 @@ package screens
 {
 	import UIelements.Button;
 	
+	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.MouseEvent;
@@ -17,6 +18,7 @@ package screens
 		
 		private var player:Player;
 		private var takaisin:Button = new Button("Tausta");
+		private var bg:Bitmap = Assets.getTexture("Labyrintti_tausta");
 		
 		public function Labyrintti(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -25,11 +27,15 @@ package screens
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			
+			bg.x = 0;
+			bg.y = 0;
+			this.addChild(bg);
+			
 			player = new Player(myStage);
 			player.x = myStage.stageWidth/2;
 			player.y = myStage.stageHeight/2;
-			player.scaleX = 0.1;
-			player.scaleY = 0.1;
+			player.scaleX = 0.3;
+			player.scaleY = 0.3;
 			player.addListeners();
 			this.addChild(player);
 			

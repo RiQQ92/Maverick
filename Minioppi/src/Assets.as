@@ -8,6 +8,7 @@ package
 	public class Assets
 	{
 		// Muistipeli
+		//*********************
 		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Back.png")]
 		public static const LehtiBack:Class;
 		
@@ -73,9 +74,10 @@ package
 		
 		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Teksti_Mustikka.png")]
 		public static const LehtiTekstiMustikka:Class;
-		
+		//*********************
 		
 		// Alkumenu
+		//********************
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/labyrintti_nappi.png")]
 		public static const Labyrintti_nappi:Class;
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/labyrintti_kuva.png")]
@@ -101,6 +103,15 @@ package
 		public static const ArrowLeft:Class;
 		[Embed(source = "../Grafiikka/alkuvalikko/nuoli_oikealle.png")]
 		public static const ArrowRight:Class;
+		//********************
+		
+		// Labyrintti
+		//********************
+		[Embed(source = "../Grafiikka/Labyrintti/tausta.png")]
+		public static const Labyrintti_tausta:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/Orava_kasvokuva.png")]
+		public static const Labyrintti_pelaaja:Class;
+		//********************
 		
 		private static var gameTextures:Dictionary = new Dictionary();
 		
