@@ -59,7 +59,7 @@ package screens
 					mikä siirtää 
 					muistipeliin
 					*/
-					
+					screenHandler.inScreen = "labyrintti";
 					trace("Labyrintti click'd");
 				}
 			);
@@ -74,7 +74,7 @@ package screens
 					mikä siirtää 
 					muistipeliin
 					*/
-					
+					screenHandler.inScreen = "labyrintti";
 					trace("Labyrintti click'd");
 				}
 			);
@@ -89,7 +89,7 @@ package screens
 					mikä siirtää 
 					muistipeliin
 					*/
-					
+					screenHandler.inScreen = "labyrintti";
 					trace("Labyrintti click'd");
 				}
 			);
