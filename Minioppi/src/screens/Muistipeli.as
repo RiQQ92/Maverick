@@ -2,16 +2,25 @@ package screens
 {
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
+	import flash.display.Stage;
+	
+	import utility.ScreenHandler;
 	
 	public class Muistipeli extends Sprite
 	{
+		private var myStage:Stage;
+		private var screenHandler:ScreenHandler;
+		
 		public var bg:Bitmap;
 		public var ui:Bitmap;
 		
 		public var cards:Array;
 		
-		public function Muistipeli()
+		public function Muistipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
+			myStage = _stage;			// hyvin käytännöllinen sijoittamaan ja hahmottamaan näytön objektien sijainteja (myStage.stageWidth/2 == kuvan.X keskikohta)
+			screenHandler = scrnHandle; // tällä voit vaihtaa screenejä set:ter funktiolla (screenHandler.inScreen = "menu")
+			
 			initialize();
 		}
 		

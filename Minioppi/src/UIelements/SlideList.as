@@ -65,6 +65,7 @@ package UIelements
 			rewind.visible = false;
 			this.addChild(rewind);
 			
+			// sijoittaa nuolen oikeinpäin riippuen onko lista vaaka vai pysty suuntainen
 			if(isVertical)
 			{
 				rewind.x = 0;
@@ -86,7 +87,7 @@ package UIelements
 		}
 		
 		// joka frame päivitys
-		protected function update(event:Event):void
+		private function update(event:Event):void
 		{
 			for(var i:int; i < itemAmount; i++)
 			{
@@ -109,7 +110,7 @@ package UIelements
 		}
 
 		// liu'uttaa lsitaa taaksepäin
-		protected function scrollBack(event:MouseEvent):void
+		private function scrollBack(event:MouseEvent):void
 		{
 			listPosition--;
 			var temp:int = Math.abs(itemAmount-(listPosition%itemAmount))%itemAmount-1;
@@ -128,7 +129,7 @@ package UIelements
 		}
 		
 		// liu'uttaa lsitaa eteenpäin
-		protected function scrollForward(event:MouseEvent):void
+		private function scrollForward(event:MouseEvent):void
 		{
 			listPosition++;
 			var temp:int = Math.abs(itemAmount-(listPosition%itemAmount));
@@ -180,6 +181,7 @@ package UIelements
 		// laskee listan sisällön sijainnin ja koot
 		private function checkPositioning():void
 		{
+			// laskee keskimääräisen listan objektien leveyden/korkeuden
 			if(itemAmount >= 3)
 			{
 				if(scrollVertical)
@@ -207,6 +209,7 @@ package UIelements
 				averageItemSize = items / itemAmount;
 			}
 			
+			// tarkastaa onko lista isompi kuin kuva, jos on niin nuoli napit selaukseen luodaan
 			if((averageItemSize * itemAmount +((itemAmount * (averageItemSize/10)))-averageItemSize/10) < this.xSize)
 			{
 				forward.visible = false;
@@ -218,6 +221,7 @@ package UIelements
 				rewind.visible = true;
 			}
 			
+			// sijoittaa elementit oikeille paikoilleen
 			for(var c:int; c < itemAmount; c++)
 			{
 				if(scrollVertical)
@@ -235,6 +239,16 @@ package UIelements
 			itemGap = averageItemSize/10;
 			amountOfGaps = itemAmount-1;
 			itemListWidth = (averageItemSize*itemAmount + itemAmount*itemGap);
+		}
+		
+		public function Destruct():void
+		{
+			for(var i:int; i < itemAmount; i++)
+			{
+				delete itemList[i];
+			}
+			
+			listLocations.length = 0;
 		}
 	}
 }

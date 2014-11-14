@@ -14,10 +14,10 @@ package screens
 	public class Menu extends Sprite
 	{
 		private var screenHandler:ScreenHandler;
-		
-		public var myStage:Stage;
+		private var myStage:Stage;
+
 		public var listTest:SlideList;
-		
+
 		public var tausta:Bitmap;
 		
 		public var labyBtn:GameButton = new GameButton("Labyrintti");
@@ -30,11 +30,11 @@ package screens
 		public var metsaBtn3:GameButton = new GameButton("Metsastys");
 		public var muistiBtn3:GameButton = new GameButton("Muistipeli");
 		
-		public function Menu(_stage:Stage, _parent:ScreenHandler)
+		public function Menu(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			//constructor, kutsutaan joka kerta kun luokka luodaan voi käyttää samana kun Initialize
-			screenHandler = _parent;
 			myStage = _stage;
+			screenHandler = scrnHandle;
 			Initialize();
 		}
 		
@@ -238,6 +238,16 @@ package screens
 		public function Destruct():void
 		{
 			this.removeChild(tausta);
+			this.removeChild(labyBtn);
+			this.removeChild(labyBtn2);
+			this.removeChild(labyBtn3);
+			this.removeChild(metsaBtn);
+			this.removeChild(metsaBtn2);
+			this.removeChild(metsaBtn3);
+			this.removeChild(muistiBtn);
+			this.removeChild(muistiBtn2);
+			this.removeChild(muistiBtn3);
+			listTest.Destruct();
 			this.removeChild(listTest);
 		}
 		

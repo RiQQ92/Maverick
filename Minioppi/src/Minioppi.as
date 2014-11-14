@@ -16,6 +16,7 @@ package
 		//private var backwards:Boolean = true;
 		
 		//public var kortti:Bitmap;
+		
 		public var screenHandler:ScreenHandler;
 		
 		
@@ -25,15 +26,6 @@ package
 			this.addChild(screenHandler);
 			screenHandler.inScreen = "menu";
 			
-			/*
-			menu = new Menu(stage);
-			menu.x = 0;
-			menu.y = 0;
-			this.addChild(menu);
-			*/
-			
-			//menu.Destruct();
-			//this.removeChild(menu);
 			/*
 			kortti.scaleX = 1;
 			kortti.scaleY = 1;
