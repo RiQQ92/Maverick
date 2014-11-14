@@ -149,6 +149,7 @@ package screens
 					mikä siirtää
 					muistipeliin
 					*/
+					screenHandler.inScreen = "muistipeli";
 					
 					trace("Muistipeli click'd");
 				}
@@ -164,6 +165,7 @@ package screens
 					mikä siirtää 
 					muistipeliin
 					*/
+					screenHandler.inScreen = "muistipeli";
 					
 					trace("Muistipeli click'd");
 				}
@@ -179,6 +181,7 @@ package screens
 					mikä siirtää 
 					muistipeliin
 					*/
+					screenHandler.inScreen = "muistipeli";
 					
 					trace("Muistipeli click'd");
 				}
