@@ -243,6 +243,8 @@ package UIelements
 		
 		public function Destruct():void
 		{
+			this.removeEventListener(Event.ENTER_FRAME, update);
+			
 			for(var i:int; i < itemAmount; i++)
 			{
 				delete itemList[i];

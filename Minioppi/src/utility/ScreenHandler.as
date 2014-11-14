@@ -13,7 +13,7 @@ package utility
 		public var menu:Menu;
 		public var muistipeli:Muistipeli;
 		
-		private var _inScreen:String;
+		private var _inScreen:String = "Empty";
 		
 		public function ScreenHandler(_stage:Stage)
 		{
@@ -21,7 +21,6 @@ package utility
 			myStage = _stage;
 			menu = new Menu(myStage, this);
 			muistipeli = new Muistipeli(myStage, this);
-			inScreen = "menu";
 		}
 		
 		/*
@@ -40,34 +39,39 @@ package utility
 		
 		public function set inScreen(value:String):void
 		{
-			// avaa uuden näytön
 			var foundMatch:Boolean = true;
-			switch(value)
+			if(value != _inScreen)
 			{
-				case "menu":
+				// avaa uuden näytön, jos ei yritetä avata samaa uudestaan
+				switch(value)
+				{
+					case "menu":
 					
-					menu.x = 0;
-					menu.y = 0;
-					this.addChild(menu);
-					
-					break;
-				case "muistipeli":
-					
-					muistipeli.x = 0;
-					muistipeli.y = 0;
-					this.addChild(muistipeli);
-					
-					break;
-				case "labyrintti":
-					
-					break;
-				case "yhdistely":
-					
-					break;
-				default: // suoritetaan kun mikään muu ei täsmää
-					foundMatch = false;
-					break;
+						menu.x = 0;
+						menu.y = 0;
+						this.addChild(menu);
+							
+						break;
+					case "muistipeli":
+						
+						muistipeli.x = 0;
+						muistipeli.y = 0;
+						this.addChild(muistipeli);
+						
+						break;
+					case "labyrintti":
+						
+						break;
+					case "yhdistely":
+							
+						break;
+					default: // suoritetaan kun mikään muu ei täsmää
+						foundMatch = false;
+						break;
+				}
 			}
+			else
+				foundMatch = false;
 			
 			if(foundMatch)
 			{
