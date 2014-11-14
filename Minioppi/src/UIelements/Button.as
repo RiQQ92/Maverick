@@ -7,6 +7,7 @@ package UIelements
 	public class Button extends Sprite
 	{
 		private var image:Bitmap;
+		private var clickFunc:Function;
 		
 		public function Button(imageName:String)
 		{
@@ -20,12 +21,13 @@ package UIelements
 		
 		public function addListener(eventFunc:Function):void
 		{
-			this.addEventListener(MouseEvent.CLICK, eventFunc);
+			clickFunc = eventFunc;
+			this.addEventListener(MouseEvent.CLICK, clickFunc);
 		}
 		
 		public function removeListeners():void
 		{
-			this.removeListeners();
+			this.removeEventListener(MouseEvent.CLICK, clickFunc);
 		}
 	}
 }

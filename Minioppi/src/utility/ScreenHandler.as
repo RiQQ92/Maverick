@@ -4,24 +4,23 @@ package utility
 	import flash.display.Stage;
 	import flash.sampler.StackFrame;
 	
+	import screens.Labyrintti;
 	import screens.Menu;
 	import screens.Muistipeli;
 	
 	public class ScreenHandler extends Sprite
 	{
 		public var myStage:Stage;
-		public var menu:Menu;
-		public var muistipeli:Muistipeli;
+		private var menu:Menu;
+		private var muistipeli:Muistipeli;
+		private var laby:Labyrintti;
 		
-		private var _inScreen:String;
+		private var _inScreen:String = "Empty";
 		
 		public function ScreenHandler(_stage:Stage)
 		{
 			super();
 			myStage = _stage;
-			menu = new Menu(myStage, this);
-			muistipeli = new Muistipeli(myStage, this);
-			inScreen = "menu";
 		}
 		
 		/*
@@ -40,34 +39,46 @@ package utility
 		
 		public function set inScreen(value:String):void
 		{
-			// avaa uuden näytön
 			var foundMatch:Boolean = true;
-			switch(value)
+			if(value != _inScreen)
 			{
-				case "menu":
+				// avaa uuden näytön, jos ei yritetä avata samaa uudestaan
+				switch(value)
+				{
+					case "menu":
 					
-					menu.x = 0;
-					menu.y = 0;
-					this.addChild(menu);
-					
-					break;
-				case "muistipeli":
-					
-					muistipeli.x = 0;
-					muistipeli.y = 0;
-					this.addChild(muistipeli);
-					
-					break;
-				case "labyrintti":
-					
-					break;
-				case "yhdistely":
-					
-					break;
-				default: // suoritetaan kun mikään muu ei täsmää
-					foundMatch = false;
-					break;
+						menu = new Menu(myStage, this);
+						menu.x = 0;
+						menu.y = 0;
+						this.addChild(menu);
+							
+						break;
+					case "muistipeli":
+						
+						muistipeli = new Muistipeli(myStage, this);
+						muistipeli.x = 0;
+						muistipeli.y = 0;
+						this.addChild(muistipeli);
+						
+						break;
+					case "labyrintti":
+						
+						laby = new Labyrintti(myStage, this);
+						laby.x = 0;
+						laby.y = 0;
+						this.addChild(laby);
+						
+						break;
+					case "yhdistely":
+							
+						break;
+					default: // suoritetaan kun mikään muu ei täsmää
+						foundMatch = false;
+						break;
+				}
 			}
+			else
+				foundMatch = false;
 			
 			if(foundMatch)
 			{
@@ -87,6 +98,9 @@ package utility
 						
 						break;
 					case "labyrintti":
+						
+						laby.Destruct();
+						this.removeChild(laby);
 						
 						break;
 					case "yhdistely":
