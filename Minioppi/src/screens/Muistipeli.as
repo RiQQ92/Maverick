@@ -66,6 +66,18 @@ package screens
 			var tattiText:Bitmap = Assets.getTexture("LehtiTekstiTatti");
 			cards.push(tatti);
 			cards.push(tattiText);
+			var mansikka:Bitmap = Assets.getTexture("LehtiMansikka");
+			var mansikkaText:Bitmap = Assets.getTexture("LehtiTekstiMansikka");
+			cards.push(mansikka);
+			cards.push(mansikkaText);
+			var vadelma:Bitmap = Assets.getTexture("LehtiVadelma");
+			var vadelmaText:Bitmap = Assets.getTexture("LehtiTekstiVadelma");
+			cards.push(vadelma);
+			cards.push(vadelmaText);
+			var mustikka:Bitmap = Assets.getTexture("LehtiMustikka");
+			var mustikkaText:Bitmap = Assets.getTexture("LehtiTekstiMustikka");
+			cards.push(mustikka);
+			cards.push(mustikkaText);
 		}
 		
 		public function Destruct():void

@@ -56,6 +56,24 @@ package
 		[Embed(source = "../Grafiikka/Muistipeli/Sienet/Lehti_Teksti_Valkokärpässieni.png")]
 		public static const LehtiTekstiValkokarpassieni:Class;
 		
+		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Mansikka.png")]
+		public static const LehtiMansikka:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Teksti_Mansikka.png")]
+		public static const LehtiTekstiMansikka:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Vadelma.png")]
+		public static const LehtiVadelma:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Teksti_Vadelma.png")]
+		public static const LehtiTekstiVadelma:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Mustikka.png")]
+		public static const LehtiMustikka:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Teksti_Mustikka.png")]
+		public static const LehtiTekstiMustikka:Class;
+		
 		
 		// Alkumenu
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/labyrintti_nappi.png")]
