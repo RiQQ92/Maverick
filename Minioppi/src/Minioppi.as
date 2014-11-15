@@ -7,6 +7,7 @@ package
 	import screens.Menu;
 	import screens.Muistipeli;
 	
+	import utility.MazeGenerator;
 	import utility.ScreenHandler;
 	
 	[SWF(frameRate="30", width="640", height="480", backgroundColor= "0x333333")]
@@ -16,12 +17,14 @@ package
 		//private var backwards:Boolean = true;
 		
 		//public var kortti:Bitmap;
-		
+		private var test:MazeGenerator = new MazeGenerator();
 		public var screenHandler:ScreenHandler;
 		
 		
 		public function Minioppi()
 		{
+			test.generateMaze(30, 30);
+			
 			screenHandler = new ScreenHandler(stage);
 			this.addChild(screenHandler);
 			screenHandler.inScreen = "menu";

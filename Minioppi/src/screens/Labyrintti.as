@@ -7,12 +7,14 @@ package screens
 	import flash.display.Stage;
 	import flash.events.MouseEvent;
 	
+	import objects.Maze;
 	import objects.Player;
 	
 	import utility.ScreenHandler;
 	
 	public class Labyrintti extends Sprite
 	{
+		private var lab:Maze
 		private var myStage:Stage;
 		private var screenHandler:ScreenHandler;
 		
@@ -30,6 +32,10 @@ package screens
 			bg.x = 0;
 			bg.y = 0;
 			this.addChild(bg);
+			
+			//lab = new Maze(256, 192, myStage);
+			lab = new Maze(32, 24, myStage);
+			this.addChild(lab);
 			
 			player = new Player(myStage);
 			player.x = myStage.stageWidth/2;

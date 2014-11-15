@@ -20,8 +20,6 @@ package UIelements
 			board = Assets.getTexture(gameName+"_kuva");
 			
 			positionItems();
-			
-			trace(gameName+" "+this.width);
 		}
 		
 		private function positionItems():void
