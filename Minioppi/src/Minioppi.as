@@ -17,14 +17,11 @@ package
 		//private var backwards:Boolean = true;
 		
 		//public var kortti:Bitmap;
-		private var test:MazeGenerator = new MazeGenerator();
 		public var screenHandler:ScreenHandler;
 		
 		
 		public function Minioppi()
 		{
-			test.generateMaze(30, 30);
-			
 			screenHandler = new ScreenHandler(stage);
 			this.addChild(screenHandler);
 			screenHandler.inScreen = "menu";

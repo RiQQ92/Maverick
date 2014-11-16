@@ -7,6 +7,8 @@ package objects
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 	
+	import utility.VCam;
+	
 	public class Player extends Sprite
 	{
 		private var image:Bitmap;
@@ -19,12 +21,16 @@ package objects
 		private var _speed:int = 5;
 		
 		private var myStage:Stage;
+		private var cam:VCam;
+		private var creator:*;
 		
-		public function Player(_stage:Stage)
+		public function Player(_stage:Stage, _creator:*)
 		{
 			super();
 			
 			myStage = _stage;
+			creator = _creator;
+			cam = new VCam(myStage, this, creator);
 			image = Assets.getTexture("Labyrintti_pelaaja");
 			this.addChild(image);
 		}
@@ -114,7 +120,7 @@ package objects
 			}
 			if(keyDown)
 			{
-				if((this.y + this.height) < myStage.stageHeight)
+				if((this.y + this.height) < creator.height)
 					this.y += this.speed;	
 			}
 			if(keyLeft)
@@ -124,7 +130,7 @@ package objects
 			}
 			if(keyRight)
 			{
-				if((this.x + this.width) < myStage.stageWidth)
+				if((this.x + this.width) < creator.width)
 					this.x += this.speed;	
 			}
 		}

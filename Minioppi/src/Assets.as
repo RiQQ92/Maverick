@@ -117,6 +117,12 @@ package
 		public static const Labyrintti_pelaaja:Class;
 		//********************
 		
+		// Muu
+		//********************
+		[Embed(source = "../Grafiikka/Muu/VCAM_zone.png")]
+		public static const VCAM_zone:Class;
+		//********************
+		
 		private static var gameTextures:Dictionary = new Dictionary();
 		
 		public static function getTexture(textureName:String):Bitmap

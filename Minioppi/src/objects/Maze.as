@@ -16,7 +16,7 @@ package objects
 		
 		public var wallList:Array = new Array();
 		
-		public function Maze(mazeWidth:int, mazeHeight:int, _stage:Stage)
+		public function Maze(mazeWidth:int, mazeHeight:int, _stage:Stage, scaleToStage:Boolean)
 		{
 			super();
 			
@@ -31,8 +31,11 @@ package objects
 					if(arr[row][col])
 					{
 						var road:Bitmap = Assets.getTexture("Labyrintti_tie");
-						road.scaleX = myStage.stageWidth/(mazeWidth*road.width);
-						road.scaleY = myStage.stageHeight/(mazeHeight*road.height);
+						if(scaleToStage)
+						{
+							road.scaleX = myStage.stageWidth/(mazeWidth*road.width);
+							road.scaleY = myStage.stageHeight/(mazeHeight*road.height);
+						}
 						road.x = road.width*row;
 						road.y = road.height*col;
 						this.addChild(road);
@@ -41,8 +44,11 @@ package objects
 					else
 					{
 						var wall:Bitmap = Assets.getTexture("Labyrintti_seina");
-						wall.scaleX = myStage.stageWidth/(mazeWidth*wall.width);
-						wall.scaleY = myStage.stageHeight/(mazeHeight*wall.height);
+						if(scaleToStage)
+						{
+							wall.scaleX = myStage.stageWidth/(mazeWidth*wall.width);
+							wall.scaleY = myStage.stageHeight/(mazeHeight*wall.height);
+						}
 						wall.x = wall.width*row;
 						wall.y = wall.height*col;
 						this.addChild(wall);

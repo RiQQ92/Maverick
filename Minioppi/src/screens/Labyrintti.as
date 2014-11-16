@@ -34,10 +34,11 @@ package screens
 			this.addChild(bg);
 			
 			//lab = new Maze(256, 192, myStage);
-			lab = new Maze(32, 24, myStage);
+			//lab = new Maze(32, 24, myStage);
+			lab = new Maze(64, 48, myStage, false);
 			this.addChild(lab);
 			
-			player = new Player(myStage);
+			player = new Player(myStage, this);
 			player.x = myStage.stageWidth/2;
 			player.y = myStage.stageHeight/2;
 			player.scaleX = 0.3;
