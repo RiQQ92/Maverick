@@ -45,26 +45,27 @@ package screens
 		
 		private function setUpCards():void
 		{
-			var reserved:Array = new Array;
-			var rand:int;
-			for (var i:int = 0; i<18; i++)
+			var arr:Array = new Array();
+			var foundNew:Boolean = false;
+			var rand:int = 0;
+			
+			for(var i:int = 0; i<18; i++)
 			{
-				rand = Math.ceil(Math.random()*18)-1;
-				while ((reserved.length-1) < i)
-				{
-					for (var t:int=0; i<reserved.Length; i++)
+				do {
+					foundNew = true;
+					rand = Math.ceil(Math.random()*18)-1;
+					for(var j:int = 0; j<arr.length; j++)
 					{
-						if (rand == reserved[t])
+						if(rand == arr[j])
 						{
-							rand = Math.ceil(Math.random()*18)-1;
-							t = 0;
+							foundNew = false;
 						}
 					}
-					reserved.push(rand);
-				}
+				} while(!foundNew);
+				arr.push(rand);
 				this.addChild(cards[i]);
-				cards[i].x = slots[rand].x
-				cards[i].y = slots[rand].y
+				cards[i].x = slots[rand].x;
+				cards[i].y = slots[rand].y;
 			}
 		}
 		
@@ -162,7 +163,7 @@ package screens
 			var picks:Array = new Array;
 			var pick:int;
 			
-			for (var i:int = 0; i<9; i++)
+			/* for (var i:int = 0; i<9; i++)
 			{
 				pick = Math.ceil(Math.random()*cardListKuva.length)-1;
 				while ((picks.length-1) < i)
@@ -177,7 +178,7 @@ package screens
 					}
 					picks.push(pick);
 				}
-			}
+			} */
 			for (var j:int = 0; j<picks.length; j++)
 			{
 				drawCard(picks[j]);
