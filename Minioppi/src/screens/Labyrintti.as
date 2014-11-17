@@ -48,17 +48,6 @@ package screens
 			this.addChild(player);
 			
 			this.addEventListener(Event.ENTER_FRAME, checkGoal);
-			/*
-			takaisin.x = 0;
-			takaisin.y = 0;
-			takaisin.scaleX = 0.1;
-			takaisin.scaleY = 0.1;
-			this.addChild(takaisin);
-			takaisin.addListener(function(event:MouseEvent):void
-			{
-				screenHandler.inScreen = "menu";
-			});
-			*/
 		}
 		
 		private function checkGoal(event:Event):void
@@ -74,38 +63,6 @@ package screens
 		{
 			player.Destruct();
 			this.removeChild(player);
-			//this.removeChild(takaisin);
 		}
-		
-		/*
-		public function asd():void
-		{
-			var arr:Array = new Array();
-			var foundNew:Boolean = false;
-			var rand:int = 0;
-			for(var i:int = 0; i < 19; i++)
-			{
-				foundNew = false;
-				while(!foundNew)
-				{
-					rand = Math.ceil(Math.random()*18)-1;
-					for(var j:int = 0; j < arr.length; j++)
-					{
-						if(rand != arr[j])
-						{
-							foundNew = true;
-						}
-						else
-						{
-							foundNew = false;
-							break;
-						}
-					}
-				}
-				
-				arr.push(rand);
-			}
-		}
-		*/
 	}
 }
