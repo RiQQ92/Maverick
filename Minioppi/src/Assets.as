@@ -74,6 +74,12 @@ package
 		
 		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Teksti_Mustikka.png")]
 		public static const LehtiTekstiMustikka:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Ampiainen.png")]
+		public static const LehtiAmpiainen:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Ampiainen.png")]
+		public static const LehtiTekstiAmpiainen:Class;
 		//*********************
 		
 		// Alkumenu

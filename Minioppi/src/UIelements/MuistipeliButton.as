@@ -23,8 +23,8 @@ package UIelements
 			imageS = imageName;
 			image.scaleX = 0.4;
 			image.scaleY = 0.4;
-			image.x -= (image.width/2+12);
-			image.y -= (image.height/2+5);
+			image.x -= image.width/4;
+			image.y -= image.height/4-20;
 			this.addChild(image);
 		}
 		
