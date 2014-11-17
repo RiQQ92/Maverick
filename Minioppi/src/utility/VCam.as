@@ -29,8 +29,6 @@ package utility
 			objParent = _parent;
 			scenery = _scenery;
 			myStage = _stage;
-			trace(this.width);
-			trace(this.image.width);
 			
 			this.visible = false;
 			
@@ -78,6 +76,16 @@ package utility
 			scenery.scaleY = 1;
 			scenery.x = 0;
 			scenery.y = 0;
+		}
+		
+		public function Destruct():void
+		{
+			objParent = null;
+			scenery = null;
+			this.removeChild(image);
+			
+			if(this.hasEventListener(Event.ENTER_FRAME))
+				this.removeEventListener(Event.ENTER_FRAME, camControl);
 		}
 	}
 }

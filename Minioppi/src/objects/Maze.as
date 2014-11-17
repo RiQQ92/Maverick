@@ -15,6 +15,7 @@ package objects
 		private var maze:MazeGenerator = new MazeGenerator();
 		
 		public var wallList:Array = new Array();
+		public var goal:Bitmap = Assets.getTexture("Labyrintti_maali");
 		
 		public function Maze(mazeWidth:int, mazeHeight:int, _stage:Stage, scaleToStage:Boolean)
 		{
@@ -56,6 +57,10 @@ package objects
 					}
 				}
 			}
+			
+			goal.x = this.width -(wallList[0].width*2);
+			goal.y = this.height -(wallList[0].height*2);
+			this.addChild(goal);
 		}
 	}
 }

@@ -53,9 +53,6 @@ package utility
 			mazeRoad[builderHeadPos.x][builderHeadPos.y] = true;
 			reserveSurrounding();
 			
-			trace(mazeRoad.length);
-			trace(mazeRoad[0].length);
-			
 			createPath();
 			
 			checkMaze();
@@ -70,12 +67,10 @@ package utility
 			{
 				if(!checkUp(builderHeadPos.x, builderHeadPos.y-1) || !checkDown(builderHeadPos.x, builderHeadPos.y+1) || !checkLeft(builderHeadPos.x-1, builderHeadPos.y) || !checkRight(builderHeadPos.x+1, builderHeadPos.y))
 				{
-					trace("choose dir");
 					chooseDirection();
 				}
 				else
 				{
-					trace("reverse");
 					reversePath();
 				}
 			}
@@ -170,14 +165,10 @@ package utility
 					
 					break;
 			}
-			trace("last moving direction: "+lastMove);
 			var rand:Number = Math.random();
 			
-			if(increasedChances)
-				trace("possible to go forward!");
 			if(freePaths > 0)
 			{
-				trace(freePaths+" free paths found");
 				switch(freePaths)
 				{
 					case 1: // yksi mahdollinen reitti
@@ -298,7 +289,6 @@ package utility
 			}
 			else
 			{
-				trace("no paths found");
 				reversePath();
 			}
 		}
@@ -339,7 +329,6 @@ package utility
 		// siirtää rakentajapään ensimmäiseen vapaan paikan viereen
 		private function findFreePath():void
 		{
-			trace("stuck, looking for new path");
 			var foundFree:Boolean = false;
 			var foundX:int = 0;
 			var foundY:int = 0;
@@ -353,7 +342,6 @@ package utility
 						foundFree = true;
 						foundX = row;
 						foundY = col;
-						trace("found free spot");
 					}
 					if(foundFree)
 						break;
@@ -411,12 +399,10 @@ package utility
 						}
 					}
 				}
-				trace("start point found: x_"+builderHeadPos.x+" y_"+builderHeadPos.y+", moving there!");
 			}
 			else
 			{
 				labyrinthFinished = true;
-				trace("labyrinth done, couldnt find unallocated spots");
 			}
 		}
 		
@@ -444,8 +430,6 @@ package utility
 			moveHistory.push(dir);
 			lastMove = dir;
 			
-			trace("creating road to: "+ builderHeadPos.x +" "+builderHeadPos.y);
-			trace("moving to: "+dir);
 			mazeRoad[builderHeadPos.x][builderHeadPos.y] = true;
 			reserveSurrounding();
 		}
@@ -453,7 +437,6 @@ package utility
 		// varaa ympärystän
 		private function reserveSurrounding():void
 		{
-			trace("reserving space!");
 			// tämän hetkinen piste
 			mazeReserved[builderHeadPos.x][builderHeadPos.y] = true;
 			

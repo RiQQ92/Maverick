@@ -117,6 +117,8 @@ package
 		public static const Labyrintti_seina:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/lab_road.png")]
 		public static const Labyrintti_tie:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/lab_finish.png")]
+		public static const Labyrintti_maali:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/tausta.png")]
 		public static const Labyrintti_tausta:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/Orava_kasvokuva.png")]
