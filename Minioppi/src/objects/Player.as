@@ -158,6 +158,18 @@ package objects
 			
 			if(lastMoveX != 0 || lastMoveY != 0)
 			{
+				for(var h:int; h < lab.animalList.length; h++)
+				{
+					if(this.hitTestObject(lab.animalList[h]))
+					{
+						if(!lab.animalList[h].isGood)
+						{
+							this.x = 2;
+							this.y = 2;
+							cam.resetCamera();
+						}
+					}
+				}
 				for(var i:int; i < lab.wallList.length; i++)
 				{
 					if(this.hitTestObject(lab.wallList[i]))

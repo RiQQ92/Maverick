@@ -11,6 +11,7 @@ package screens
 	import objects.Maze;
 	import objects.Player;
 	
+	import utility.DebugText;
 	import utility.ScreenHandler;
 	
 	public class Labyrintti extends Sprite
@@ -40,14 +41,17 @@ package screens
 			this.addChild(lab);
 			
 			player = new Player(myStage, this, lab);
-			player.x = 0; //myStage.stageWidth/2;
-			player.y = 0; //myStage.stageHeight/2;
-			player.scaleX = 0.2;
-			player.scaleY = 0.2;
+			player.x = 0;
+			player.y = 0;
+			player.scaleX = 0.8;
+			player.scaleY = 0.8;
 			player.addListeners();
 			this.addChild(player);
 			
 			this.addEventListener(Event.ENTER_FRAME, checkGoal);
+			
+			var test:DebugText = new DebugText("0", myStage);
+			this.addChild(test);
 		}
 		
 		private function checkGoal(event:Event):void

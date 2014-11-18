@@ -43,8 +43,6 @@ package utility
 			myStage.align = StageAlign.TOP_LEFT;
 			if(this.width < scenery.width)
 				addEventListener(Event.ENTER_FRAME, camControl);
-			
-			addEventListener(Event.REMOVED, resetStage);
 		}
 		
 		private function camControl(event:Event):void
@@ -69,9 +67,8 @@ package utility
 			}
 		}
 		
-		public function resetStage(event:Event):void
+		public function resetCamera():void
 		{
-			removeEventListener(Event.ENTER_FRAME, camControl);
 			scenery.scaleX = 1;
 			scenery.scaleY = 1;
 			scenery.x = 0;
@@ -80,6 +77,11 @@ package utility
 		
 		public function Destruct():void
 		{
+			scenery.scaleX = 1;
+			scenery.scaleY = 1;
+			scenery.x = 0;
+			scenery.y = 0;
+			
 			objParent = null;
 			scenery = null;
 			this.removeChild(image);

@@ -23,7 +23,7 @@ package utility
 			myStage = _stage;
 			
 			output.defaultTextFormat = font;
-			output.background = true;
+			output.background = false;
 			output.width = 400;
 			output.height = 300;
 			output.multiline = true;
@@ -31,7 +31,7 @@ package utility
 			output.x = myStage.stageWidth/2 - output.width/2;
 			output.y = myStage.stageHeight/2 - output.height/2;
 			
-			if(data == null || data == '\0' || data == "")
+			if(data == null || data == "")
 				output.text = "no information sent!";
 			else
 			{
@@ -40,6 +40,31 @@ package utility
 			
 			this.addChild(output);
 			myStage.addEventListener(KeyboardEvent.KEY_UP, remove);
+		}
+		
+		public function add(data:String):void
+		{
+			output.appendText(data);
+		}
+		
+		public function reset():void
+		{
+			output.text = "";
+		}
+		
+		public function replace(data:String):void
+		{
+			output.text = data;
+		}
+		
+		public function getText():String
+		{
+			return output.text;
+		}
+		
+		public function toggleBG():void
+		{
+			output.background = !output.background;
 		}
 		
 		protected function remove(event:KeyboardEvent):void

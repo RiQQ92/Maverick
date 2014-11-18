@@ -65,7 +65,7 @@ package utility
 		{
 			while(!labyrinthFinished)
 			{
-				if(!checkUp(builderHeadPos.x, builderHeadPos.y-1) || !checkDown(builderHeadPos.x, builderHeadPos.y+1) || !checkLeft(builderHeadPos.x-1, builderHeadPos.y) || !checkRight(builderHeadPos.x+1, builderHeadPos.y))
+				if(!checkUp(builderHeadPos.x, builderHeadPos.y-2) || !checkDown(builderHeadPos.x, builderHeadPos.y+2) || !checkLeft(builderHeadPos.x-2, builderHeadPos.y) || !checkRight(builderHeadPos.x+2, builderHeadPos.y))
 				{
 					chooseDirection();
 				}
@@ -90,53 +90,53 @@ package utility
 			switch(lastMove)
 			{
 				case "up":
-					if(!checkUp(builderHeadPos.x, builderHeadPos.y-1) && checkPoint(builderHeadPos.x, builderHeadPos.y-1, false))
+					if(!checkUp(builderHeadPos.x, builderHeadPos.y-2) && checkPoint(builderHeadPos.x, builderHeadPos.y-2, false))
 					{
 						upFree = true;
 						increasedChances = true;
 						freePaths++;
 					}
-					if(!checkLeft(builderHeadPos.x-1, builderHeadPos.y) && checkPoint(builderHeadPos.x-1, builderHeadPos.y, false))
+					if(!checkLeft(builderHeadPos.x-2, builderHeadPos.y) && checkPoint(builderHeadPos.x-2, builderHeadPos.y, false))
 					{
 						leftFree = true;
 						freePaths++;
 					}
-					if(!checkRight(builderHeadPos.x+1, builderHeadPos.y) && checkPoint(builderHeadPos.x+1, builderHeadPos.y, false))
+					if(!checkRight(builderHeadPos.x+2, builderHeadPos.y) && checkPoint(builderHeadPos.x+2, builderHeadPos.y, false))
 					{
 						rightFree = true;
 						freePaths++;
 					}
 					break;
 				case "down":
-					if(!checkDown(builderHeadPos.x, builderHeadPos.y+1) && checkPoint(builderHeadPos.x, builderHeadPos.y+1, false))
+					if(!checkDown(builderHeadPos.x, builderHeadPos.y+2) && checkPoint(builderHeadPos.x, builderHeadPos.y+2, false))
 					{
 						downFree = true;
 						increasedChances = true;
 						freePaths++;
 					}
-					if(!checkLeft(builderHeadPos.x-1, builderHeadPos.y) && checkPoint(builderHeadPos.x-1, builderHeadPos.y, false))
+					if(!checkLeft(builderHeadPos.x-2, builderHeadPos.y) && checkPoint(builderHeadPos.x-2, builderHeadPos.y, false))
 					{
 						leftFree = true;
 						freePaths++;
 					}
-					if(!checkRight(builderHeadPos.x+1, builderHeadPos.y) && checkPoint(builderHeadPos.x+1, builderHeadPos.y, false))
+					if(!checkRight(builderHeadPos.x+2, builderHeadPos.y) && checkPoint(builderHeadPos.x+2, builderHeadPos.y, false))
 					{
 						rightFree = true;
 						freePaths++;
 					}
 					break;
 				case "left":
-					if(!checkUp(builderHeadPos.x, builderHeadPos.y-1) && checkPoint(builderHeadPos.x, builderHeadPos.y-1, false))
+					if(!checkUp(builderHeadPos.x, builderHeadPos.y-2) && checkPoint(builderHeadPos.x, builderHeadPos.y-2, false))
 					{
 						upFree = true;
 						freePaths++;
 					}
-					if(!checkDown(builderHeadPos.x, builderHeadPos.y+1) && checkPoint(builderHeadPos.x, builderHeadPos.y+1, false))
+					if(!checkDown(builderHeadPos.x, builderHeadPos.y+2) && checkPoint(builderHeadPos.x, builderHeadPos.y+2, false))
 					{
 						downFree = true;
 						freePaths++;
 					}
-					if(!checkLeft(builderHeadPos.x-1, builderHeadPos.y) && checkPoint(builderHeadPos.x-1, builderHeadPos.y, false))
+					if(!checkLeft(builderHeadPos.x-2, builderHeadPos.y) && checkPoint(builderHeadPos.x-2, builderHeadPos.y, false))
 					{
 						leftFree = true;
 						increasedChances = true;
@@ -144,17 +144,17 @@ package utility
 					}
 					break;
 				case "right":
-					if(!checkUp(builderHeadPos.x, builderHeadPos.y-1) && checkPoint(builderHeadPos.x, builderHeadPos.y-1, false))
+					if(!checkUp(builderHeadPos.x, builderHeadPos.y-2) && checkPoint(builderHeadPos.x, builderHeadPos.y-2, false))
 					{
 						upFree = true;
 						freePaths++;
 					}
-					if(!checkDown(builderHeadPos.x, builderHeadPos.y+1) && checkPoint(builderHeadPos.x, builderHeadPos.y+1, false))
+					if(!checkDown(builderHeadPos.x, builderHeadPos.y+2) && checkPoint(builderHeadPos.x, builderHeadPos.y+2, false))
 					{
 						downFree = true;
 						freePaths++;
 					}
-					if(!checkRight(builderHeadPos.x+1, builderHeadPos.y) && checkPoint(builderHeadPos.x+1, builderHeadPos.y, false))
+					if(!checkRight(builderHeadPos.x+2, builderHeadPos.y) && checkPoint(builderHeadPos.x+2, builderHeadPos.y, false))
 					{
 						rightFree = true;
 						increasedChances = true;
@@ -304,19 +304,19 @@ package utility
 				switch(dir)
 				{
 					case "up":
-						builderHeadPos.y++;
+						builderHeadPos.y+=2;
 						break;
 					
 					case "down":
-						builderHeadPos.y--;
+						builderHeadPos.y-=2;
 						break;
 					
 					case "left":
-						builderHeadPos.x++;
+						builderHeadPos.x+=2;
 						break;
 					
 					case "right":
-						builderHeadPos.x--;
+						builderHeadPos.x-=2;
 						break;
 				}
 			}
@@ -333,9 +333,9 @@ package utility
 			var foundX:int = 0;
 			var foundY:int = 0;
 			
-			for (var row:int = 0; row < mazeWidth; row++)
+			for (var row:int = 0; row < mazeWidth; row+=2)
 			{
-				for (var col:int = 0; col < mazeHeight; col++)
+				for (var col:int = 0; col < mazeHeight; col+=2)
 				{
 					if(!mazeReserved[row][col])
 					{
@@ -413,17 +413,37 @@ package utility
 			{
 				case "up":
 					builderHeadPos.y--;
+					
+					mazeRoad[builderHeadPos.x][builderHeadPos.y] = true;
+					reserveSurrounding();
+					
+					builderHeadPos.y--;
 					break;
 				
 				case "down":
+					builderHeadPos.y++;
+					
+					mazeRoad[builderHeadPos.x][builderHeadPos.y] = true;
+					reserveSurrounding();
+					
 					builderHeadPos.y++;
 					break;
 				
 				case "left":
 					builderHeadPos.x--;
+					
+					mazeRoad[builderHeadPos.x][builderHeadPos.y] = true;
+					reserveSurrounding();
+					
+					builderHeadPos.x--;
 					break;
 				
 				case "right":
+					builderHeadPos.x++;
+					
+					mazeRoad[builderHeadPos.x][builderHeadPos.y] = true;
+					reserveSurrounding();
+					
 					builderHeadPos.x++;
 					break;
 			}

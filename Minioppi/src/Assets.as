@@ -119,10 +119,23 @@ package
 		public static const Labyrintti_tie:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/lab_finish.png")]
 		public static const Labyrintti_maali:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/lab_player.png")]
+		public static const Labyrintti_pelaaja:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/tausta.png")]
 		public static const Labyrintti_tausta:Class;
+		
+		[Embed(source = "../Grafiikka/Labyrintti/Hirvi_kasvokuva.png")]
+		public static const Labyrintti_hirvi:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/Janis_kasvokuva.png")]
+		public static const Labyrintti_janis:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/Kettu_kasvokuva.png")]
+		public static const Labyrintti_kettu:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/Karhu_kasvokuva.png")]
+		public static const Labyrintti_karhu:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/Ilves_kasvokuva.png")]
+		public static const Labyrintti_ilves:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/Orava_kasvokuva.png")]
-		public static const Labyrintti_pelaaja:Class;
+		public static const Labyrintti_orava:Class;
 		//********************
 		
 		// Muu
