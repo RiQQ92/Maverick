@@ -16,7 +16,7 @@ package screens
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
 
-		public var listTest:SlideList;
+		public var menuGameList:SlideList;
 
 		public var tausta:Bitmap;
 		
@@ -47,20 +47,12 @@ package screens
 			tausta.x = 0;
 			tausta.y = 0;
 			
-			
-			
 			labyBtn.scaleX = 0.4;
 			labyBtn.scaleY = 0.4;
 			labyBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää 
-					muistipeliin
-					*/
 					screenHandler.inScreen = "labyrintti";
-					trace("Labyrintti click'd");
 				}
 			);
 			
@@ -69,13 +61,7 @@ package screens
 			labyBtn2.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää 
-					muistipeliin
-					*/
 					screenHandler.inScreen = "labyrintti";
-					trace("Labyrintti click'd");
 				}
 			);
 			
@@ -84,13 +70,7 @@ package screens
 			labyBtn3.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää 
-					muistipeliin
-					*/
 					screenHandler.inScreen = "labyrintti";
-					trace("Labyrintti click'd");
 				}
 			);
 			
@@ -144,14 +124,7 @@ package screens
 			muistiBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää
-					muistipeliin
-					*/
 					screenHandler.inScreen = "muistipeli";
-					
-					trace("Muistipeli click'd");
 				}
 			);
 			
@@ -160,14 +133,7 @@ package screens
 			muistiBtn2.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää 
-					muistipeliin
-					*/
 					screenHandler.inScreen = "muistipeli";
-					
-					trace("Muistipeli click'd");
 				}
 			);
 			
@@ -176,64 +142,24 @@ package screens
 			muistiBtn3.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää 
-					muistipeliin
-					*/
 					screenHandler.inScreen = "muistipeli";
-					
-					trace("Muistipeli click'd");
 				}
 			);
 			
-			listTest = new SlideList(myStage.stageWidth, 200, true);
-			listTest.x = 0;
-			listTest.y = myStage.stageHeight/2 - listTest.ySize/2;
-			listTest.addItem(labyBtn);
-			listTest.addItem(metsaBtn);
-			listTest.addItem(muistiBtn);
-			listTest.addItem(labyBtn2);
-			listTest.addItem(metsaBtn2);
-			listTest.addItem(muistiBtn2);
-			listTest.addItem(labyBtn3);
-			listTest.addItem(metsaBtn3);
-			listTest.addItem(muistiBtn3);
+			menuGameList = new SlideList(myStage.stageWidth, 200, true);
+			menuGameList.x = 0;
+			menuGameList.y = myStage.stageHeight/2 - menuGameList.ySize/2;
+			menuGameList.addItem(labyBtn);
+			menuGameList.addItem(metsaBtn);
+			menuGameList.addItem(muistiBtn);
+			menuGameList.addItem(labyBtn2);
+			menuGameList.addItem(metsaBtn2);
+			menuGameList.addItem(muistiBtn2);
+			menuGameList.addItem(labyBtn3);
+			menuGameList.addItem(metsaBtn3);
+			menuGameList.addItem(muistiBtn3);
 			
 			Draw();
-		}
-		
-		protected function metsapeliClicked(event:MouseEvent):void
-		{
-			/*
-			Tähän kooodi
-			mikä siirtää 
-			muistipeliin
-			*/
-			
-			trace("Metsapeli click'd");
-		}
-		
-		protected function labyrinttipeliClicked(event:MouseEvent):void
-		{
-			/*
-			Tähän kooodi
-			mikä siirtää 
-			muistipeliin
-			*/
-			
-			trace("Labyrintti click'd");
-		}
-		
-		protected function muistipeliClicked(event:MouseEvent):void
-		{
-			/*
-				Tähän kooodi
-				mikä siirtää 
-				muistipeliin
-			*/
-			
-			trace("Muistipeli click'd");
 		}
 		
 		// kutsutaan ulkoa kun halutaan poistaa screeni
@@ -250,8 +176,8 @@ package screens
 			this.removeChild(muistiBtn);
 			this.removeChild(muistiBtn2);
 			this.removeChild(muistiBtn3);
-			listTest.Destruct();
-			this.removeChild(listTest);
+			menuGameList.Destruct();
+			this.removeChild(menuGameList);
 		}
 		
 		// käytetään luomaan graafiset elementit
@@ -267,7 +193,7 @@ package screens
 			this.addChild(muistiBtn);
 			this.addChild(muistiBtn2);
 			this.addChild(muistiBtn3);
-			this.addChild(listTest);
+			this.addChild(menuGameList);
 		}
 	}
 }

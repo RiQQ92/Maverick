@@ -40,6 +40,7 @@ package objects
 					var goodAnim:Animal = new Animal(true);
 					var road2:Bitmap;
 					
+					// jos on tie
 					if(arr[row][col])
 					{
 						var road:Bitmap = Assets.getTexture("Labyrintti_tie");
@@ -53,12 +54,15 @@ package objects
 						this.addChild(road);
 						roadList.push(road);
 						
+						// luo vaarattomat eläimet tielle
 						if(goodAnimalCounter < goodAnimalAmount)
 						{
 							if(row == 0 || row == mazeWidth-1)
 							{
+								// vasen reuna
 								if(row == 0)
 								{
+									// tarkastaa muualta paitsi vasemmalta
 									if(!arr[row][col-1] && !arr[row][col+1] && arr[row+1][col]|| !arr[row][col+1] && arr[row][col-1] && arr[row+1][col])
 									{
 										if(Math.random() < 0.06)
@@ -73,8 +77,10 @@ package objects
 										}
 									}
 								}
+								// oikea reuna
 								else
 								{
+									// tarkastaa muualta paitsi oikealta
 									if(!arr[row][col-1] && !arr[row][col+1] && arr[row-1][col] || !arr[row][col+1] && !arr[row-1][col] && arr[row][col-1])
 									{
 										if(Math.random() < 0.06)
@@ -92,8 +98,10 @@ package objects
 							}
 							else if(col == 0 || col == mazeHeight-1)
 							{
+								// yläreuna
 								if(col == 0)
 								{
+									// tarkastaa muualta paitsi ylhäältä
 									if(arr[row][col+1] && !arr[row+1][col] && !arr[row-1][col] || arr[row][col+1] && arr[row-1][col] && !arr[row+1][col])
 									{
 										if(Math.random() < 0.06)
@@ -108,8 +116,10 @@ package objects
 										}
 									}
 								}
+								// alareuna
 								else
 								{
+									// tarkastaa muualta paitsi alhaalta
 									if(!arr[row][col-1] && arr[row+1][col] && arr[row-1][col] || !arr[row+1][col] && !arr[row-1][col] && arr[row][col-1])
 									{
 										if(Math.random() < 0.06)
@@ -125,8 +135,10 @@ package objects
 									}
 								}
 							}
+							// ei ole reunassa
 							else
 							{
+								// tarkastaa joka suunnan
 								if(!arr[row][col-1] && !arr[row][col+1] && arr[row+1][col] && arr[row-1][col] || arr[row+1][col] && !arr[row-1][col] && arr[row][col-1] && arr[row][col+1])
 								{
 									if(Math.random() < 0.06)
@@ -145,6 +157,7 @@ package objects
 					}
 					else
 					{
+						// luo vaaralliset eläimet seinien paikoille
 						var createdAnimal:Boolean = false;
 						if(badAnimalCounter < badAnimalAmount)
 						{
@@ -307,6 +320,7 @@ package objects
 				}
 			}
 			
+			// luo maalin oikeaan alareunaan
 			goal.x = this.width -(wallList[0].width*2);
 			goal.y = this.height -(wallList[0].height*2);
 			this.addChild(goal);
