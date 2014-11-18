@@ -41,6 +41,12 @@ package screens
 			makeArrays();
 			pickCards();
 			setUpCards();
+			this.addEventListener(MouseEvent.CLICK, checkFlips);
+		}
+		
+		private function checkFlips():void
+		{
+			
 		}
 		
 		private function setUpCards():void
@@ -67,6 +73,7 @@ package screens
 				cards[i].x = slots[rand].x;
 				cards[i].y = slots[rand].y;
 			}
+			arr = new Array;
 		}
 		
 		private function makeArrays():void
@@ -162,26 +169,27 @@ package screens
 		{
 			var picks:Array = new Array;
 			var pick:int;
+			var foundNew:Boolean;
 			
-			/* for (var i:int = 0; i<9; i++)
+			for (var i:int = 0; i<9; i++)
 			{
-				pick = Math.ceil(Math.random()*cardListKuva.length)-1;
-				while ((picks.length-1) < i)
-				{
-					for (var u:int = 0; u<picks.length; u++)
+				do {
+					foundNew = true;
+					pick = Math.ceil(Math.random()*cardListKuva.length)-1;
+					for(var j:int = 0; j<picks.length; j++)
 					{
-						if (pick == picks[u])
+						if(pick == picks[j])
 						{
-							pick = Math.ceil(Math.random()*cardListKuva.length)-1;
-							u = 0;
+							foundNew = false;
 						}
 					}
-					picks.push(pick);
-				}
-			} */
-			for (var j:int = 0; j<picks.length; j++)
+				} while(!foundNew);
+				picks.push(pick);
+			}
+			
+			for (var l:int = 0; l<picks.length; l++)
 			{
-				drawCard(picks[j]);
+				drawCard(picks[l]);
 			}
 		}
 		
