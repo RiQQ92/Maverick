@@ -11,11 +11,14 @@ package UIelements
 		private var rewinding:Boolean = false;
 		private var backwards:Boolean = true;
 		*/
+		private var clickFunc:Function;
 		
 		public var backSide:Boolean = true;
 		
+		public var active:Boolean = true;
+		
 		private var image:Bitmap;
-		private var imageS:String
+		public var imageS:String
 		
 		public function MuistipeliButton(imageName:String)
 		{
@@ -30,16 +33,18 @@ package UIelements
 		
 		public function flipCard():void
 		{
-			
-			if(backSide == true)
+			if (active == true)
 			{
-				image.bitmapData = Assets.getTexture(imageS).bitmapData;
-				backSide = false;
-			}
-			else
-			{
-				image.bitmapData = Assets.getTexture("LehtiBack").bitmapData;
-				backSide = true;
+				if(backSide == true)
+				{
+					image.bitmapData = Assets.getTexture(imageS).bitmapData;
+					backSide = false;
+				}
+				else
+				{
+					image.bitmapData = Assets.getTexture("LehtiBack").bitmapData;
+					backSide = true;
+				}
 			}
 		}
 		
@@ -92,12 +97,13 @@ package UIelements
 		
 		public function addListener(eventFunc:Function):void
 		{
+			clickFunc = eventFunc,
 			this.addEventListener(MouseEvent.CLICK, eventFunc);
 		}
 		
 		public function removeListeners():void
 		{
-			this.removeListeners();
+			this.removeEventListener(MouseEvent.CLICK, clickFunc);
 		}
 		
 	}
