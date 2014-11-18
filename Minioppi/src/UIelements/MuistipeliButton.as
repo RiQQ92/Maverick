@@ -12,7 +12,7 @@ package UIelements
 		private var backwards:Boolean = true;
 		*/
 		
-		private var backSide:Boolean = true;
+		public var backSide:Boolean = true;
 		
 		private var image:Bitmap;
 		private var imageS:String
@@ -30,6 +30,7 @@ package UIelements
 		
 		public function flipCard():void
 		{
+			
 			if(backSide == true)
 			{
 				image.bitmapData = Assets.getTexture(imageS).bitmapData;
