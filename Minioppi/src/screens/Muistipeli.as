@@ -10,12 +10,15 @@ package screens
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	
+	import utility.DebugText;
 	import utility.ScreenHandler;
 	
 	public class Muistipeli extends Sprite
 	{
 		private var myStage:Stage;
 		private var screenHandler:ScreenHandler;
+		
+		public var debug:DebugText;
 		
 		public var bg:Bitmap;
 		public var ui:Bitmap;
@@ -24,6 +27,8 @@ package screens
 		public var cardListKuva:Array = new Array;
 		public var cardListText:Array = new Array;
 		public var cards:Array = new Array;
+		
+		public var flips:Array = new Array;
 		
 		public function Muistipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -44,11 +49,67 @@ package screens
 			this.addEventListener(MouseEvent.CLICK, checkFlips);
 		}
 		
-		private function checkFlips():void
+		private function checkFlips(event:MouseEvent):void
 		{
-			
+			// lasketaan montako korttia on käännetty
+			flips = new Array;
+			for (var i:int = 0; i<cards.length; i++)
+			{
+				if (cards[i].backSide == false)
+				{
+					flips.push(cards[i]);
+				}
+				// läytyykö kaksi käännettyä korttia
+				if (flips.length >= 2)
+				{
+					for (var j:int = 0; j<cards.length; j++)
+					{
+						if (cards[j].backSide == false)
+						{
+							cards[j].flipCard();
+						}
+					}
+					checkPairs();
+				}
+			}
 		}
 		
+		private function checkPairs():void
+		{
+			var card1:int;
+			card1 = getCardNumber(flips[0].imageS);
+			var card2:int;
+			card2 = getCardNumber(flips[1].imageS);
+			
+			// jos löytyy parit
+			if (card1 == card2)
+			{
+				//this.removeChild(flips[0]);
+				//this.removeChild(flips[1]);
+			}
+		}
+		
+		// haetaan nimeä vastaava numero arvo kortille
+		private function getCardNumber(name:String):int
+		{
+			var number:int;
+			
+			for (var i:int = 0; i<cardListKuva.length; i++)
+			{
+				if (name == cardListKuva[i])
+				{
+					number = i;
+				}
+				if (name == cardListText[i])
+				{
+					number = i;
+				}
+			}
+			
+			return number;
+		}
+		
+		// aseta kortit kentälle satunnaisiin paikkoihin
 		private function setUpCards():void
 		{
 			var arr:Array = new Array();
@@ -73,7 +134,6 @@ package screens
 				cards[i].x = slots[rand].x;
 				cards[i].y = slots[rand].y;
 			}
-			arr = new Array;
 		}
 		
 		private function makeArrays():void
@@ -171,6 +231,7 @@ package screens
 			var pick:int;
 			var foundNew:Boolean;
 			
+			// tarkistetaan ettei tule sama kortti kahdesti
 			for (var i:int = 0; i<9; i++)
 			{
 				do {
@@ -187,12 +248,14 @@ package screens
 				picks.push(pick);
 			}
 			
+			// haetaan kortin molemmat parit
 			for (var l:int = 0; l<picks.length; l++)
 			{
 				drawCard(picks[l]);
 			}
 		}
 		
+		// luodaan valitut kortit ja annetaan niille toiminto painattaessa
 		private function drawCard(pick:int):void
 		{
 			var cardName:String = cardListKuva[pick];
