@@ -2,6 +2,7 @@ package screens
 {
 	import UIelements.Button;
 	import UIelements.MuistipeliButton;
+	import UIelements.OhjeIkkuna;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
@@ -20,6 +21,7 @@ package screens
 		
 		public var debug:DebugText;
 		
+		public var tip:OhjeIkkuna;
 		public var bg:Bitmap;
 		public var ui:Bitmap;
 		
@@ -40,9 +42,19 @@ package screens
 		
 		private function initialize():void
 		{
+			tip = new OhjeIkkuna("OhjeMuistipeli");
 			bg = Assets.getTexture("BgKanto");
 			ui = Assets.getTexture("UiMuistipeli");
 			drawScreen();
+			this.addChild(tip);
+			tip.addEventListener(MouseEvent.CLICK, startGame);
+		}
+		
+		private function startGame(event:MouseEvent):void
+		{
+			tip.removeEventListener(MouseEvent.CLICK, startGame);
+			this.removeChild(tip);
+			
 			makeArrays();
 			pickCards();
 			setUpCards();
@@ -51,26 +63,27 @@ package screens
 		
 		private function checkFlips(event:MouseEvent):void
 		{
-			// lasketaan montako korttia on käännetty
+			// lasketaan montako käännettyä korttia on
 			flips = new Array;
 			for (var i:int = 0; i<cards.length; i++)
 			{
 				if (cards[i].backSide == false)
 				{
 					flips.push(cards[i]);
+					cards[i].active = false;
 				}
-				// läytyykö kaksi käännettyä korttia
-				if (flips.length >= 2)
+			}
+			if (flips.length >= 2)
+			{
+				for (var j:int = 0; j<cards.length; j++)
 				{
-					for (var j:int = 0; j<cards.length; j++)
+					if (cards[j].backSide == false)
 					{
-						if (cards[j].backSide == false)
-						{
-							cards[j].flipCard();
-						}
+						cards[j].active = true;
+						cards[j].flipCard();
 					}
-					checkPairs();
 				}
+				checkPairs();
 			}
 		}
 		
@@ -84,8 +97,8 @@ package screens
 			// jos löytyy parit
 			if (card1 == card2)
 			{
-				//this.removeChild(flips[0]);
-				//this.removeChild(flips[1]);
+				this.removeChild(flips[0]);
+				this.removeChild(flips[1]);
 			}
 		}
 		
