@@ -7,10 +7,25 @@ package
 	
 	public class Assets
 	{
+		// Ohjeet
+		//********************
+		[Embed(source = "../Grafiikka/Muistipeli/MuistipeliOhje.png")]
+		public static const OhjeMuistipeli:Class;
+		
+		[Embed(source = "../Grafiikka/Labyrintti/LabyrinttiOhje.png")]
+		public static const OhjeLabyrintti:Class;
+		
+		[Embed(source = "../Grafiikka/Pilkkipeli/PilkkiOhje.png")]
+		public static const OhjePilkki:Class;
+		//*********************
+		
 		// Muistipeli
 		//*********************
 		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Back.png")]
 		public static const LehtiBack:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Back_Crop.png")]
+		public static const LehtiBackCrop:Class;
 		
 		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Front.png")]
 		public static const LehtiFront:Class;

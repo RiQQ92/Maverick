@@ -18,16 +18,21 @@ package UIelements
 		public var active:Boolean = true;
 		
 		private var image:Bitmap;
-		public var imageS:String
+		public var imageS:String;
+		
+		public var saveX:int;
+		public var saveY:int;
 		
 		public function MuistipeliButton(imageName:String)
 		{
-			image = Assets.getTexture("LehtiBack");
+			image = Assets.getTexture("LehtiBackCrop");
 			imageS = imageName;
 			image.scaleX = 0.4;
 			image.scaleY = 0.4;
-			image.x -= image.width/4;
-			image.y -= image.height/4-20;
+			saveX = image.width/2;
+			saveY = image.height/2;
+			image.x = -image.width/2+saveX;
+			image.y = -image.height/2+saveY;
 			this.addChild(image);
 		}
 		
@@ -42,9 +47,11 @@ package UIelements
 				}
 				else
 				{
-					image.bitmapData = Assets.getTexture("LehtiBack").bitmapData;
+					image.bitmapData = Assets.getTexture("LehtiBackCrop").bitmapData;
 					backSide = true;
 				}
+				image.x = -image.width/2+saveX;
+				image.y = -image.height/2+saveY;
 			}
 		}
 		
