@@ -30,6 +30,8 @@ package screens
 		public var cardListText:Array = new Array;
 		public var cards:Array = new Array;
 		
+		public var cardsFound:int = 0;
+		
 		public var flips:Array = new Array;
 		
 		public function Muistipeli(_stage:Stage, scrnHandle:ScreenHandler)
@@ -59,6 +61,7 @@ package screens
 			pickCards();
 			setUpCards();
 			this.addEventListener(MouseEvent.CLICK, checkFlips);
+			this.addEventListener(Event.ENTER_FRAME, checkWin);
 		}
 		
 		private function checkFlips(event:MouseEvent):void
@@ -87,6 +90,16 @@ package screens
 			}
 		}
 		
+		private function checkWin(event:Event):void
+		{
+			if (cardsFound >= 9)
+			{
+				this.removeEventListener(MouseEvent.CLICK, checkFlips);
+				this.removeEventListener(Event.ENTER_FRAME, checkWin);
+				screenHandler.inScreen = "menu";
+			}
+		}
+		
 		private function checkPairs():void
 		{
 			var card1:int;
@@ -97,6 +110,7 @@ package screens
 			// jos löytyy parit
 			if (card1 == card2)
 			{
+				cardsFound += 1;
 				this.removeChild(flips[0]);
 				this.removeChild(flips[1]);
 			}

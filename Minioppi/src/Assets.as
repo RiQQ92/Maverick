@@ -20,6 +20,18 @@ package
 		public static const OhjePilkki:Class;
 		//*********************
 		
+		// Pilkkipeli
+		//********************
+		[Embed(source = "../Grafiikka/pilkkipeli/pilkkipeli.png")]
+		public static const BGpilkkipeli:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/Siima.png")]
+		public static const Siima:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/koukku2.png")]
+		public static const Koukku:Class;
+		//*********************
+		
 		// Muistipeli
 		//*********************
 		[Embed(source = "../Grafiikka/Muistipeli/Muistipeli_UI.png")]
