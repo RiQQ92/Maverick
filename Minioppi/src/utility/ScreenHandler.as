@@ -8,6 +8,7 @@ package utility
 	import screens.Menu;
 	import screens.Metsa;
 	import screens.Muistipeli;
+	import screens.Pilkkipeli;
 	import screens.Yhdistely;
 	
 	public class ScreenHandler extends Sprite
@@ -18,6 +19,7 @@ package utility
 		private var laby:Labyrintti;
 		private var metsa:Metsa;
 		private var yhdistely:Yhdistely;
+		private var pilkki:Pilkkipeli;
 		
 		private var _inScreen:String = "Empty";
 		
@@ -81,6 +83,14 @@ package utility
 						this.addChild(metsa);
 						
 						break;
+					case "pilkki":
+						
+						pilkki = new Pilkkipeli(myStage, this);
+						pilkki.x = 0;
+						pilkki.y = 0;
+						this.addChild(pilkki);
+						
+						break;
 					case "yhdistely":
 							
 						yhdistely = new Yhdistely();
@@ -127,6 +137,13 @@ package utility
 						this.removeChild(metsa);
 						
 						break;
+					case "pilkki":
+						
+						pilkki.Destruct();
+						this.removeChild(pilkki);
+						
+						break;
+					
 					case "yhdistely":
 						
 						yhdistely.Destruct();

@@ -109,6 +109,11 @@ package
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/yhdistely_kuva.png")]
 		public static const Yhdistely_kuva:Class;
 		
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/pilkkiminen_nappi.png")]
+		public static const Pilkki_nappi:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/pilkkiminen_kuva.png")]
+		public static const Pilkki_kuva:Class;
+		
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/ketju.png")]
 		public static const Ketju:Class;
 		

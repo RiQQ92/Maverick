@@ -24,6 +24,7 @@ package screens
 		public var metsaBtn:GameButton = new GameButton("Metsastys");
 		public var muistiBtn:GameButton = new GameButton("Muistipeli");
 		public var yhdistelyBtn:GameButton = new GameButton("Yhdistely");
+		public var pilkkiBtn:GameButton = new GameButton("Pilkki");
 		public var labyBtn2:GameButton = new GameButton("Labyrintti");
 		public var metsaBtn2:GameButton = new GameButton("Metsastys");
 		public var muistiBtn2:GameButton = new GameButton("Muistipeli");
@@ -102,6 +103,15 @@ package screens
 				}
 			);
 			
+			pilkkiBtn.scaleX = 0.4;
+			pilkkiBtn.scaleY = 0.4;
+			pilkkiBtn.button.addListener(
+				function(event:MouseEvent):void
+				{
+					screenHandler.inScreen = "pilkki";
+				}
+			);
+			
 			muistiBtn.scaleX = 0.4;
 			muistiBtn.scaleY = 0.4;
 			muistiBtn.button.addListener(
@@ -145,6 +155,7 @@ package screens
 			menuGameList.addItem(metsaBtn);
 			menuGameList.addItem(muistiBtn);
 			menuGameList.addItem(yhdistelyBtn);
+			menuGameList.addItem(pilkkiBtn);
 			menuGameList.addItem(labyBtn2);
 			menuGameList.addItem(metsaBtn2);
 			menuGameList.addItem(muistiBtn2);
@@ -169,6 +180,7 @@ package screens
 			this.removeChild(muistiBtn);
 			this.removeChild(muistiBtn2);
 			this.removeChild(muistiBtn3);
+			this.removeChild(pilkkiBtn);
 			menuGameList.Destruct();
 			this.removeChild(menuGameList);
 		}
@@ -186,6 +198,7 @@ package screens
 			this.addChild(muistiBtn);
 			this.addChild(muistiBtn2);
 			this.addChild(muistiBtn3);
+			this.addChild(pilkkiBtn);
 			this.addChild(yhdistelyBtn);
 			this.addChild(menuGameList);
 		}
