@@ -29,13 +29,8 @@ package
 		
 		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Back.png")]
 		public static const LehtiBack:Class;
-<<<<<<< HEAD
-=======
-		
 		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Back_Crop.png")]
 		public static const LehtiBackCrop:Class;
-		
->>>>>>> 3437cb8f22576c472a79604b2b52297ee4d4bcc6
 		[Embed(source = "../Grafiikka/Muistipeli/Lehti_Front.png")]
 		public static const LehtiFront:Class;
 		[Embed(source = "../Grafiikka/Muistipeli/Sienet/Lehti_Kanttarelli.png")]
@@ -96,6 +91,11 @@ package
 		public static const Muistipeli_nappi:Class;
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/muistipeli_kuva.png")]
 		public static const Muistipeli_kuva:Class;
+		
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/yhdistely_nappi.png")]
+		public static const Yhdistely_nappi:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/yhdistely_kuva.png")]
+		public static const Yhdistely_kuva:Class;
 		
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/ketju.png")]
 		public static const Ketju:Class;
