@@ -163,6 +163,8 @@ package
 		//********************
 		[Embed(source = "../Grafiikka/Yhdistely/yhdistely_tausta.png")]
 		public static const Yhdistely_bg:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kana_kortti.png")]
+		public static const Yhdistely_kana:Class;
 		//********************
 		
 		// Muu

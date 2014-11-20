@@ -77,7 +77,7 @@ package utility
 						break;
 					case "metsa":
 						
-						metsa = new Metsa();
+						metsa = new Metsa(myStage, this);
 						metsa.x = 0;
 						metsa.y = 0;
 						this.addChild(metsa);
@@ -93,7 +93,7 @@ package utility
 						break;
 					case "yhdistely":
 							
-						yhdistely = new Yhdistely();
+						yhdistely = new Yhdistely(myStage, this);
 						yhdistely.x = 0;
 						yhdistely.y = 0;
 						this.addChild(yhdistely);
