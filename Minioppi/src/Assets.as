@@ -136,6 +136,12 @@ package
 		public static const Labyrintti_orava:Class;
 		//********************
 		
+		// Metsa
+		//********************
+		[Embed(source = "../Grafiikka/Metsa/metsa_bg.png")]
+		public static const Metsa_bg:Class;
+		//********************
+		
 		// Muu
 		//********************
 		[Embed(source = "../Grafiikka/Muu/VCAM_zone.png")]

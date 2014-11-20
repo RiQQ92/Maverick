@@ -6,6 +6,7 @@ package utility
 	
 	import screens.Labyrintti;
 	import screens.Menu;
+	import screens.Metsa;
 	import screens.Muistipeli;
 	
 	public class ScreenHandler extends Sprite
@@ -14,6 +15,7 @@ package utility
 		private var menu:Menu;
 		private var muistipeli:Muistipeli;
 		private var laby:Labyrintti;
+		private var metsa:Metsa;
 		
 		private var _inScreen:String = "Empty";
 		
@@ -69,6 +71,14 @@ package utility
 						this.addChild(laby);
 						
 						break;
+					case "metsa":
+						
+						metsa = new Metsa();
+						metsa.x = 0;
+						metsa.y = 0;
+						this.addChild(metsa);
+						
+						break;
 					case "yhdistely":
 							
 						break;
@@ -101,6 +111,13 @@ package utility
 						
 						laby.Destruct();
 						this.removeChild(laby);
+						
+						break;
+					
+					case "metsa":
+						
+						metsa.Destruct();
+						this.removeChild(metsa);
 						
 						break;
 					case "yhdistely":

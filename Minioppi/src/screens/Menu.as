@@ -80,13 +80,7 @@ package screens
 			metsaBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää 
-					muistipeliin
-					*/
-					
-					trace("Metsapeli click'd");
+					screenHandler.inScreen = "metsa";
 				}
 			);
 			
@@ -95,13 +89,7 @@ package screens
 			metsaBtn2.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää 
-					muistipeliin
-					*/
-					
-					trace("Metsapeli click'd");
+					screenHandler.inScreen = "metsa";
 				}
 			);
 			
@@ -110,13 +98,7 @@ package screens
 			metsaBtn3.button.addListener(
 				function(event:MouseEvent):void
 				{
-					/*
-					Tähän kooodi
-					mikä siirtää 
-					muistipeliin
-					*/
-					
-					trace("Metsapeli click'd");
+					screenHandler.inScreen = "metsa";
 				}
 			);
 			
