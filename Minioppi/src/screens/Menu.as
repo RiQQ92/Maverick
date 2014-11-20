@@ -134,7 +134,7 @@ package screens
 			yhdistelyBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
-					//screenHandler.inScreen = "muistipeli";
+					screenHandler.inScreen = "yhdistely";
 				}
 			);
 			

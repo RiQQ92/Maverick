@@ -142,6 +142,12 @@ package
 		public static const Metsa_bg:Class;
 		//********************
 		
+		// Yhdistely
+		//********************
+		[Embed(source = "../Grafiikka/Yhdistely/yhdistely_tausta.png")]
+		public static const Yhdistely_bg:Class;
+		//********************
+		
 		// Muu
 		//********************
 		[Embed(source = "../Grafiikka/Muu/VCAM_zone.png")]

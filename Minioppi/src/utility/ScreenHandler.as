@@ -8,6 +8,7 @@ package utility
 	import screens.Menu;
 	import screens.Metsa;
 	import screens.Muistipeli;
+	import screens.Yhdistely;
 	
 	public class ScreenHandler extends Sprite
 	{
@@ -16,6 +17,7 @@ package utility
 		private var muistipeli:Muistipeli;
 		private var laby:Labyrintti;
 		private var metsa:Metsa;
+		private var yhdistely:Yhdistely;
 		
 		private var _inScreen:String = "Empty";
 		
@@ -81,6 +83,11 @@ package utility
 						break;
 					case "yhdistely":
 							
+						yhdistely = new Yhdistely();
+						yhdistely.x = 0;
+						yhdistely.y = 0;
+						this.addChild(yhdistely);
+						
 						break;
 					default: // suoritetaan kun mikään muu ei täsmää
 						foundMatch = false;
@@ -121,6 +128,9 @@ package utility
 						
 						break;
 					case "yhdistely":
+						
+						yhdistely.Destruct();
+						this.removeChild(yhdistely);
 						
 						break;
 					default: // suoritetaan kun mikään muu ei täsmää
