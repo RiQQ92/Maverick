@@ -2,7 +2,7 @@
 <actionScriptProperties analytics="false" mainApplicationPath="Minioppi.as" projectUUID="d84fd9e2-157e-4525-aa83-7aaf640f9084" version="10">
   <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="true" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
     <compilerSourcePath>
-      <compilerSourcePathEntry kind="1" linkType="1" path="C:/Users/RiQ/Documents/Maverick/Tools/TweenLite"/>
+      <compilerSourcePathEntry kind="1" linkType="1" path="C:/Users/RikuA/Documents/Maverick/Tools/TweenLite"/>
     </compilerSourcePath>
     <libraryPath defaultLinkType="0">
       <libraryPathEntry kind="4" path="">
@@ -30,6 +30,7 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
+      <libraryPathEntry kind="1" linkType="1" path="MovieClips/Metsa"/>
     </libraryPath>
     <sourceAttachmentPath/>
   </compiler>

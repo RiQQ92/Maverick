@@ -92,6 +92,11 @@ package
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/muistipeli_kuva.png")]
 		public static const Muistipeli_kuva:Class;
 		
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/yhdistely_nappi.png")]
+		public static const Yhdistely_nappi:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/yhdistely_kuva.png")]
+		public static const Yhdistely_kuva:Class;
+		
 		[Embed(source = "../Grafiikka/alkuvalikko/napit/ketju.png")]
 		public static const Ketju:Class;
 		
@@ -129,6 +134,18 @@ package
 		public static const Labyrintti_ilves:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/Orava_kasvokuva.png")]
 		public static const Labyrintti_orava:Class;
+		//********************
+		
+		// Metsa
+		//********************
+		[Embed(source = "../Grafiikka/Metsa/metsa_bg.png")]
+		public static const Metsa_bg:Class;
+		//********************
+		
+		// Yhdistely
+		//********************
+		[Embed(source = "../Grafiikka/Yhdistely/yhdistely_tausta.png")]
+		public static const Yhdistely_bg:Class;
 		//********************
 		
 		// Muu
