@@ -24,10 +24,9 @@ package objects
 			this.addChild(siima);
 			this.addChild(koukku);
 			speed = 0;
-			this.addEventListener(Event.ENTER_FRAME, move);
 		}
 		
-		private function move(event:Event):void
+		public function update():void
 		{
 			if (!disabled)
 			{
