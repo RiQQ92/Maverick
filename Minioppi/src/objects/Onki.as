@@ -10,7 +10,7 @@ package objects
 		public var siima:Bitmap;
 		public var koukku:Bitmap;
 		
-		public var speed:int;
+		public var speed:Number;
 		public var disabled:Boolean = false;
 		
 		public function Onki()
@@ -24,21 +24,37 @@ package objects
 			this.addChild(siima);
 			this.addChild(koukku);
 			speed = 0;
-			this.addEventListener(Event.ENTER_FRAME, move);
 		}
 		
-		private function move(event:Event):void
+		public function update():void
 		{
 			if (!disabled)
 			{
-				siima.y += speed;
-				koukku.y += speed;
+				if (koukku.y > 235 && koukku.y < 685)
+				{
+					siima.y += speed;
+					koukku.y += speed;
+				}
+				else
+				{
+					if (koukku.y <= 235)
+					{
+						speed = 0;
+						siima.y += 2;
+						koukku.y += 2;
+					}
+					if (koukku.y >= 685)
+					{
+						speed = 0;
+						siima.y -= 2;
+						koukku.y -= 2;
+					}
+				}
 			}
-		}
-		
-		private function changeSpeed(_speed:int):void
-		{
-			speed = _speed;
+			else
+			{
+				speed = 0;
+			}
 		}
 		
 	}

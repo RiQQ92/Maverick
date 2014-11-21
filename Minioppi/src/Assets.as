@@ -30,6 +30,24 @@ package
 		
 		[Embed(source = "../Grafiikka/pilkkipeli/koukku2.png")]
 		public static const Koukku:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/nuoli.png")]
+		public static const PilkkiNuoli:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipAhven.png")]
+		public static const TAhven:Class;
+
+		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipHauki.png")]
+		public static const THauki:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipKuha.png")]
+		public static const TKuha:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipLahna.png")]
+		public static const TLahna:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipLohi.png")]
+		public static const TLohi:Class;
 		//*********************
 		
 		// Muistipeli

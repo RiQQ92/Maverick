@@ -1,5 +1,6 @@
 package screens
 {
+	import UIelements.Button;
 	import UIelements.OhjeIkkuna;
 	
 	import flash.display.Bitmap;
@@ -19,15 +20,19 @@ package screens
 	{
 		private var myStage:Stage;
 		private var screenHandler:ScreenHandler;
+		public var debug:DebugText;
 		public var keyUp:Boolean;
 		public var keyDown:Boolean;
+		public var pause:Boolean = true;
 		
 		public var bg:Bitmap;
-		public var tip:OhjeIkkuna;
-		
-		public var debug:DebugText;
+		public var ohje:OhjeIkkuna;
+		public var nuoli:Button;
 		
 		public var onki:Onki;
+		public var TKalat:Array;
+		public var tipS:String = "";
+		public var tip:Button;
 		
 		public function Pilkkipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -40,17 +45,28 @@ package screens
 		private function initialize():void
 		{
 			bg = Assets.getTexture("BGpilkkipeli");
-			tip = new OhjeIkkuna("OhjePilkki");
-			drawScreen();
-			tip.addEventListener(MouseEvent.CLICK, startGame);
+			ohje = new OhjeIkkuna("OhjePilkki");
+			TKalat = new Array();
+			getKalat();
+			
+			nuoli = new Button("PilkkiNuoli");
+			nuoli.scaleX = 0.7;
+			nuoli.scaleY = 0.7;
+			
+			this.addChild(bg);
+			this.addChild(ohje);
+			ohje.addEventListener(MouseEvent.CLICK, startGame);
 		}
 		
 		private function startGame(event:MouseEvent):void
 		{
-			tip.removeEventListener(MouseEvent.CLICK, startGame);
-			this.removeChild(tip);
+			ohje.removeEventListener(MouseEvent.CLICK, startGame);
+			this.removeChild(ohje);
 			// pelin aloitus
+			tipS = getKalaTip();
+			
 			drawObjects();
+			
 		}
 		
 		private function drawObjects():void
@@ -59,25 +75,107 @@ package screens
 			onki.x = myStage.width/2;
 			onki.y = -myStage.height/2;
 			this.addChild(onki);
+			showTip();
+			nuoli.addListener(function():void
+			{
+				showTip();
+				myStage.removeChild(nuoli);
+				pause = true;
+			});
 			addListeners();
+		}
+		
+		private function showTip():void
+		{
+			tip = new Button(tipS);
+			tip.x = 320-(tip.width/2);
+			tip.y = 240-(tip.height/2);
+			tip.addListener(function():void
+			{
+				myStage.removeChild(tip);
+				myStage.addChild(nuoli);
+				pause = false;
+			});
+			myStage.addChild(tip);
 		}
 		
 		private function addListeners():void
 		{
-			this.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-			this.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
-			this.addEventListener(Event.ENTER_FRAME, changeSpeed);
+			myStage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			myStage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+			myStage.addEventListener(Event.ENTER_FRAME, update);
 		}
 		
-		private function changeSpeed(event:Event):void
+		private function update(event:Event):void
 		{
+			if (!pause)
+			{
+				Speed();
+				onki.update();
+			}
+		}
+		
+		private function Speed():void
+		{
+			if (keyDown)
+			{
+				if (onki.speed <= 7)
+				{
+					onki.speed += 1;
+				}
+			}
+			if (keyUp)
+			{
+				if (onki.speed >= -7)
+				{
+					onki.speed -= 1;
+				}
+			}
+			if (!keyUp && !keyDown)
+			{
+				if (onki.speed >= 0.5)
+				{
+					onki.speed -= 0.5;
+				}
+				if (onki.speed <= -0.5)
+				{
+					onki.speed += 0.5;
+				}
+			}
+		}
+
+		private function getKalat():void
+		{
+			var TAhven:String = "TAhven";
+			TKalat.push(TAhven);
+			var THauki:String = "THauki";
+			TKalat.push(THauki);
+			var TLahna:String = "TLahna";
+			TKalat.push(TLahna);
+			var TKuha:String = "TKuha";
+			TKalat.push(TKuha);
+			var TLohi:String = "TLohi";
+			TKalat.push(TLohi);
+		}
+		
+		private function getKalaTip():String
+		{
+			var kala:String;
 			
-		}
-		
-		private function drawScreen():void
-		{
-			this.addChild(bg);
-			this.addChild(tip);
+			if (tipS == "")
+			{
+				kala = TKalat[Math.ceil(Math.random()*TKalat.length)-1];
+			}
+			else
+			{
+				do
+				{
+					kala = TKalat[Math.ceil(Math.random()*TKalat.length)-1];
+				}
+				while (tipS == kala);
+			}
+			
+			return kala;
 		}
 		
 		private function onKeyPress(event:KeyboardEvent):void
