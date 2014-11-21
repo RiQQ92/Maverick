@@ -35,6 +35,8 @@ package screens
 			screenHandler = scrnHandle;
 			
 			initialize();
+			
+			debug = new DebugText("test", myStage);
 		}
 		
 		private function initialize():void
@@ -64,14 +66,38 @@ package screens
 		
 		private function addListeners():void
 		{
-			this.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-			this.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
-			this.addEventListener(Event.ENTER_FRAME, changeSpeed);
+			myStage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			myStage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+			myStage.addEventListener(Event.ENTER_FRAME, Speed);
 		}
 		
-		private function changeSpeed(event:Event):void
+		private function Speed(event:Event):void
 		{
-			
+			if (keyDown)
+			{
+				if (onki.speed <= 7)
+				{
+					onki.speed += 1;
+				}
+			}
+			if (keyUp)
+			{
+				if (onki.speed >= -7)
+				{
+					onki.speed -= 1;
+				}
+			}
+			if (!keyUp && !keyDown)
+			{
+				if (onki.speed >= 0.5)
+				{
+					onki.speed -= 0.5;
+				}
+				if (onki.speed <= -0.5)
+				{
+					onki.speed += 0.5;
+				}
+			}
 		}
 		
 		private function drawScreen():void
