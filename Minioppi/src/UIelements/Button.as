@@ -17,6 +17,7 @@ package UIelements
 			image.x = 0;
 			image.y = 0;
 			this.addChild(image);
+			this.buttonMode = true;
 		}
 		
 		public function addListener(eventFunc:Function):void

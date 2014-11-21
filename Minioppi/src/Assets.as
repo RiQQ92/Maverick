@@ -165,12 +165,16 @@ package
 		public static const Yhdistely_bg:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kana_kortti.png")]
 		public static const Yhdistely_kana:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/Yhdistely_kortti_pohja.png")]
+		public static const YhdistelyBtn_bg:Class;
 		//********************
 		
 		// Muu
 		//********************
 		[Embed(source = "../Grafiikka/Muu/VCAM_zone.png")]
 		public static const VCAM_zone:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kaiutin_nappi.png")]
+		public static const Aani_nappi:Class;
 		//********************
 		
 		// Aanet
@@ -196,6 +200,17 @@ package
 			var sound:Sound = new Assets[soundName]();
 			
 			return sound;
+		}
+		
+		public static function removeChars(char:String, stringToMod:String):String
+		{
+			var temp:String = "";
+			for(var i:int = 0; i < stringToMod.length; i++)
+			{
+				if(char != stringToMod.charAt(i))
+					temp+= stringToMod.charAt(i);
+			}
+			return temp;
 		}
 	}
 }

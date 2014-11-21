@@ -16,6 +16,7 @@ package UIelements
 		public var ySize:int;
 		
 		private var isPowerOfTwo:Boolean = false;
+		private var isRemoving:Boolean = false;
 		
 		private var itemAmount:int;
 		private var amountOfGaps:int;
@@ -34,10 +35,14 @@ package UIelements
 		private var listLocations:Vector.<int>;
 		private var itemList:Dictionary;
 		
+		private var parentObj:*;
+		
 		// alustus/constructor
-		public function SlideList(width:int, height:int, isVertical:Boolean)
+		public function SlideList(width:int, height:int, isVertical:Boolean, _parent:*)
 		{
 			super();
+			
+			parentObj = _parent;
 			
 			this.xSize = width;
 			this.ySize = height;
@@ -123,9 +128,9 @@ package UIelements
 			listLocations[temp]++;
 			menuPrefix = (listPosition*(itemGap+averageItemSize));
 			if(scrollVertical)
-				itemList[temp].x = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
+				itemList[temp].x = (averageItemSize*2) + (itemListWidth * listLocations[temp]) + menuPrefix + this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
 			else
-				itemList[temp].y = (itemListWidth * listLocations[temp]) + menuPrefix + this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
+				itemList[temp].y = (averageItemSize*2) + (itemListWidth * listLocations[temp]) + menuPrefix + this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + ((temp-1)*(averageItemSize+itemGap));
 		}
 		
 		// liu'uttaa lsitaa eteenpäin
@@ -166,13 +171,28 @@ package UIelements
 		{
 			if(itemList[index] != null)
 			{
-				itemList[index] = null;
+				parentObj.removeChild(itemList[index]);
 				listLocations.splice(index, 1);
-				itemAmount--;
+				
 				if(itemAmount %2 == 0)
 					isPowerOfTwo = true;
 				else
 					isPowerOfTwo = false;
+				
+				for(var i:int = index+1; i < itemAmount; i++)
+				{
+					itemList[i-1] = itemList[i];
+				}
+				itemAmount--;
+				delete itemList[itemAmount];
+				
+				for(var a:int = 0; a < listLocations.length; a++)
+					listLocations[a] = 0;
+				
+				listPosition = 0;
+				menuPrefix = 0;
+				
+				isRemoving = true;
 				
 				checkPositioning();
 			}
@@ -210,35 +230,65 @@ package UIelements
 			}
 			
 			// tarkastaa onko lista isompi kuin kuva, jos on niin nuoli napit selaukseen luodaan
-			if((averageItemSize * itemAmount +((itemAmount * (averageItemSize/10)))-averageItemSize/10) < this.xSize)
+			if(scrollVertical)
 			{
-				forward.visible = false;
-				rewind.visible = false;
-			}
-			else
-			{
-				forward.visible = true;
-				rewind.visible = true;
-			}
-			
-			// sijoittaa elementit oikeille paikoilleen
-			for(var c:int; c < itemAmount; c++)
-			{
-				if(scrollVertical)
+				if((averageItemSize * itemAmount +((itemAmount * (averageItemSize/10)))-averageItemSize/10) < this.xSize)
 				{
-					itemList[c].x = this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (c*(averageItemSize+itemGap));
-					itemList[c].y = this.centerY;
+					forward.visible = false;
+					rewind.visible = false;
 				}
 				else
 				{
-					itemList[c].x = this.centerX;
-					itemList[c].y = this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (c*(averageItemSize+itemGap));
+					forward.visible = true;
+					rewind.visible = true;
+				}
+			}
+			else
+			{
+				if((averageItemSize * itemAmount +((itemAmount * (averageItemSize/10)))-averageItemSize/10) < this.ySize)
+				{
+					forward.visible = false;
+					rewind.visible = false;
+				}
+				else
+				{
+					forward.visible = true;
+					rewind.visible = true;
 				}
 			}
 			
+			if(!isRemoving)
+			{
+				// sijoittaa elementit oikeille paikoilleen
+				for(var c:int; c < itemAmount; c++)
+				{
+					if(scrollVertical)
+					{
+						itemList[c].x = this.centerX - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (c*(averageItemSize+itemGap));
+						itemList[c].y = this.y + this.centerY -itemList[c].height/2;
+					}
+					else
+					{
+						itemList[c].x = this.x + this.centerX -itemList[c].width/2;
+						itemList[c].y = this.centerY - (averageItemSize*itemAmount/2) - (itemGap*(amountOfGaps/2)) + (c*(averageItemSize+itemGap));
+					}
+				}
+			}
+			
+			isRemoving = false;
 			itemGap = averageItemSize/10;
 			amountOfGaps = itemAmount-1;
 			itemListWidth = (averageItemSize*itemAmount + itemAmount*itemGap);
+		}
+		
+		public function getItemAt(index:int):*
+		{
+			return itemList[index];
+		}
+		
+		public function Length():int
+		{
+			return itemAmount;
 		}
 		
 		public function Destruct():void
