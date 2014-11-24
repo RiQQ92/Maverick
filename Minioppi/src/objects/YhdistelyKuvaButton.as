@@ -16,7 +16,7 @@ package objects
 		
 		private var soundBtn:Button = new Button("Aani_nappi");
 		private var bg:Button = new Button("YhdistelyBtn_bg");
-		private var image:Button = new Button("Labyrintti_kettu");
+		private var image:Button;
 		
 		private var clickFunc:Function;
 		
@@ -26,14 +26,14 @@ package objects
 			
 			_ID = Assets.removeChars("-", _image);
 			myStage = _stage;
-			//image = new Button("Yhdistely_"+_image+"_kuva");
+			image = new Button("Yhdistely_"+_ID+"_kuva");
 			//sound = Assets.getSound(_sound+"_aani");
 			
 			bg.x = 0;
 			bg.y = 0;
 			this.addChild(bg);
 			
-			image.x = bg.width/3 - image.width/2;
+			image.x = bg.width/2.5 - image.width/2;
 			image.y = bg.height/2 - image.height/2;
 			this.addChild(image);
 			

@@ -22,18 +22,6 @@ package screens
 		private var textListSelection:String = "";
 		private var kuvaListSelection:String = "";
 		
-		private var kuvaBtnKettu:YhdistelyKuvaButton;
-		private var kuvaBtnKarhu:YhdistelyKuvaButton;
-		private var kuvaBtnSusi:YhdistelyKuvaButton;
-		private var kuvaBtnOrava:YhdistelyKuvaButton;
-		private var kuvaBtnLehma:YhdistelyKuvaButton;
-		
-		private var txtBtnKettu:YhdistelyTekstiButton;
-		private var txtBtnKarhu:YhdistelyTekstiButton;
-		private var txtBtnSusi:YhdistelyTekstiButton;
-		private var txtBtnOrava:YhdistelyTekstiButton;
-		private var txtBtnLehma:YhdistelyTekstiButton;
-		
 		private var bg:Bitmap = Assets.getTexture("Yhdistely_bg");
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
@@ -48,115 +36,11 @@ package screens
 			
 			myStage = _stage;
 			screenHandler = scrnHandle;
+			
 			initNameArray();
-			
-			kuvaBtnKettu = new YhdistelyKuvaButton("Kettu", "", myStage);
-			kuvaBtnKarhu = new YhdistelyKuvaButton("Karhu", "", myStage);
-			kuvaBtnSusi = new YhdistelyKuvaButton("Susi", "", myStage);
-			kuvaBtnOrava = new YhdistelyKuvaButton("Orava", "", myStage);
-			kuvaBtnLehma = new YhdistelyKuvaButton("Lehmä", "", myStage);
-			
-			kuvaBtnKettu.addListener(function(evt:MouseEvent):void
-			{
-				trace("kettu selected");
-				kuvaListSelection = kuvaBtnKettu.ID;
-				checkPair();
-			});
-			kuvaBtnKarhu.addListener(function(evt:MouseEvent):void
-			{
-				trace("karhu selected");
-				kuvaListSelection = kuvaBtnKarhu.ID;
-				checkPair();
-			});
-			kuvaBtnSusi.addListener(function(evt:MouseEvent):void
-			{
-				trace("susi selected");
-				kuvaListSelection = kuvaBtnSusi.ID;
-				checkPair();
-			});
-			kuvaBtnOrava.addListener(function(evt:MouseEvent):void
-			{
-				trace("orava selected");
-				kuvaListSelection = kuvaBtnOrava.ID;
-				checkPair();
-			});
-			kuvaBtnLehma.addListener(function(evt:MouseEvent):void
-			{
-				trace("lehma selected");
-				kuvaListSelection = kuvaBtnLehma.ID;
-				checkPair();
-			});
-			
-			txtBtnKettu = new YhdistelyTekstiButton("Ket-tu", "", myStage);
-			txtBtnKarhu = new YhdistelyTekstiButton("Kar-hu", "", myStage);
-			txtBtnSusi = new YhdistelyTekstiButton("Su-si", "", myStage);
-			txtBtnOrava = new YhdistelyTekstiButton("O-ra-va", "", myStage);
-			txtBtnLehma = new YhdistelyTekstiButton("Leh-mä", "", myStage);
-			
-			txtBtnKettu.addListener(function(evt:MouseEvent):void
-			{
-				trace("kettu selected");
-				textListSelection = txtBtnKettu.ID;
-				checkPair();
-			});
-			txtBtnKarhu.addListener(function(evt:MouseEvent):void
-			{
-				trace("karhu selected");
-				textListSelection = txtBtnKarhu.ID;
-				checkPair();
-			});
-			txtBtnSusi.addListener(function(evt:MouseEvent):void
-			{
-				trace("susi selected");
-				textListSelection = txtBtnSusi.ID;
-				checkPair();
-			});
-			txtBtnOrava.addListener(function(evt:MouseEvent):void
-			{
-				trace("orava selected");
-				textListSelection = txtBtnOrava.ID;
-				checkPair();
-			});
-			txtBtnLehma.addListener(function(evt:MouseEvent):void
-			{
-				trace("lehma selected");
-				textListSelection = txtBtnLehma.ID;
-				checkPair();
-			});
-			
-			kuvaLista = new SlideList(150, myStage.stageHeight, false, this);
-			tekstiLista = new SlideList(150, myStage.stageHeight, false, this);
-			
-			tekstiLista.x = myStage.stageWidth - tekstiLista.xSize;
-			
-			this.addChild(bg);
-			
-			this.addChild(kuvaBtnKettu);
-			this.addChild(kuvaBtnKarhu);
-			this.addChild(kuvaBtnSusi);
-			this.addChild(kuvaBtnOrava);
-			this.addChild(kuvaBtnLehma);
-			
-			this.addChild(txtBtnKettu);
-			this.addChild(txtBtnKarhu);
-			this.addChild(txtBtnSusi);
-			this.addChild(txtBtnOrava);
-			this.addChild(txtBtnLehma);
-			
-			kuvaLista.addItem(kuvaBtnKettu);
-			kuvaLista.addItem(kuvaBtnKarhu);
-			kuvaLista.addItem(kuvaBtnSusi);
-			kuvaLista.addItem(kuvaBtnOrava);
-			kuvaLista.addItem(kuvaBtnLehma);
-			
-			tekstiLista.addItem(txtBtnKettu);
-			tekstiLista.addItem(txtBtnKarhu);
-			tekstiLista.addItem(txtBtnSusi);
-			tekstiLista.addItem(txtBtnOrava);
-			tekstiLista.addItem(txtBtnLehma);
-			
-			this.addChild(kuvaLista);
-			this.addChild(tekstiLista);
+			randomCards();
+			allocLists();
+			Draw();
 		}
 		
 		private function initNameArray():void
@@ -184,12 +68,27 @@ package screens
 		
 		private function randomCards():void
 		{
+			var found:Boolean = false;
 			var arr:Array = new Array();
-			var random:Number = Math.random();
+			var random:Number = Math.ceil(Math.random()*animalNames.length)-1;
 			
 			for(var i:int = 0; i < 5; i++)
 			{
+				do{
+					found = true;
+					random = Math.ceil(Math.random()*animalNames.length)-1;
+					
+					for(var b:int = 0; b < arr.length; b++)
+					{
+						if(random == arr[b])
+						{
+							found = false;
+						}
+					}
+				}while(!found);
 				
+				arr.push(random);
+				addCard(animalNames[random]);
 			}
 		}
 		
@@ -198,23 +97,33 @@ package screens
 			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage);
 			cardImage.addListener(function(evt:MouseEvent):void
 			{
-				trace("kettu selected");
 				kuvaListSelection = cardImage.ID;
 				checkPair();
 			});
-			this.addChild(cardImage);
 			
 			var cardText:YhdistelyTekstiButton = new YhdistelyTekstiButton(animName, animName, myStage);
 			cardText.addListener(function(evt:MouseEvent):void
 			{
-				trace("kettu selected");
 				textListSelection = cardText.ID;
 				checkPair();
 			});
-			this.addChild(cardText);
 			
-			imageCards.push(cardImage);
+			imageCards.push(cardImage);                               
 			textCards.push(cardText);
+		}
+		
+		private function allocLists():void
+		{
+			kuvaLista = new SlideList(150, myStage.stageHeight, false, this);
+			tekstiLista = new SlideList(150, myStage.stageHeight, false, this);
+			
+			tekstiLista.x = myStage.stageWidth - tekstiLista.xSize;
+			
+			for(var i:int = 0; i < 5; i++)
+			{
+				kuvaLista.addItem(imageCards[i]);
+				tekstiLista.addItem(textCards[i]);
+			}
 		}
 		
 		public function Destruct():void
@@ -263,6 +172,20 @@ package screens
 		private function win():void
 		{
 			screenHandler.inScreen = "menu";
+		}
+		
+		private function Draw():void
+		{
+			this.addChild(bg);
+			
+			for(var i:int = 0; i < 5; i++)
+			{
+				this.addChild(imageCards[i]);
+				this.addChild(textCards[i]);
+			}
+			
+			this.addChild(kuvaLista);
+			this.addChild(tekstiLista);
 		}
 	}
 }

@@ -37,13 +37,13 @@ package objects
 			text.selectable = false;
 			text.defaultTextFormat = font;
 			text.width = bg.width;
-			text.height = bg.height/4;
+			text.height = bg.height/3.25;
 			text.text = _text;
 			
 			myStage = _stage;
 			//sound = Assets.getSound(_sound);
 			
-			bg.scaleY = 0.3;
+			bg.scaleY = 0.35;
 			bg.x = 0;
 			bg.y = 0;
 			this.addChild(bg);
