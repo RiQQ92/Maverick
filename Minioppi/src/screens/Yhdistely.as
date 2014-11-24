@@ -6,6 +6,7 @@ package screens
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
 	import objects.YhdistelyKuvaButton;
@@ -37,12 +38,17 @@ package screens
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
 		
+		private var animalNames:Array;
+		private var imageCards:Array = new Array();
+		private var textCards:Array = new Array();
+		
 		public function Yhdistely(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			super();
 			
 			myStage = _stage;
 			screenHandler = scrnHandle;
+			initNameArray();
 			
 			kuvaBtnKettu = new YhdistelyKuvaButton("Kettu", "", myStage);
 			kuvaBtnKarhu = new YhdistelyKuvaButton("Karhu", "", myStage);
@@ -153,6 +159,64 @@ package screens
 			this.addChild(tekstiLista);
 		}
 		
+		private function initNameArray():void
+		{
+			animalNames = new Array();
+			//animalNames.push("Ket-tu");
+			//animalNames.push("Kar-hu");
+			//animalNames.push("Su-si");
+			//animalNames.push("O-ra-va");
+			//animalNames.push("Leh-mä");
+			//animalNames.push("Koi-ra");
+			//animalNames.push("Si-ka");
+			//animalNames.push("Ank-ka");
+			//animalNames.push("Kuk-ko");
+			animalNames.push("Ka-na");
+			animalNames.push("Lam-mas");
+			animalNames.push("Vuo-hi");
+			animalNames.push("Sam-mak-ko");
+			animalNames.push("Kil-pi-kon-na");
+			animalNames.push("Un-du-laat-ti");
+			animalNames.push("Ra-pu");
+			animalNames.push("Ki-ma-lai-nen");
+			animalNames.push("Jout-sen");
+		}
+		
+		private function randomCards():void
+		{
+			var arr:Array = new Array();
+			var random:Number = Math.random();
+			
+			for(var i:int = 0; i < 5; i++)
+			{
+				
+			}
+		}
+		
+		private function addCard(animName:String):void
+		{
+			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage);
+			cardImage.addListener(function(evt:MouseEvent):void
+			{
+				trace("kettu selected");
+				kuvaListSelection = cardImage.ID;
+				checkPair();
+			});
+			this.addChild(cardImage);
+			
+			var cardText:YhdistelyTekstiButton = new YhdistelyTekstiButton(animName, animName, myStage);
+			cardText.addListener(function(evt:MouseEvent):void
+			{
+				trace("kettu selected");
+				textListSelection = cardText.ID;
+				checkPair();
+			});
+			this.addChild(cardText);
+			
+			imageCards.push(cardImage);
+			textCards.push(cardText);
+		}
+		
 		public function Destruct():void
 		{
 			
@@ -184,6 +248,21 @@ package screens
 				if(textListSelection == textBtn.ID)
 					tekstiLista.removeItem(i);
 			}
+			
+			checkListSizes();
+		}
+		
+		private function checkListSizes():void
+		{
+			if(tekstiLista.Length() == 0 && kuvaLista.Length() == 0)
+			{
+				win();
+			}
+		}
+		
+		private function win():void
+		{
+			screenHandler.inScreen = "menu";
 		}
 	}
 }

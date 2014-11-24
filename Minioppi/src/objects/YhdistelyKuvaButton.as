@@ -24,10 +24,10 @@ package objects
 		{
 			super();
 			
-			_ID = _image;
+			_ID = Assets.removeChars("-", _image);
 			myStage = _stage;
-			//image = new Button(_image);
-			//sound = Assets.getSound(_sound);
+			//image = new Button("Yhdistely_"+_image+"_kuva");
+			//sound = Assets.getSound(_sound+"_aani");
 			
 			bg.x = 0;
 			bg.y = 0;

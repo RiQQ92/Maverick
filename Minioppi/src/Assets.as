@@ -196,10 +196,27 @@ package
 		//********************
 		[Embed(source = "../Grafiikka/Yhdistely/yhdistely_tausta.png")]
 		public static const Yhdistely_bg:Class;
-		[Embed(source = "../Grafiikka/Yhdistely/kortit/kana_kortti.png")]
-		public static const Yhdistely_kana:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/Yhdistely_kortti_pohja.png")]
 		public static const YhdistelyBtn_bg:Class;
+		
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kana.png")]
+		public static const Yhdistely_Kana_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lammas.png")]
+		public static const Yhdistely_Lammas_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_vuohi.png")]
+		public static const Yhdistely_Vuohi_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_sammakko.png")]
+		public static const Yhdistely_Sammakko_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kilpikonna.png")]
+		public static const Yhdistely_Kilpikonna_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_undulaatti.png")]
+		public static const Yhdistely_Undulaatti_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_rapu.png")]
+		public static const Yhdistely_Rapu_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kimalainen.png")]
+		public static const Yhdistely_Kimalainen_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_joutsen.png")]
+		public static const Yhdistely_Joutsen_kuva:Class;
 		//********************
 		
 		// Muu
@@ -224,7 +241,7 @@ package
 			
 			var bitmap:Bitmap = new Assets[textureName]();
 			gameTextures[textureName] = bitmap;
-				
+			
 			return gameTextures[textureName];
 		}
 		
