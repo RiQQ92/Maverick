@@ -48,6 +48,21 @@ package
 		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipLohi.png")]
 		public static const TLohi:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalat/lohi.png")]
+		public static const Lohi:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalat/ahven.png")]
+		public static const Ahven:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalat/hauki.png")]
+		public static const hauki:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalat/lahna.png")]
+		public static const Lahna:Class;
+		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalat/kuha.png")]
+		public static const Kuha:Class;
 		//*********************
 		
 		// Muistipeli

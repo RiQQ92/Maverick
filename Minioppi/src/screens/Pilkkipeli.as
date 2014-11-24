@@ -12,6 +12,7 @@ package screens
 	import flash.ui.Keyboard;
 	
 	import objects.Onki;
+	import objects.PilkkiKalat;
 	
 	import utility.DebugText;
 	import utility.ScreenHandler;
@@ -34,6 +35,11 @@ package screens
 		public var tipS:String = "";
 		public var tip:Button;
 		
+		public var kalatList:Array = new Array;
+		public var kalaTimer:Number = 30;
+		public var kalat:Array = new Array;
+		public var kalaDir:Boolean = true;
+		
 		public function Pilkkipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			myStage = _stage;
@@ -55,21 +61,22 @@ package screens
 			
 			this.addChild(bg);
 			this.addChild(ohje);
-			ohje.addEventListener(MouseEvent.CLICK, startGame);
+			ohje.addEventListener(MouseEvent.CLICK, skipIntro);
+			
+			debug = new DebugText("", myStage);
 		}
 		
-		private function startGame(event:MouseEvent):void
+		private function skipIntro(event:MouseEvent):void
 		{
-			ohje.removeEventListener(MouseEvent.CLICK, startGame);
+			ohje.removeEventListener(MouseEvent.CLICK, skipIntro);
 			this.removeChild(ohje);
 			// pelin aloitus
 			tipS = getKalaTip();
 			
-			drawObjects();
-			
+			startGame();
 		}
 		
-		private function drawObjects():void
+		private function startGame():void
 		{
 			onki = new Onki();
 			onki.x = myStage.width/2;
@@ -83,6 +90,7 @@ package screens
 				pause = true;
 			});
 			addListeners();
+			this.addChild(debug);
 		}
 		
 		private function showTip():void
@@ -112,7 +120,47 @@ package screens
 			{
 				Speed();
 				onki.update();
+				KalaSpawn();
+				for (var i:int = 0; i<kalat.length; i++)
+				{
+					kalat[i].update();
+				}
 			}
+		}
+		
+		private function KalaSpawn():void
+		{
+			if (kalaTimer <= 0)
+			{
+				var kala:PilkkiKalat = new PilkkiKalat(getKala(), kalaDir);
+				kala.y = (Math.ceil(Math.random()*400)-1)+40;
+				if (kalaDir)
+				{
+					kalaDir = false;
+					kala.x = 700;
+				}
+				else
+				{
+					kalaDir = true;
+					kala.x = 40;
+				}
+				
+				kalat.push(kala);
+				myStage.addChild(kala);
+				kalaTimer = 4*30;
+			}
+			else
+			{
+				kalaTimer -= 1;
+			}
+			
+		}
+		
+		private function getKala():String
+		{
+			var kalaName:String;
+			kalaName = kalatList[Math.ceil(Math.random()*kalatList.length)-1];
+			return kalaName;
 		}
 		
 		private function Speed():void
@@ -156,6 +204,17 @@ package screens
 			TKalat.push(TKuha);
 			var TLohi:String = "TLohi";
 			TKalat.push(TLohi);
+			
+			var ahven:String = "Ahven";
+			kalatList.push(ahven);
+			var hauki:String = "Hauki";
+			kalatList.push(hauki);
+			var lohi:String = "Lohi";
+			kalatList.push(lohi);
+			var lahna:String = "Lahna";
+			kalatList.push(lahna);
+			var kuha:String = "Kuha";
+			kalatList.push(kuha);
 		}
 		
 		private function getKalaTip():String
