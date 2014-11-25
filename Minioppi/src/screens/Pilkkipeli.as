@@ -39,6 +39,7 @@ package screens
 		public var kalaTimer:Number = 30;
 		public var kalat:Array = new Array;
 		public var kalaDir:Boolean = true;
+		public var kalaRandom:int = 0;
 		
 		public function Pilkkipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -125,6 +126,7 @@ package screens
 				{
 					kalat[i].update();
 				}
+				debug.replace(kalaRandom.toString());
 			}
 		}
 		
@@ -160,6 +162,14 @@ package screens
 		{
 			var kalaName:String;
 			kalaName = kalatList[Math.ceil(Math.random()*kalatList.length)-1];
+			if (kalaName != tipS)
+			{
+				kalaRandom ++;
+			}
+			if (kalaRandom >= 5)
+			{
+				kalaRandom = 0;
+			}
 			return kalaName;
 		}
 		
