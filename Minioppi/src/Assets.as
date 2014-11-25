@@ -217,6 +217,26 @@ package
 		public static const Yhdistely_Kimalainen_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_joutsen.png")]
 		public static const Yhdistely_Joutsen_kuva:Class;
+
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_etana.png")]
+		public static const Yhdistely_Etana_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_haarapaasky.png")]
+		public static const Yhdistely_Haarapaeaesky_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_harakka.png")]
+		public static const Yhdistely_Harakka_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kultahamsteri.png")]
+		public static const Yhdistely_Hamsteri_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_metsajanis.png")]
+		public static const Yhdistely_Metsaejaenis_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_perhonen.png")]
+		public static const Yhdistely_Perhonen_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_peippo.png")]
+		public static const Yhdistely_Peippo_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_sinisorsa.png")]
+		public static const Yhdistely_Sorsa_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_sisilisko.png")]
+		public static const Yhdistely_Sisilisko_kuva:Class;
+		
 		//********************
 		
 		// Muu

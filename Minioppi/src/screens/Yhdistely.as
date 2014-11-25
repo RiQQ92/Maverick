@@ -16,6 +16,8 @@ package screens
 	
 	public class Yhdistely extends Sprite
 	{
+		private const PICK_AMOUNT:int = 10;
+		
 		private var kuvaLista:SlideList;
 		private var tekstiLista:SlideList;
 		
@@ -64,6 +66,15 @@ package screens
 			animalNames.push("Ra-pu");
 			animalNames.push("Ki-ma-lai-nen");
 			animalNames.push("Jout-sen");
+			animalNames.push("E-ta-na");
+			animalNames.push("Haa-ra-paeaes-ky");
+			animalNames.push("Ha-rak-ka");
+			animalNames.push("Hams-te-ri");
+			animalNames.push("Met-sae-jae-nis");
+			animalNames.push("Per-ho-nen");
+			animalNames.push("Peip-po");
+			animalNames.push("Sor-sa");
+			animalNames.push("Si-si-lis-ko");
 		}
 		
 		private function randomCards():void
@@ -72,7 +83,7 @@ package screens
 			var arr:Array = new Array();
 			var random:Number = Math.ceil(Math.random()*animalNames.length)-1;
 			
-			for(var i:int = 0; i < 5; i++)
+			for(var i:int = 0; i < PICK_AMOUNT; i++)
 			{
 				do{
 					found = true;
@@ -90,6 +101,8 @@ package screens
 				arr.push(random);
 				addCard(animalNames[random]);
 			}
+			
+			randomizeCardOrder();
 		}
 		
 		private function addCard(animName:String):void
@@ -112,14 +125,41 @@ package screens
 			textCards.push(cardText);
 		}
 		
+		private function randomizeCardOrder():void
+		{
+			var found:Boolean = false;
+			var arr:Array = new Array();
+			var tempArr:Array = textCards.concat();
+			var random:Number = Math.ceil(Math.random()*tempArr.length)-1;
+			
+			for(var i:int = 0; i < tempArr.length; i++)
+			{
+				do{
+					found = true;
+					random = Math.ceil(Math.random()*tempArr.length)-1;
+					
+					for(var b:int = 0; b < arr.length; b++)
+					{
+						if(random == arr[b])
+						{
+							found = false;
+						}
+					}
+				}while(!found);
+				
+				arr.push(random);
+				textCards[i] = tempArr[random];
+			}
+		}
+		
 		private function allocLists():void
 		{
-			kuvaLista = new SlideList(150, myStage.stageHeight, false, this);
-			tekstiLista = new SlideList(150, myStage.stageHeight, false, this);
+			kuvaLista = new SlideList(130, myStage.stageHeight, false, this);
+			tekstiLista = new SlideList(130, myStage.stageHeight, false, this);
 			
 			tekstiLista.x = myStage.stageWidth - tekstiLista.xSize;
 			
-			for(var i:int = 0; i < 5; i++)
+			for(var i:int = 0; i < PICK_AMOUNT; i++)
 			{
 				kuvaLista.addItem(imageCards[i]);
 				tekstiLista.addItem(textCards[i]);
@@ -178,7 +218,7 @@ package screens
 		{
 			this.addChild(bg);
 			
-			for(var i:int = 0; i < 5; i++)
+			for(var i:int = 0; i < PICK_AMOUNT; i++)
 			{
 				this.addChild(imageCards[i]);
 				this.addChild(textCards[i]);

@@ -30,8 +30,10 @@ package objects
 			
 			_ID = _text;
 			_ID = Assets.removeChars("-", _ID);
+			var pattern:RegExp = /ae/g;
+			_text = _text.replace(pattern, "ä");
 			
-			font.size = 30;
+			font.size = 20;
 			font.align = TextFormatAlign.CENTER;
 			
 			text.selectable = false;
