@@ -32,10 +32,10 @@ package screens
 		
 		public var onki:Onki;
 		public var TKalat:Array;
+		public var kalatList:Array = new Array;
 		public var tipS:String = "";
 		public var tip:Button;
 		
-		public var kalatList:Array = new Array;
 		public var kalaTimer:Number = 30;
 		public var kalat:Array = new Array;
 		public var kalaDir:Boolean = true;
@@ -162,14 +162,7 @@ package screens
 		{
 			var kalaName:String;
 			kalaName = kalatList[Math.ceil(Math.random()*kalatList.length)-1];
-			if (kalaName != tipS)
-			{
-				kalaRandom ++;
-			}
-			if (kalaRandom >= 5)
-			{
-				kalaRandom = 0;
-			}
+			
 			return kalaName;
 		}
 		
@@ -219,12 +212,12 @@ package screens
 			kalatList.push(ahven);
 			var hauki:String = "Hauki";
 			kalatList.push(hauki);
-			var lohi:String = "Lohi";
-			kalatList.push(lohi);
 			var lahna:String = "Lahna";
 			kalatList.push(lahna);
 			var kuha:String = "Kuha";
 			kalatList.push(kuha);
+			var lohi:String = "Lohi";
+			kalatList.push(lohi);
 		}
 		
 		private function getKalaTip():String
