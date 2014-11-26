@@ -29,6 +29,8 @@ package screens
 		public var bg:Bitmap;
 		public var ui:Bitmap;
 		
+		public var cardShowTime:int = 25;
+		
 		public var slots:Array = new Array;
 		public var cardListKuva:Array = new Array;
 		public var cardListText:Array = new Array;
@@ -81,7 +83,7 @@ package screens
 					this.removeEventListener(MouseEvent.CLICK, checkFlips);
 					this.addChild(blocker);
 				}
-				if (pauseTimer >= 20)
+				if (pauseTimer >= cardShowTime)
 				{
 					checkPairs();
 					flipBack();
