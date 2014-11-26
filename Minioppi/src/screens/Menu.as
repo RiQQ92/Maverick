@@ -79,8 +79,8 @@ package screens
 				}
 			);
 			
-			yhdistelyBtn.scaleX = 0.5;
-			yhdistelyBtn.scaleY = 0.5;
+			yhdistelyBtn.scaleX = 0.4;
+			yhdistelyBtn.scaleY = 0.4;
 			yhdistelyBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
