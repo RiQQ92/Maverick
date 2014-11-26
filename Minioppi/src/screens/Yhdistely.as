@@ -21,8 +21,8 @@ package screens
 		private var kuvaLista:SlideList;
 		private var tekstiLista:SlideList;
 		
-		private var textListSelection:String = "";
-		private var kuvaListSelection:String = "";
+		private var textListSelection:YhdistelyTekstiButton;
+		private var kuvaListSelection:YhdistelyKuvaButton;
 		
 		private var bg:Bitmap = Assets.getTexture("Yhdistely_bg");
 		private var screenHandler:ScreenHandler;
@@ -38,6 +38,16 @@ package screens
 			
 			myStage = _stage;
 			screenHandler = scrnHandle;
+			
+			textListSelection = new YhdistelyTekstiButton("Null", "", myStage);
+			textListSelection.visible = false;
+			textListSelection.x = myStage.stageWidth/2 + textListSelection.width/50;
+			textListSelection.y = myStage.stageHeight/2 - textListSelection.height/2;
+			
+			kuvaListSelection = new YhdistelyKuvaButton("Null", "", myStage);
+			kuvaListSelection.visible = false;
+			kuvaListSelection.x = myStage.stageWidth/2 - kuvaListSelection.width - kuvaListSelection.width/10;
+			kuvaListSelection.y = myStage.stageHeight/2 - kuvaListSelection.height/2;
 			
 			initNameArray();
 			randomCards();
@@ -110,14 +120,16 @@ package screens
 			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage);
 			cardImage.addListener(function(evt:MouseEvent):void
 			{
-				kuvaListSelection = cardImage.ID;
+				kuvaListSelection.visible = true;
+				kuvaListSelection.setNewContent(cardImage.ID);
 				checkPair();
 			});
 			
 			var cardText:YhdistelyTekstiButton = new YhdistelyTekstiButton(animName, animName, myStage);
 			cardText.addListener(function(evt:MouseEvent):void
 			{
-				textListSelection = cardText.ID;
+				textListSelection.visible = true;
+				textListSelection.setNewContent(cardText.ID);
 				checkPair();
 			});
 			
@@ -173,11 +185,9 @@ package screens
 		
 		private function checkPair():void
 		{
-			if(kuvaListSelection == textListSelection)
+			if(kuvaListSelection.ID == textListSelection.ID)
 			{
 				removePair();
-				kuvaListSelection = "";
-				textListSelection = "";
 			}
 		}
 		
@@ -187,17 +197,19 @@ package screens
 			for(; i < kuvaLista.Length(); i++)
 			{
 				var kuvaBtn:YhdistelyKuvaButton = kuvaLista.getItemAt(i) as YhdistelyKuvaButton;
-				if(kuvaListSelection == kuvaBtn.ID)
+				if(kuvaListSelection.ID == kuvaBtn.ID)
 					kuvaLista.removeItem(i);
 			}
 			i = 0;
 			for(; i < tekstiLista.Length(); i++)
 			{
 				var textBtn:YhdistelyTekstiButton = tekstiLista.getItemAt(i) as YhdistelyTekstiButton;
-				if(textListSelection == textBtn.ID)
+				if(textListSelection.ID == textBtn.ID)
 					tekstiLista.removeItem(i);
 			}
 			
+			kuvaListSelection.visible = false;
+			textListSelection.visible = false;
 			checkListSizes();
 		}
 		
@@ -217,6 +229,8 @@ package screens
 		private function Draw():void
 		{
 			this.addChild(bg);
+			this.addChild(kuvaListSelection);
+			this.addChild(textListSelection);
 			
 			for(var i:int = 0; i < PICK_AMOUNT; i++)
 			{

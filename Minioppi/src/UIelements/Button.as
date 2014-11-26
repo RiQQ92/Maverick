@@ -20,6 +20,11 @@ package UIelements
 			this.buttonMode = true;
 		}
 		
+		public function updateImage(str:String):void
+		{
+			image.bitmapData = Assets.getTexture(str).bitmapData;
+		}
+		
 		public function addListener(eventFunc:Function):void
 		{
 			clickFunc = eventFunc;

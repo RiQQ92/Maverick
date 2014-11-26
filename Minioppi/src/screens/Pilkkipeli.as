@@ -163,6 +163,8 @@ package screens
 			var kalaName:String;
 			kalaName = kalatList[Math.ceil(Math.random()*kalatList.length)-1];
 			
+			trace(kalaName);
+			
 			return kalaName;
 		}
 		
