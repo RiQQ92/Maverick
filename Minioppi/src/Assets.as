@@ -245,6 +245,8 @@ package
 		public static const VCAM_zone:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kaiutin_nappi.png")]
 		public static const Aani_nappi:Class;
+		[Embed(source="../Grafiikka/Muu/ButtonBlocker.png")]
+		public static const Button_Blocker:Class;
 		//********************
 		
 		// Aanet
