@@ -21,7 +21,7 @@ package screens
 		
 		private var player:Player;
 		private var takaisin:Button = new Button("Tausta");
-		private var bg:Bitmap = Assets.getTexture("Labyrintti_tausta");
+		//private var bg:Bitmap = Assets.getTexture("Labyrintti_tausta");
 		
 		public function Labyrintti(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -30,9 +30,9 @@ package screens
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			
-			bg.x = 0;
-			bg.y = 0;
-			this.addChild(bg);
+			//bg.x = 0;
+			//bg.y = 0;
+			//this.addChild(bg);
 		
 			lab = new Maze(16, 12, myStage, false);
 			this.addChild(lab);

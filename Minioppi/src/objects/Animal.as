@@ -29,7 +29,7 @@ package objects
 			var random:Number = Math.random();
 			
 			if(random < 0.33)
-				bmap = Assets.getTexture("Labyrintti_hirvi");
+				bmap = Assets.getTexture("Labyrintti_orava");
 			else if(random > 0.66)
 				bmap = Assets.getTexture("Labyrintti_janis");
 			else
@@ -49,7 +49,7 @@ package objects
 			else if(random > 0.66)
 				bmap = Assets.getTexture("Labyrintti_ilves");
 			else
-				bmap = Assets.getTexture("Labyrintti_orava");
+				bmap = Assets.getTexture("Labyrintti_hirvi");
 			
 			return bmap;
 		}

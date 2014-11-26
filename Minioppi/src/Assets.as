@@ -161,16 +161,55 @@ package
 		
 		// Labyrintti
 		//********************
-		[Embed(source = "../Grafiikka/Labyrintti/lab_wall.png")]
+		//[Embed(source = "../Grafiikka/Labyrintti/lab_wall.png")]
+		//public static const Labyrintti_seina:Class;
+		
+		
+		[Embed(source = "../Grafiikka/Labyrintti/road/wall.png")]
 		public static const Labyrintti_seina:Class;
+		
+		// tie
+		[Embed(source = "../Grafiikka/Labyrintti/road/EndN.png")]
+		public static const Labyrintti_tieN:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/EndE.png")]
+		public static const Labyrintti_tieE:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/EndS.png")]
+		public static const Labyrintti_tieS:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/EndW.png")]
+		public static const Labyrintti_tieW:Class;
+		
+		[Embed(source = "../Grafiikka/Labyrintti/road/NE.png")]
+		public static const Labyrintti_tieNE:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/NES.png")]
+		public static const Labyrintti_tieNES:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/NESW.png")]
+		public static const Labyrintti_tieNESW:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/NEW.png")]
+		public static const Labyrintti_tieNEW:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/NS.png")]
+		public static const Labyrintti_tieNS:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/NSW.png")]
+		public static const Labyrintti_tieNSW:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/NW.png")]
+		public static const Labyrintti_tieNW:Class;
+		
+		[Embed(source = "../Grafiikka/Labyrintti/road/ES.png")]
+		public static const Labyrintti_tieES:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/ESW.png")]
+		public static const Labyrintti_tieESW:Class;
+		[Embed(source = "../Grafiikka/Labyrintti/road/EW.png")]
+		public static const Labyrintti_tieEW:Class;
+		
+		[Embed(source = "../Grafiikka/Labyrintti/road/SW.png")]
+		public static const Labyrintti_tieSW:Class;
+		// tie päättyy
+		
 		[Embed(source = "../Grafiikka/Labyrintti/lab_road.png")]
 		public static const Labyrintti_tie:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/lab_finish.png")]
 		public static const Labyrintti_maali:Class;
 		[Embed(source = "../Grafiikka/Labyrintti/lab_player.png")]
 		public static const Labyrintti_pelaaja:Class;
-		[Embed(source = "../Grafiikka/Labyrintti/tausta.png")]
-		public static const Labyrintti_tausta:Class;
 		
 		[Embed(source = "../Grafiikka/Labyrintti/Hirvi_kasvokuva.png")]
 		public static const Labyrintti_hirvi:Class;
