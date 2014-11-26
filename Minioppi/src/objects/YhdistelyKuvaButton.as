@@ -16,7 +16,7 @@ package objects
 		
 		private var soundBtn:Button = new Button("Aani_nappi");
 		private var bg:Button = new Button("YhdistelyBtn_bg");
-		private var image:Button;
+		public var image:Button;
 		
 		private var clickFunc:Function;
 		
@@ -26,6 +26,7 @@ package objects
 			
 			_ID = Assets.removeChars("-", _image);
 			myStage = _stage;
+			
 			image = new Button("Yhdistely_"+_ID+"_kuva");
 			//sound = Assets.getSound(_sound+"_aani");
 			
@@ -41,6 +42,14 @@ package objects
 			soundBtn.y = bg.height/2 - soundBtn.height/2;
 			this.addChild(soundBtn);
 			soundBtn.addEventListener(MouseEvent.CLICK, onClickSound);
+		}
+		
+		public function setNewContent(str:String):void
+		{
+			_ID = str;
+			
+			image.updateImage("Yhdistely_"+_ID+"_kuva");
+			image.x = bg.width/2.5 - image.width/2;
 		}
 		
 		public function addListener(eventFunc:Function):void

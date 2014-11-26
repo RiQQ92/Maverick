@@ -24,43 +24,32 @@ package
 		//********************
 		[Embed(source = "../Grafiikka/pilkkipeli/pilkkipeli.png")]
 		public static const BGpilkkipeli:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/Siima.png")]
 		public static const Siima:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/koukku2.png")]
 		public static const Koukku:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/nuoli.png")]
 		public static const PilkkiNuoli:Class;
 		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipAhven.png")]
 		public static const TAhven:Class;
-
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipHauki.png")]
 		public static const THauki:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipKuha.png")]
 		public static const TKuha:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipLahna.png")]
 		public static const TLahna:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipLohi.png")]
 		public static const TLohi:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalat/lohi.png")]
-		public static const Lohi:Class;
 		
+		public static const Lohi:Class;
 		[Embed(source = "../Grafiikka/pilkkipeli/kalat/ahven.png")]
 		public static const Ahven:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalat/hauki.png")]
-		public static const hauki:Class;
-		
+		public static const Hauki:Class;
 		[Embed(source = "../Grafiikka/pilkkipeli/kalat/lahna.png")]
 		public static const Lahna:Class;
-		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalat/kuha.png")]
 		public static const Kuha:Class;
 		//*********************
@@ -237,6 +226,8 @@ package
 		public static const Yhdistely_bg:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/Yhdistely_kortti_pohja.png")]
 		public static const YhdistelyBtn_bg:Class;
+		[Embed(source = "../Grafiikka/alkuvalikko/napit/ketju.png")]
+		public static const Yhdistely_Null_kuva:Class;
 		
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kana.png")]
 		public static const Yhdistely_Kana_kuva:Class;

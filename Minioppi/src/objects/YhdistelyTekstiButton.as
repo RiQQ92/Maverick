@@ -21,7 +21,7 @@ package objects
 		private var soundBtn:Button = new Button("Aani_nappi");
 		private var bg:Button = new Button("YhdistelyBtn_bg");
 		
-		private var text:TextField = new TextField();
+		public var text:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
 		
 		public function YhdistelyTekstiButton(_text:String, _sound:String, _stage:Stage)
@@ -58,6 +58,17 @@ package objects
 			soundBtn.y = bg.height/2 - soundBtn.height/2;
 			this.addChild(soundBtn);
 			soundBtn.addEventListener(MouseEvent.CLICK, onClickSound);
+		}
+		
+		public function setNewContent(str:String):void
+		{
+			_ID = str;
+			_ID = Assets.removeChars("-", _ID);
+			
+			var pattern:RegExp = /ae/g;
+			str = str.replace(pattern, "ä");
+			
+			text.text = str;
 		}
 		
 		public function addListener(eventFunc:Function):void
