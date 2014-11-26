@@ -1,6 +1,7 @@
 package screens
 {
 	import UIelements.Button;
+	import UIelements.ButtonBlocker;
 	import UIelements.MuistipeliButton;
 	import UIelements.OhjeIkkuna;
 	
@@ -18,6 +19,9 @@ package screens
 	{
 		private var myStage:Stage;
 		private var screenHandler:ScreenHandler;
+		private var blocker:ButtonBlocker = new ButtonBlocker();
+		private var pause:Boolean = false;
+		private var pauseTimer:int = 0;
 		
 		public var debug:DebugText;
 		
@@ -44,6 +48,7 @@ package screens
 		
 		private function initialize():void
 		{
+			debug = new DebugText("", myStage);
 			tip = new OhjeIkkuna("OhjeMuistipeli");
 			bg = Assets.getTexture("BgKanto");
 			ui = Assets.getTexture("UiMuistipeli");
@@ -57,16 +62,46 @@ package screens
 			tip.removeEventListener(MouseEvent.CLICK, startGame);
 			this.removeChild(tip);
 			
+			//this.addChild(debug);
+			
 			makeArrays();
 			pickCards();
 			setUpCards();
 			this.addEventListener(MouseEvent.CLICK, checkFlips);
-			this.addEventListener(Event.ENTER_FRAME, checkWin);
+			this.addEventListener(Event.ENTER_FRAME, update);
+		}
+		
+		private function update(event:Event):void
+		{
+			if (pause)
+			{
+				if (blocker.parent == null)
+				{
+					this.removeEventListener(MouseEvent.CLICK, checkFlips);
+					this.addChild(blocker);
+				}
+				if (pauseTimer >= 20)
+				{
+					checkPairs();
+					flipBack();
+					pauseTimer = 0;
+					pause = false;
+				} else {
+					pauseTimer++;
+				}
+			}
+			else
+			{
+				if (blocker.parent != null)
+				{
+					this.addEventListener(MouseEvent.CLICK, checkFlips);
+					this.removeChild(blocker);
+				}
+			}
 		}
 		
 		private function checkFlips(event:MouseEvent):void
 		{
-			// lasketaan montako käännettyä korttia on
 			flips = new Array;
 			for (var i:int = 0; i<cards.length; i++)
 			{
@@ -78,15 +113,7 @@ package screens
 			}
 			if (flips.length >= 2)
 			{
-				for (var j:int = 0; j<cards.length; j++)
-				{
-					if (cards[j].backSide == false)
-					{
-						cards[j].active = true;
-						cards[j].flipCard();
-					}
-				}
-				checkPairs();
+				pause = true;
 			}
 		}
 		
@@ -97,6 +124,18 @@ package screens
 				this.removeEventListener(MouseEvent.CLICK, checkFlips);
 				this.removeEventListener(Event.ENTER_FRAME, checkWin);
 				screenHandler.inScreen = "menu";
+			}
+		}
+		
+		private function flipBack():void
+		{
+			for (var j:int = 0; j<cards.length; j++)
+			{
+				if (cards[j].backSide == false)
+				{
+					cards[j].active = true;
+					cards[j].flipCard();
+				}
 			}
 		}
 		
