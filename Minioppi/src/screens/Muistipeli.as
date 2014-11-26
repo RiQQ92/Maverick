@@ -73,6 +73,7 @@ package screens
 		
 		private function update(event:Event):void
 		{
+			checkWin();
 			if (pause)
 			{
 				if (blocker.parent == null)
@@ -117,12 +118,13 @@ package screens
 			}
 		}
 		
-		private function checkWin(event:Event):void
+		private function checkWin():void
 		{
 			if (cardsFound >= 9)
 			{
 				this.removeEventListener(MouseEvent.CLICK, checkFlips);
 				this.removeEventListener(Event.ENTER_FRAME, checkWin);
+				this.removeEventListener(Event.ENTER_FRAME, update);
 				screenHandler.inScreen = "menu";
 			}
 		}
