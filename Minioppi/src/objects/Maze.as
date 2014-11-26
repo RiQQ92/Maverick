@@ -63,6 +63,9 @@ package objects
 						{
 							road.scaleX = myStage.stageWidth/(mazeWidth*road.width);
 							road.scaleY = myStage.stageHeight/(mazeHeight*road.height);
+							
+							goodAnim.scaleX = road.scaleX;
+							goodAnim.scaleY = road.scaleY;
 						}
 						road.x = road.width*row;
 						road.y = road.height*col;
@@ -202,6 +205,10 @@ package objects
 											badAnim = new Animal(false)
 											badAnim.x = road2.width*row;
 											badAnim.y = road2.height*col;
+											
+											badAnim.scaleX = road2.scaleX;
+											badAnim.scaleY = road2.scaleY;
+											
 											this.addChild(badAnim);
 											animalList.push(badAnim);
 										}
@@ -231,6 +238,10 @@ package objects
 											badAnim = new Animal(false)
 											badAnim.x = road2.width*row;
 											badAnim.y = road2.height*col;
+											
+											badAnim.scaleX = road2.scaleX;
+											badAnim.scaleY = road2.scaleY;
+											
 											this.addChild(badAnim);
 											animalList.push(badAnim);
 										}
@@ -263,6 +274,10 @@ package objects
 											badAnim = new Animal(false)
 											badAnim.x = road2.width*row;
 											badAnim.y = road2.height*col;
+											
+											badAnim.scaleX = road2.scaleX;
+											badAnim.scaleY = road2.scaleY;
+											
 											this.addChild(badAnim);
 											animalList.push(badAnim);
 										}
@@ -292,6 +307,10 @@ package objects
 											badAnim = new Animal(false)
 											badAnim.x = road2.width*row;
 											badAnim.y = road2.height*col;
+											
+											badAnim.scaleX = road2.scaleX;
+											badAnim.scaleY = road2.scaleY;
+											
 											this.addChild(badAnim);
 											animalList.push(badAnim);
 										}
@@ -322,6 +341,10 @@ package objects
 										badAnim = new Animal(false)
 										badAnim.x = road2.width*row;
 										badAnim.y = road2.height*col;
+										
+										badAnim.scaleX = road2.scaleX;
+										badAnim.scaleY = road2.scaleY;
+										
 										this.addChild(badAnim);
 										animalList.push(badAnim);
 									}

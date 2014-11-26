@@ -178,11 +178,6 @@ package screens
 			}
 		}
 		
-		public function Destruct():void
-		{
-			
-		}
-		
 		private function checkPair():void
 		{
 			if(kuvaListSelection.ID == textListSelection.ID)
@@ -224,6 +219,22 @@ package screens
 		private function win():void
 		{
 			screenHandler.inScreen = "menu";
+		}
+		
+		public function Destruct():void
+		{
+			this.removeChild(bg);
+			this.removeChild(kuvaListSelection);
+			this.removeChild(textListSelection);
+			
+			animalNames = new Array();
+			imageCards = new Array();
+			textCards = new Array();
+			
+			tekstiLista.Destruct();
+			this.removeChild(tekstiLista);
+			kuvaLista.Destruct();
+			this.removeChild(kuvaLista);
 		}
 		
 		private function Draw():void

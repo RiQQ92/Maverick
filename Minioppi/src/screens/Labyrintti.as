@@ -40,8 +40,8 @@ package screens
 			player = new Player(myStage, this, lab);
 			player.x = 0;
 			player.y = 0;
-			player.scaleX = 0.8;
-			player.scaleY = 0.8;
+			player.scaleX = 0.4;
+			player.scaleY = 0.4;
 			player.addListeners();
 			this.addChild(player);
 			
