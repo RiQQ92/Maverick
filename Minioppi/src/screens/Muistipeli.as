@@ -35,10 +35,9 @@ package screens
 		public var cardListKuva:Array = new Array;
 		public var cardListText:Array = new Array;
 		public var cards:Array = new Array;
+		public var flips:Array = new Array;
 		
 		public var cardsFound:int = 0;
-		
-		public var flips:Array = new Array;
 		
 		public function Muistipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -124,6 +123,11 @@ package screens
 		{
 			if (cardsFound >= 9)
 			{
+				slots = new Array;
+				cardListKuva = new Array;
+				cardListText = new Array;
+				cards = new Array;
+				flips = new Array;
 				this.removeEventListener(MouseEvent.CLICK, checkFlips);
 				this.removeEventListener(Event.ENTER_FRAME, checkWin);
 				this.removeEventListener(Event.ENTER_FRAME, update);

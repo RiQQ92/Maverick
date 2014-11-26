@@ -31,8 +31,8 @@ package screens
 		public var nuoli:Button;
 		
 		public var onki:Onki;
-		public var TKalat:Array;
-		public var kalatList:Array = new Array;
+		public var tKalat:Array;
+		public var kalaList:Array;
 		public var tipS:String = "";
 		public var tip:Button;
 		
@@ -51,11 +51,25 @@ package screens
 		
 		private function initialize():void
 		{
-			bg = Assets.getTexture("BGpilkkipeli");
-			ohje = new OhjeIkkuna("OhjePilkki");
-			TKalat = new Array();
-			getKalat();
+			tKalat = new Array();
+			kalaList = new Array();
 			
+			tKalat.push("TAhven");
+			tKalat.push("THauki");
+			tKalat.push("TLahna");
+			tKalat.push("TKuha");
+			tKalat.push("TLohi");
+			
+			kalaList.push("ahven");
+			kalaList.push("hauki");
+			kalaList.push("lahna");
+			kalaList.push("kuha");
+			kalaList.push("lohi");
+			
+			bg = Assets.getTexture("BGpilkkipeli");
+			
+			debug = new DebugText("", myStage);
+			ohje = new OhjeIkkuna("OhjePilkki");
 			nuoli = new Button("PilkkiNuoli");
 			nuoli.scaleX = 0.7;
 			nuoli.scaleY = 0.7;
@@ -63,8 +77,6 @@ package screens
 			this.addChild(bg);
 			this.addChild(ohje);
 			ohje.addEventListener(MouseEvent.CLICK, skipIntro);
-			
-			debug = new DebugText("", myStage);
 		}
 		
 		private function skipIntro(event:MouseEvent):void
@@ -161,9 +173,7 @@ package screens
 		private function getKala():String
 		{
 			var kalaName:String;
-			kalaName = kalatList[Math.ceil(Math.random()*kalatList.length)-1];
-			
-			trace(kalaName);
+			kalaName = kalaList[Math.ceil(Math.random()*kalaList.length)-1];
 			
 			return kalaName;
 		}
@@ -196,31 +206,6 @@ package screens
 				}
 			}
 		}
-
-		private function getKalat():void
-		{
-			var TAhven:String = "TAhven";
-			TKalat.push(TAhven);
-			var THauki:String = "THauki";
-			TKalat.push(THauki);
-			var TLahna:String = "TLahna";
-			TKalat.push(TLahna);
-			var TKuha:String = "TKuha";
-			TKalat.push(TKuha);
-			var TLohi:String = "TLohi";
-			TKalat.push(TLohi);
-			
-			var ahven:String = "Ahven";
-			kalatList.push(ahven);
-			var hauki:String = "Hauki";
-			kalatList.push(hauki);
-			var lahna:String = "Lahna";
-			kalatList.push(lahna);
-			var kuha:String = "Kuha";
-			kalatList.push(kuha);
-			var lohi:String = "Lohi";
-			kalatList.push(lohi);
-		}
 		
 		private function getKalaTip():String
 		{
@@ -228,13 +213,13 @@ package screens
 			
 			if (tipS == "")
 			{
-				kala = TKalat[Math.ceil(Math.random()*TKalat.length)-1];
+				kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
 			}
 			else
 			{
 				do
 				{
-					kala = TKalat[Math.ceil(Math.random()*TKalat.length)-1];
+					kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
 				}
 				while (tipS == kala);
 			}
