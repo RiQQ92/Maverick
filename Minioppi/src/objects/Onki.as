@@ -21,13 +21,13 @@ package objects
 			koukku = Assets.getTexture("Koukku");
 			koukkuHitBox = Assets.getTexture("HitBox");
 			
-			koukkuHitBox.scaleX = 0.75;
-			koukkuHitBox.scaleY = 0.75;
+			koukkuHitBox.scaleX = 0.9;
+			koukkuHitBox.scaleY = 0.9;
 			siima.x = -siima.width/2;
 			koukku.x = -koukku.width/2;
 			koukku.y = +siima.height;
 			koukkuHitBox.x = -koukkuHitBox.width/2;
-			koukkuHitBox.y = +siima.height+koukkuHitBox.height;
+			koukkuHitBox.y = +siima.height+koukkuHitBox.height/2;
 			this.addChild(siima);
 			this.addChild(koukku);
 			this.addChild(koukkuHitBox);

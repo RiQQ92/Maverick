@@ -40,7 +40,7 @@ package screens
 		public var kalat:Array = new Array;
 		public var kalaDir:Boolean = true;
 		public var kalaRandom:int = 0;
-		public var spawnTimer:int = 2;
+		public var spawnTimer:int = 1.25;
 		
 		public function Pilkkipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -132,6 +132,7 @@ package screens
 		{
 			if (!pause)
 			{
+				checkHit();
 				Speed();
 				onki.update();
 				KalaSpawn();
@@ -139,7 +140,18 @@ package screens
 				{
 					kalat[i].update();
 				}
-				debug.replace(kalaRandom.toString());
+			}
+		}
+		
+		private function checkHit():void
+		{
+			for (var i:int = 0; i<kalat.length; i++)
+			{
+				if (onki.koukkuHitBox.hitTestObject(kalat[i].hitBox))
+				{
+					kalat[i].waveSpeed = 70;
+					kalat[i].speed = 40;
+				}
 			}
 		}
 		
@@ -152,12 +164,12 @@ package screens
 				if (kalaDir)
 				{
 					kalaDir = false;
-					kala.x = 700;
+					kala.x = 680;
 				}
 				else
 				{
 					kalaDir = true;
-					kala.x = 40;
+					kala.x = -40;
 				}
 				kalat.push(kala);
 				myStage.addChild(kala);
