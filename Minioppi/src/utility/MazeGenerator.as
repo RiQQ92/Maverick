@@ -20,6 +20,8 @@ package utility
 		
 		private var lastMove:String;
 		
+		private var pathFinder:PathFinder = new PathFinder();
+		
 		public function MazeGenerator()
 		{
 			mazeWidth = 0;
@@ -637,6 +639,22 @@ package utility
 		private function checkMaze():Boolean
 		{
 			// tulostaa labyrintin konsoliin
+			if(!mazeRoad[mazeWidth-2][mazeHeight-2])
+			{
+				mazeRoad[(mazeWidth-2)][(mazeHeight-2)] = true;
+			}
+					
+			var integer:int = pathFinder.findPath(mazeWidth-2, mazeHeight-2, mazeWidth, mazeHeight, mazeRoad);
+			if(integer < mazeWidth*1.5+mazeHeight*1.5)
+			{
+				//trace(integer+" long path to finish, not enough, recreating. needed amount :"+(mazeWidth*1.5+mazeHeight*1.5));
+				mazeRoad = new Array();
+				mazeReserved = new Array();
+				
+				generateMaze(mazeWidth, mazeHeight);
+			}
+				
+			/*
 			var mazeLayout:String = "|";
 			for (var row:int = 0; row < mazeWidth; row++)
 			{
@@ -654,7 +672,7 @@ package utility
 				mazeLayout+="|\n|";
 			}
 			trace(mazeLayout);
-			
+			*/
 			// find path from start to finnish
 			return true;
 		}

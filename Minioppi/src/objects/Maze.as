@@ -9,6 +9,8 @@ package objects
 	
 	public class Maze extends Sprite
 	{
+		private var fitToStage:Boolean = false;
+		
 		private var badAnimalAmount:int = 12;
 		private var badAnimalCounter:int = 0;
 		
@@ -35,6 +37,7 @@ package objects
 			super();
 			
 			myStage = _stage;
+			fitToStage = scaleToStage;
 			
 			debug = new DebugText("", myStage);
 			this.addChild(debug);
@@ -50,10 +53,6 @@ package objects
 			{
 				for (var col:int = 0; col < arr[0].length; col++)
 				{
-					var badAnim:Animal = new Animal(false);
-					var goodAnim:Animal = new Animal(true);
-					var road2:Bitmap;
-					
 					// jos on tie
 					if(arr[row][col])
 					{
@@ -63,9 +62,6 @@ package objects
 						{
 							road.scaleX = myStage.stageWidth/(mazeWidth*road.width);
 							road.scaleY = myStage.stageHeight/(mazeHeight*road.height);
-							
-							goodAnim.scaleX = road.scaleX;
-							goodAnim.scaleY = road.scaleY;
 						}
 						road.x = road.width*row;
 						road.y = road.height*col;
@@ -75,102 +71,7 @@ package objects
 						// luo vaarattomat eläimet tielle
 						if(goodAnimalCounter < goodAnimalAmount)
 						{
-							if(row == 0 || row == mazeWidth-1)
-							{
-								// vasen reuna
-								if(row == 0)
-								{
-									// tarkastaa muualta paitsi vasemmalta
-									if(!arr[row][col-1] && !arr[row][col+1] && arr[row+1][col]|| !arr[row][col+1] && arr[row][col-1] && arr[row+1][col])
-									{
-										if(Math.random() < 0.06)
-										{
-											createdAnimal = true;
-											goodAnimalCounter++;
-											
-											goodAnim.x = road.width*row;
-											goodAnim.y = road.height*col;
-											this.addChild(goodAnim);
-											animalList.push(goodAnim);
-										}
-									}
-								}
-								// oikea reuna
-								else
-								{
-									// tarkastaa muualta paitsi oikealta
-									if(!arr[row][col-1] && !arr[row][col+1] && arr[row-1][col] || !arr[row][col+1] && !arr[row-1][col] && arr[row][col-1])
-									{
-										if(Math.random() < 0.06)
-										{
-											createdAnimal = true;
-											goodAnimalCounter++;
-											
-											goodAnim.x = road.width*row;
-											goodAnim.y = road.height*col;
-											this.addChild(goodAnim);
-											animalList.push(goodAnim);
-										}
-									}
-								}
-							}
-							else if(col == 0 || col == mazeHeight-1)
-							{
-								// yläreuna
-								if(col == 0)
-								{
-									// tarkastaa muualta paitsi ylhäältä
-									if(arr[row][col+1] && !arr[row+1][col] && !arr[row-1][col] || arr[row][col+1] && arr[row-1][col] && !arr[row+1][col])
-									{
-										if(Math.random() < 0.06)
-										{
-											createdAnimal = true;
-											goodAnimalCounter++;
-											
-											goodAnim.x = road.width*row;
-											goodAnim.y = road.height*col;
-											this.addChild(goodAnim);
-											animalList.push(goodAnim);
-										}
-									}
-								}
-								// alareuna
-								else
-								{
-									// tarkastaa muualta paitsi alhaalta
-									if(!arr[row][col-1] && arr[row+1][col] && arr[row-1][col] || !arr[row+1][col] && !arr[row-1][col] && arr[row][col-1])
-									{
-										if(Math.random() < 0.06)
-										{
-											createdAnimal = true;
-											goodAnimalCounter++;
-											
-											goodAnim.x = road.width*row;
-											goodAnim.y = road.height*col;
-											this.addChild(goodAnim);
-											animalList.push(goodAnim);
-										}
-									}
-								}
-							}
-							// ei ole reunassa
-							else
-							{
-								// tarkastaa joka suunnan
-								if(!arr[row][col-1] && !arr[row][col+1] && arr[row+1][col] && arr[row-1][col] || arr[row+1][col] && !arr[row-1][col] && arr[row][col-1] && arr[row][col+1])
-								{
-									if(Math.random() < 0.06)
-									{
-										createdAnimal = true;
-										goodAnimalCounter++;
-										
-										goodAnim.x = road.width*row;
-										goodAnim.y = road.height*col;
-										this.addChild(goodAnim);
-										animalList.push(goodAnim);
-									}
-								}
-							}
+							addAnimal(row, col, true);
 						}
 					}
 					else
@@ -179,177 +80,7 @@ package objects
 						var createdAnimal:Boolean = false;
 						if(badAnimalCounter < badAnimalAmount)
 						{
-							if(row == 0 || row == mazeWidth-1)
-							{
-								if(row == 0)
-								{
-									if(arr[row][col-1] && arr[row][col+1] && !arr[row+1][col]|| arr[row][col+1] && !arr[row][col-1] && !arr[row+1][col])
-									{
-										if(Math.random() < 0.06)
-										{
-											createdAnimal = true;
-											badAnimalCounter++;
-											road2 = getTile(row, col);
-											if(scaleToStage)
-											{
-												road2.scaleX = myStage.stageWidth/(mazeWidth*road2.width);
-												road2.scaleY = myStage.stageHeight/(mazeHeight*road2.height);
-											}
-											road2.x = road2.width*row;
-											road2.y = road2.height*col;
-											this.addChild(road2);
-											roadList.push(road2);
-											
-											mazeList[row][col] = true;
-											
-											badAnim = new Animal(false)
-											badAnim.x = road2.width*row;
-											badAnim.y = road2.height*col;
-											
-											badAnim.scaleX = road2.scaleX;
-											badAnim.scaleY = road2.scaleY;
-											
-											this.addChild(badAnim);
-											animalList.push(badAnim);
-										}
-									}
-								}
-								else
-								{
-									if(arr[row][col-1] && arr[row][col+1] && !arr[row-1][col] || arr[row][col+1] && arr[row-1][col] && !arr[row][col-1])
-									{
-										if(Math.random() < 0.06)
-										{
-											createdAnimal = true;
-											badAnimalCounter++;
-											road2 = getTile(row, col);
-											if(scaleToStage)
-											{
-												road2.scaleX = myStage.stageWidth/(mazeWidth*road2.width);
-												road2.scaleY = myStage.stageHeight/(mazeHeight*road2.height);
-											}
-											road2.x = road2.width*row;
-											road2.y = road2.height*col;
-											this.addChild(road2);
-											roadList.push(road2);
-											
-											mazeList[row][col] = true;
-											
-											badAnim = new Animal(false)
-											badAnim.x = road2.width*row;
-											badAnim.y = road2.height*col;
-											
-											badAnim.scaleX = road2.scaleX;
-											badAnim.scaleY = road2.scaleY;
-											
-											this.addChild(badAnim);
-											animalList.push(badAnim);
-										}
-									}
-								}
-							}
-							else if(col == 0 || col == mazeHeight-1)
-							{
-								if(col == 0)
-								{
-									if(arr[row][col+1] && !arr[row+1][col] && !arr[row-1][col] || arr[row][col+1] && arr[row-1][col] && !arr[row+1][col])
-									{
-										if(Math.random() < 0.06)
-										{
-											createdAnimal = true;
-											badAnimalCounter++;
-											road2 = getTile(row, col);
-											if(scaleToStage)
-											{
-												road2.scaleX = myStage.stageWidth/(mazeWidth*road2.width);
-												road2.scaleY = myStage.stageHeight/(mazeHeight*road2.height);
-											}
-											road2.x = road2.width*row;
-											road2.y = road2.height*col;
-											this.addChild(road2);
-											roadList.push(road2);
-											
-											mazeList[row][col] = true;
-											
-											badAnim = new Animal(false)
-											badAnim.x = road2.width*row;
-											badAnim.y = road2.height*col;
-											
-											badAnim.scaleX = road2.scaleX;
-											badAnim.scaleY = road2.scaleY;
-											
-											this.addChild(badAnim);
-											animalList.push(badAnim);
-										}
-									}
-								}
-								else
-								{
-									if(arr[row][col-1] && !arr[row+1][col] && !arr[row-1][col] || arr[row+1][col] && arr[row-1][col] && !arr[row][col-1])
-									{
-										if(Math.random() < 0.06)
-										{
-											createdAnimal = true;
-											badAnimalCounter++;
-											road2 = getTile(row, col);
-											if(scaleToStage)
-											{
-												road2.scaleX = myStage.stageWidth/(mazeWidth*road2.width);
-												road2.scaleY = myStage.stageHeight/(mazeHeight*road2.height);
-											}
-											road2.x = road2.width*row;
-											road2.y = road2.height*col;
-											this.addChild(road2);
-											roadList.push(road2);
-											
-											mazeList[row][col] = true;
-											
-											badAnim = new Animal(false)
-											badAnim.x = road2.width*row;
-											badAnim.y = road2.height*col;
-											
-											badAnim.scaleX = road2.scaleX;
-											badAnim.scaleY = road2.scaleY;
-											
-											this.addChild(badAnim);
-											animalList.push(badAnim);
-										}
-									}
-								}
-							}
-							else
-							{
-								if(arr[row][col-1] && arr[row][col+1] && !arr[row+1][col] && !arr[row-1][col] || arr[row+1][col] && arr[row-1][col] && !arr[row][col-1] && !arr[row][col+1])
-								{
-									if(Math.random() < 0.06)
-									{
-										createdAnimal = true;
-										badAnimalCounter++;
-										road2 = getTile(row, col);
-										if(scaleToStage)
-										{
-											road2.scaleX = myStage.stageWidth/(mazeWidth*road2.width);
-											road2.scaleY = myStage.stageHeight/(mazeHeight*road2.height);
-										}
-										road2.x = road2.width*row;
-										road2.y = road2.height*col;
-										this.addChild(road2);
-										roadList.push(road2);
-										
-										mazeList[row][col] = true;
-										
-										badAnim = new Animal(false)
-										badAnim.x = road2.width*row;
-										badAnim.y = road2.height*col;
-										
-										badAnim.scaleX = road2.scaleX;
-										badAnim.scaleY = road2.scaleY;
-										
-										this.addChild(badAnim);
-										animalList.push(badAnim);
-									}
-								}
-							}
+							createdAnimal = addAnimal(row, col, false);
 						}
 						if(!createdAnimal)
 						{
@@ -376,6 +107,140 @@ package objects
 			for(var a:int = 0 ; a < animalList.length; a++)
 				if(!animalList[a].isGood)
 					updateTilesAround(animalList[a].x / roadList[0].width, animalList[a].y / roadList[0].height);
+		}
+		
+		private function addAnimal(_x:int, _y:int, isGood:Boolean):Boolean
+		{
+			var createdAnimal:Boolean = false;
+			var road:Bitmap = getTile(_x, _y);
+			
+			if(checkContiunity(_x, _y, isGood))
+			{
+				if(isGood)
+				{
+					if(Math.random() < 0.06)
+					{
+						var goodAnim:Animal = new Animal(true);
+						
+						if(fitToStage)
+						{
+							road.scaleX = myStage.stageWidth/(mazeX*road.width);
+							road.scaleY = myStage.stageHeight/(mazeY*road.height);
+							
+							goodAnim.scaleX = road.scaleX;
+							goodAnim.scaleY = road.scaleY;
+						}
+						
+						createdAnimal = true;
+						goodAnimalCounter++;
+						
+						goodAnim.x = road.width*_x;
+						goodAnim.y = road.height*_y;
+						this.addChild(goodAnim);
+						animalList.push(goodAnim);
+					}
+				}
+				else
+				{
+					if(Math.random() < 0.06)
+					{
+						var badAnim:Animal = new Animal(false);
+						
+						createdAnimal = true;
+						badAnimalCounter++;
+						road = getTile(_x, _y);
+						
+						if(fitToStage)
+						{
+							road.scaleX = myStage.stageWidth/(mazeX*road.width);
+							road.scaleY = myStage.stageHeight/(mazeY*road.height);
+						}
+						
+						road.x = road.width*_x;
+						road.y = road.height*_y;
+						this.addChild(road);
+						roadList.push(road);
+						
+						mazeList[_x][_y] = true;
+						
+						badAnim = new Animal(false)
+						badAnim.x = road.width*_x;
+						badAnim.y = road.height*_y;
+						
+						badAnim.scaleX = road.scaleX;
+						badAnim.scaleY = road.scaleY;
+						
+						this.addChild(badAnim);
+						animalList.push(badAnim);
+					}
+				}
+			}
+			
+			return createdAnimal;
+		}
+		
+		private function checkContiunity(_x:int, _y:int, isGood:Boolean):Boolean
+		{
+			var isPossible:Boolean = false;
+			var temp:Array = mazeList.concat();
+			if(!isGood)
+				for(var i:int = 0; i < mazeX; i++)
+					for(var b:int = 0; b < mazeY; b++)
+						temp[i][b] = !temp[i][b];
+			
+			if(_x == 0 || _x == mazeX-1)
+			{
+				// vasen reuna
+				if(_x == 0)
+				{
+					// tarkastaa muualta paitsi vasemmalta
+					if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x+1][_y]|| !temp[_x][_y+1] && temp[_x][_y-1] && temp[_x+1][_y])
+					{
+						isPossible = true;
+					}
+				}
+					// oikea reuna
+				else
+				{
+					// tarkastaa muualta paitsi oikealta
+					if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x-1][_y] || !temp[_x][_y+1] && !temp[_x-1][_y] && temp[_x][_y-1])
+					{
+						isPossible = true;
+					}
+				}
+			}
+			else if(_y == 0 || _y == mazeY-1)
+			{
+				// yläreuna
+				if(_y == 0)
+				{
+					// tarkastaa muualta paitsi ylhäältä
+					if(temp[_x][_y+1] && !temp[_x+1][_y] && !temp[_x-1][_y] || temp[_x][_y+1] && temp[_x-1][_y] && !temp[_x+1][_y])
+					{
+						isPossible = true;
+					}
+				}
+					// alareuna
+				else
+				{
+					// tarkastaa muualta paitsi alhaalta
+					if(!temp[_x][_y-1] && temp[_x+1][_y] && temp[_x-1][_y] || !temp[_x+1][_y] && !temp[_x-1][_y] && temp[_x][_y-1])
+					{
+						isPossible = true;
+					}
+				}
+			}
+				// ei ole reunassa
+			else
+			{
+				// tarkastaa joka suunnan
+				if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x+1][_y] && temp[_x-1][_y] || temp[_x+1][_y] && !temp[_x-1][_y] && temp[_x][_y-1] && temp[_x][_y+1])
+				{
+					isPossible = true;
+				}
+			}
+			
+			return isPossible;
 		}
 		
 		private function getTile(_x:int, _y:int):Bitmap
