@@ -29,7 +29,7 @@ package screens
 		public var bg:Bitmap;
 		public var ui:Bitmap;
 		
-		public var cardShowTime:int = 25;
+		public var cardShowTime:int = 40;
 		
 		public var slots:Array = new Array;
 		public var cardListKuva:Array = new Array;

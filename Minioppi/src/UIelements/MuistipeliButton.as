@@ -7,17 +7,22 @@ package UIelements
 	
 	public class MuistipeliButton extends Sprite
 	{
-		/*
 		private var rewinding:Boolean = false;
 		private var backwards:Boolean = true;
-		*/
+		private var isScaling:Boolean = false;
+		private var timerOn:Boolean = false;
+		
+		private var scaleTimer:int = 0;
+		private const SCALE_TIME:int = 45;
+		private var scaleFactor:Number = 1;
+		
 		private var clickFunc:Function;
+		private var image:Bitmap;
 		
 		public var backSide:Boolean = true;
-		
 		public var active:Boolean = true;
+		public var flippingCard:Boolean = false;
 		
-		private var image:Bitmap;
 		public var imageS:String;
 		
 		public var saveX:int;
@@ -33,6 +38,7 @@ package UIelements
 			saveY = image.height/2;
 			image.x = -image.width/2+saveX;
 			image.y = -image.height/2+saveY;
+			this.addEventListener(Event.ENTER_FRAME, update);
 			this.addChild(image);
 		}
 		
@@ -42,65 +48,103 @@ package UIelements
 			{
 				if(backSide == true)
 				{
-					image.bitmapData = Assets.getTexture(imageS).bitmapData;
 					backSide = false;
+					flippingCard = true;
 				}
 				else
 				{
-					image.bitmapData = Assets.getTexture("LehtiBackCrop").bitmapData;
+					this.active = false;
 					backSide = true;
+					flippingCard = true;
 				}
 				image.x = -image.width/2+saveX;
 				image.y = -image.height/2+saveY;
 			}
 		}
 		
-		/*
-		public function loopCard():void
+		private function update(event:Event):void
 		{
-			if(backwards)
+			if(scaleTimer > SCALE_TIME)
 			{
-				if(!rewinding)
-				{
-					image.scaleX -= 0.05;
-					if(image.scaleX <= 0)
-					{
-						image.bitmapData = Assets.getTexture(imageS).bitmapData;
-						rewinding = !rewinding;
-						backwards = !backwards;
-					}
-				}
-				else
-				{
-					image.scaleX += 0.05;
-					if(image.scaleX >= 1)
-						rewinding = !rewinding;
-				}
-			}
-			else
-			{
-				if(!rewinding)
-				{
-					image.scaleX -= 0.05;
-					if(image.scaleX <= 0)
-					{
-						image.bitmapData = Assets.getTexture("LehtiBack").bitmapData;
-						rewinding = !rewinding;
-						backwards = !backwards;
-					}
-				}
-				else
-				{
-					image.scaleX += 0.05;
-					if(image.scaleX >= 1)
-						rewinding = !rewinding;
-				}
+				isScaling = false;
+				timerOn = false;
+				scaleTimer = 0;
 			}
 			
-			image.x = stage.stageWidth/2 - image.width/2;
-			image.y = stage.stageHeight/2 - image.height/2;
+			if(timerOn)
+			{
+				scaleTimer++;
+			}
+			
+			if(isScaling && scaleFactor < 1.5)
+			{
+				scaleFactor += 0.05;
+			}
+			else if(!isScaling && scaleFactor > 1)
+			{
+				scaleFactor -= 0.05;
+				this.scaleY = scaleFactor;
+				image.scaleX = 0.4 * scaleFactor;
+				image.x = -image.width/2+saveX;
+			}
+			
+			if(flippingCard)
+			{
+				if(backwards)
+				{
+					if(!rewinding)
+					{
+						image.scaleX -= 0.05 * scaleFactor;
+						if(image.scaleX <= 0)
+						{
+							image.bitmapData = Assets.getTexture(imageS).bitmapData;
+							rewinding = !rewinding;
+							backwards = !backwards;
+							isScaling = true;
+							timerOn = true;
+						}
+					}
+					else
+					{
+						image.scaleX += 0.05 * scaleFactor;
+						if(image.scaleX >= 0.4 * scaleFactor)
+						{
+							rewinding = !rewinding;
+							flippingCard = false;
+							this.active = true;
+						}
+					}
+				}
+				else
+				{
+					if(!rewinding)
+					{
+						image.scaleX -= 0.05 * scaleFactor;
+						if(image.scaleX <= 0)
+						{
+							image.bitmapData = Assets.getTexture("LehtiBackCrop").bitmapData;
+							rewinding = !rewinding;
+							backwards = !backwards;
+						}
+					}
+					else
+					{
+						image.scaleX += 0.05 * scaleFactor;
+						if(image.scaleX >= 0.4 * scaleFactor)
+						{
+							rewinding = !rewinding;
+							flippingCard = false;
+						}
+					}
+				}
+				if(image.scaleX < 0)
+					image.scaleX = 0;
+					
+				this.scaleY = scaleFactor;
+				image.x = -image.width/2+saveX;
+				image.y = -image.height/2+saveY;
+			}
 		}
-		*/
 		
 		public function addListener(eventFunc:Function):void
 		{
