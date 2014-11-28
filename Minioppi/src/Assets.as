@@ -41,8 +41,8 @@ package
 		public static const TLahna:Class;
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipLohi.png")]
 		public static const TLohi:Class;
-		[Embed(source = "../Grafiikka/pilkkipeli/kalat/lohi.png")]
 		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalat/lohi.png")]
 		public static const Lohi:Class;
 		[Embed(source = "../Grafiikka/pilkkipeli/kalat/ahven.png")]
 		public static const Ahven:Class;

@@ -60,11 +60,11 @@ package screens
 			tKalat.push("TKuha");
 			tKalat.push("TLohi");
 			
-			kalaList.push("ahven");
-			kalaList.push("hauki");
-			kalaList.push("lahna");
-			kalaList.push("kuha");
-			kalaList.push("lohi");
+			kalaList.push("Ahven");
+			kalaList.push("Hauki");
+			kalaList.push("Lahna");
+			kalaList.push("Kuha");
+			kalaList.push("Lohi");
 			
 			bg = Assets.getTexture("BGpilkkipeli");
 			
@@ -146,7 +146,7 @@ package screens
 		{
 			if (kalaTimer <= 0)
 			{
-				var kala:PilkkiKalat = new PilkkiKalat(getKala(), kalaDir);
+				var kala:PilkkiKalat = new PilkkiKalat(getKalaName(), kalaDir);
 				kala.y = (Math.ceil(Math.random()*400)-1)+40;
 				if (kalaDir)
 				{
@@ -158,7 +158,6 @@ package screens
 					kalaDir = true;
 					kala.x = 40;
 				}
-				
 				kalat.push(kala);
 				myStage.addChild(kala);
 				kalaTimer = 4*30;
@@ -170,12 +169,47 @@ package screens
 			
 		}
 		
-		private function getKala():String
+		private function getKalaName():String
 		{
 			var kalaName:String;
 			kalaName = kalaList[Math.ceil(Math.random()*kalaList.length)-1];
 			
+			for (var i:int = 0; i<kalaList.lenght; i++)
+			{
+				if (kalaList[i] == kalaName)
+				{
+					if (tKalat[i] == tipS)
+					{
+						kalaRandom = 0;
+					}
+					else
+					{
+						kalaRandom ++;
+					}
+				}
+			}
+			
 			return kalaName;
+		}
+		
+		private function getKalaTip():String
+		{
+			var kala:String;
+			
+			if (tipS == "")
+			{
+				kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
+			}
+			else
+			{
+				do
+				{
+					kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
+				}
+				while (tipS == kala);
+			}
+			
+			return kala;
 		}
 		
 		private function Speed():void
@@ -205,26 +239,6 @@ package screens
 					onki.speed += 0.5;
 				}
 			}
-		}
-		
-		private function getKalaTip():String
-		{
-			var kala:String;
-			
-			if (tipS == "")
-			{
-				kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
-			}
-			else
-			{
-				do
-				{
-					kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
-				}
-				while (tipS == kala);
-			}
-			
-			return kala;
 		}
 		
 		private function onKeyPress(event:KeyboardEvent):void
