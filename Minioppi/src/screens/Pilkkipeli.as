@@ -40,6 +40,7 @@ package screens
 		public var kalat:Array = new Array;
 		public var kalaDir:Boolean = true;
 		public var kalaRandom:int = 0;
+		public var spawnTimer:int = 2;
 		
 		public function Pilkkipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -160,7 +161,7 @@ package screens
 				}
 				kalat.push(kala);
 				myStage.addChild(kala);
-				kalaTimer = 4*30;
+				kalaTimer = spawnTimer*30;
 			}
 			else
 			{
@@ -174,22 +175,46 @@ package screens
 			var kalaName:String;
 			kalaName = kalaList[Math.ceil(Math.random()*kalaList.length)-1];
 			
-			for (var i:int = 0; i<kalaList.lenght; i++)
+			kalaName = kalaConvert(kalaName);
+			
+			if (kalaName == tipS)
 			{
-				if (kalaList[i] == kalaName)
-				{
-					if (tKalat[i] == tipS)
-					{
-						kalaRandom = 0;
-					}
-					else
-					{
-						kalaRandom ++;
-					}
-				}
+				kalaRandom = 0;
+			}
+			else
+			{
+				kalaRandom ++;
 			}
 			
+			if (kalaRandom >= 5)
+			{
+				kalaName = tipS;
+				kalaRandom = 0;
+			}
+			
+			kalaName = kalaConvert(kalaName);
 			return kalaName;
+		}
+		
+		private function kalaConvert(name:String):String
+		{
+			var rName:String;
+			
+			for (var i:int = 0; i<kalaList.length; i++)
+			{
+				if (name == kalaList[i])
+				{
+					rName = tKalat[i];
+				}
+			}
+			for (var j:int = 0; j<tKalat.length; j++)
+			{
+				if (name == tKalat[j])
+				{
+					rName = kalaList[j];
+				}
+			}
+			return rName;
 		}
 		
 		private function getKalaTip():String

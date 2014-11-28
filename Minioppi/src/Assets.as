@@ -30,6 +30,8 @@ package
 		public static const Koukku:Class;
 		[Embed(source = "../Grafiikka/pilkkipeli/nuoli.png")]
 		public static const PilkkiNuoli:Class;
+		[Embed(source = "../Grafiikka/pilkkipeli/koukkuHitBox.png")]
+		public static const HitBox:Class;
 		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipAhven.png")]
 		public static const TAhven:Class;
