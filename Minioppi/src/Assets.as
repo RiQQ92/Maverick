@@ -30,6 +30,8 @@ package
 		public static const Koukku:Class;
 		[Embed(source = "../Grafiikka/pilkkipeli/nuoli.png")]
 		public static const PilkkiNuoli:Class;
+		[Embed(source = "../Grafiikka/pilkkipeli/koukkuHitBox.png")]
+		public static const HitBox:Class;
 		
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipAhven.png")]
 		public static const TAhven:Class;
@@ -41,8 +43,8 @@ package
 		public static const TLahna:Class;
 		[Embed(source = "../Grafiikka/pilkkipeli/kalatTip/KTipLohi.png")]
 		public static const TLohi:Class;
-		[Embed(source = "../Grafiikka/pilkkipeli/kalat/lohi.png")]
 		
+		[Embed(source = "../Grafiikka/pilkkipeli/kalat/lohi.png")]
 		public static const Lohi:Class;
 		[Embed(source = "../Grafiikka/pilkkipeli/kalat/ahven.png")]
 		public static const Ahven:Class;

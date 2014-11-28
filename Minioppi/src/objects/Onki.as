@@ -9,6 +9,7 @@ package objects
 	{
 		public var siima:Bitmap;
 		public var koukku:Bitmap;
+		public var koukkuHitBox:Bitmap;
 		
 		public var speed:Number;
 		public var disabled:Boolean = false;
@@ -18,11 +19,18 @@ package objects
 			speed = 0;
 			siima = Assets.getTexture("Siima");
 			koukku = Assets.getTexture("Koukku");
+			koukkuHitBox = Assets.getTexture("HitBox");
+			
+			koukkuHitBox.scaleX = 0.9;
+			koukkuHitBox.scaleY = 0.9;
 			siima.x = -siima.width/2;
 			koukku.x = -koukku.width/2;
 			koukku.y = +siima.height;
+			koukkuHitBox.x = -koukkuHitBox.width/2;
+			koukkuHitBox.y = +siima.height+koukkuHitBox.height/2;
 			this.addChild(siima);
 			this.addChild(koukku);
+			this.addChild(koukkuHitBox);
 			speed = 0;
 		}
 		
@@ -34,6 +42,7 @@ package objects
 				{
 					siima.y += speed;
 					koukku.y += speed;
+					koukkuHitBox.y += speed;
 				}
 				else
 				{
@@ -42,12 +51,14 @@ package objects
 						speed = 0;
 						siima.y += 2;
 						koukku.y += 2;
+						koukkuHitBox.y += 2;
 					}
 					if (koukku.y >= 685)
 					{
 						speed = 0;
 						siima.y -= 2;
 						koukku.y -= 2;
+						koukkuHitBox.y -= 2;
 					}
 				}
 			}

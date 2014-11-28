@@ -40,6 +40,7 @@ package screens
 		public var kalat:Array = new Array;
 		public var kalaDir:Boolean = true;
 		public var kalaRandom:int = 0;
+		public var spawnTimer:int = 1.25;
 		
 		public function Pilkkipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -60,11 +61,11 @@ package screens
 			tKalat.push("TKuha");
 			tKalat.push("TLohi");
 			
-			kalaList.push("ahven");
-			kalaList.push("hauki");
-			kalaList.push("lahna");
-			kalaList.push("kuha");
-			kalaList.push("lohi");
+			kalaList.push("Ahven");
+			kalaList.push("Hauki");
+			kalaList.push("Lahna");
+			kalaList.push("Kuha");
+			kalaList.push("Lohi");
 			
 			bg = Assets.getTexture("BGpilkkipeli");
 			
@@ -131,6 +132,7 @@ package screens
 		{
 			if (!pause)
 			{
+				checkHit();
 				Speed();
 				onki.update();
 				KalaSpawn();
@@ -138,7 +140,18 @@ package screens
 				{
 					kalat[i].update();
 				}
-				debug.replace(kalaRandom.toString());
+			}
+		}
+		
+		private function checkHit():void
+		{
+			for (var i:int = 0; i<kalat.length; i++)
+			{
+				if (onki.koukkuHitBox.hitTestObject(kalat[i].hitBox))
+				{
+					kalat[i].waveSpeed = 70;
+					kalat[i].speed = 40;
+				}
 			}
 		}
 		
@@ -146,22 +159,21 @@ package screens
 		{
 			if (kalaTimer <= 0)
 			{
-				var kala:PilkkiKalat = new PilkkiKalat(getKala(), kalaDir);
+				var kala:PilkkiKalat = new PilkkiKalat(getKalaName(), kalaDir);
 				kala.y = (Math.ceil(Math.random()*400)-1)+40;
 				if (kalaDir)
 				{
 					kalaDir = false;
-					kala.x = 700;
+					kala.x = 680;
 				}
 				else
 				{
 					kalaDir = true;
-					kala.x = 40;
+					kala.x = -40;
 				}
-				
 				kalat.push(kala);
 				myStage.addChild(kala);
-				kalaTimer = 4*30;
+				kalaTimer = spawnTimer*30;
 			}
 			else
 			{
@@ -170,12 +182,71 @@ package screens
 			
 		}
 		
-		private function getKala():String
+		private function getKalaName():String
 		{
 			var kalaName:String;
 			kalaName = kalaList[Math.ceil(Math.random()*kalaList.length)-1];
 			
+			kalaName = kalaConvert(kalaName);
+			
+			if (kalaName == tipS)
+			{
+				kalaRandom = 0;
+			}
+			else
+			{
+				kalaRandom ++;
+			}
+			
+			if (kalaRandom >= 5)
+			{
+				kalaName = tipS;
+				kalaRandom = 0;
+			}
+			
+			kalaName = kalaConvert(kalaName);
 			return kalaName;
+		}
+		
+		private function kalaConvert(name:String):String
+		{
+			var rName:String;
+			
+			for (var i:int = 0; i<kalaList.length; i++)
+			{
+				if (name == kalaList[i])
+				{
+					rName = tKalat[i];
+				}
+			}
+			for (var j:int = 0; j<tKalat.length; j++)
+			{
+				if (name == tKalat[j])
+				{
+					rName = kalaList[j];
+				}
+			}
+			return rName;
+		}
+		
+		private function getKalaTip():String
+		{
+			var kala:String;
+			
+			if (tipS == "")
+			{
+				kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
+			}
+			else
+			{
+				do
+				{
+					kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
+				}
+				while (tipS == kala);
+			}
+			
+			return kala;
 		}
 		
 		private function Speed():void
@@ -205,26 +276,6 @@ package screens
 					onki.speed += 0.5;
 				}
 			}
-		}
-		
-		private function getKalaTip():String
-		{
-			var kala:String;
-			
-			if (tipS == "")
-			{
-				kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
-			}
-			else
-			{
-				do
-				{
-					kala = tKalat[Math.ceil(Math.random()*tKalat.length)-1];
-				}
-				while (tipS == kala);
-			}
-			
-			return kala;
 		}
 		
 		private function onKeyPress(event:KeyboardEvent):void
