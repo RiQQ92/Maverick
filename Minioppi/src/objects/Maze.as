@@ -4,23 +4,21 @@ package objects
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	
-	import utility.DebugText;
 	import utility.MazeGenerator;
 	
 	public class Maze extends Sprite
 	{
 		private var fitToStage:Boolean = false;
 		
-		private var badAnimalAmount:int = 12;
+		private var badAnimalAmount:int = 10;
 		private var badAnimalCounter:int = 0;
 		
-		private var goodAnimalAmount:int = 12;
+		private var goodAnimalAmount:int = 10;
 		private var goodAnimalCounter:int = 0;
 		
 		private var mazeX:int = 0;
 		private var mazeY:int = 0;
 		
-		private var debug:DebugText;
 		private var myStage:Stage;
 		
 		private var mazeList:Array;
@@ -38,10 +36,6 @@ package objects
 			
 			myStage = _stage;
 			fitToStage = scaleToStage;
-			
-			debug = new DebugText("", myStage);
-			this.addChild(debug);
-			debug.replace("tulostanpa: ");
 			
 			mazeX = mazeWidth;
 			mazeY = mazeHeight;
@@ -99,6 +93,11 @@ package objects
 				}
 			}
 			
+			while(goodAnimalCounter < goodAnimalAmount || badAnimalCounter < badAnimalAmount)
+			{
+				increaseAnimals();
+			}
+			
 			// luo maalin oikeaan alareunaan
 			goal.x = this.width -(wallList[0].width*2);
 			goal.y = this.height -(wallList[0].height*2);
@@ -107,6 +106,54 @@ package objects
 			for(var a:int = 0 ; a < animalList.length; a++)
 				if(!animalList[a].isGood)
 					updateTilesAround(animalList[a].x / roadList[0].width, animalList[a].y / roadList[0].height);
+		}
+		
+		private function increaseAnimals():void
+		{
+			var blockWidth:Number = roadList[0].width;
+			var blockHeight:Number = roadList[0].height;
+			
+			for(var i:int = 0; i < roadList.length; i++)
+			{
+				if(goodAnimalCounter < goodAnimalAmount)
+				{
+					var reserved:Boolean = false;
+					
+					for(var b:int = 0; b < animalList.length; b++)
+						if(roadList[i].x == animalList[b].x && roadList[i].y == animalList[b].y)
+						{
+							reserved = true;
+						}
+					
+					if(!reserved)
+					{
+						addAnimal(roadList[i].x /blockWidth, roadList[i].y /blockHeight, true);
+					}
+				}
+			}
+			
+			for(i = 0; i < wallList.length; i++)
+			{
+				if(badAnimalCounter < badAnimalAmount)
+				{
+					var reserved2:Boolean = false;
+					
+					for(var c:int = 0; c < animalList.length; c++)
+						if(wallList[i].x == animalList[c].x && wallList[i].y == animalList[c].y)
+						{
+							reserved2 = true;
+						}
+					
+					if(!reserved2)
+					{
+						if(addAnimal(wallList[i].x /blockWidth, wallList[i].y /blockHeight, false))
+						{
+							this.removeChild(wallList[i]);
+							wallList.splice(i, 1);
+						}
+					}
+				}
+			}
 		}
 		
 		private function addAnimal(_x:int, _y:int, isGood:Boolean):Boolean
@@ -188,13 +235,18 @@ package objects
 					for(var b:int = 0; b < mazeY; b++)
 						temp[i][b] = !temp[i][b];
 			
-			if(_x == 0 || _x == mazeX-1)
+			
+			if(_x == 0 && _y == 0 || _x == mazeX-1 && _y == 0 || _x == 0 && _y == mazeY-1 || _x == mazeX-1 && _y == mazeY-1)
+			{
+				isPossible = false;
+			}
+			else if(_x == 0 || _x == mazeX-1)
 			{
 				// vasen reuna
 				if(_x == 0)
 				{
 					// tarkastaa muualta paitsi vasemmalta
-					if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x+1][_y]|| !temp[_x][_y+1] && temp[_x][_y-1] && temp[_x+1][_y])
+					if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x+1][_y])
 					{
 						isPossible = true;
 					}
@@ -203,7 +255,7 @@ package objects
 				else
 				{
 					// tarkastaa muualta paitsi oikealta
-					if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x-1][_y] || !temp[_x][_y+1] && !temp[_x-1][_y] && temp[_x][_y-1])
+					if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x-1][_y])
 					{
 						isPossible = true;
 					}
@@ -215,7 +267,7 @@ package objects
 				if(_y == 0)
 				{
 					// tarkastaa muualta paitsi ylhäältä
-					if(temp[_x][_y+1] && !temp[_x+1][_y] && !temp[_x-1][_y] || temp[_x][_y+1] && temp[_x-1][_y] && !temp[_x+1][_y])
+					if(temp[_x][_y+1] && !temp[_x+1][_y] && !temp[_x-1][_y])
 					{
 						isPossible = true;
 					}
@@ -224,7 +276,7 @@ package objects
 				else
 				{
 					// tarkastaa muualta paitsi alhaalta
-					if(!temp[_x][_y-1] && temp[_x+1][_y] && temp[_x-1][_y] || !temp[_x+1][_y] && !temp[_x-1][_y] && temp[_x][_y-1])
+					if(temp[_x][_y-1] && !temp[_x+1][_y] && !temp[_x-1][_y])
 					{
 						isPossible = true;
 					}
@@ -234,11 +286,16 @@ package objects
 			else
 			{
 				// tarkastaa joka suunnan
-				if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x+1][_y] && temp[_x-1][_y] || temp[_x+1][_y] && !temp[_x-1][_y] && temp[_x][_y-1] && temp[_x][_y+1])
+				if(!temp[_x][_y-1] && !temp[_x][_y+1] && temp[_x+1][_y] && temp[_x-1][_y] || !temp[_x+1][_y] && !temp[_x-1][_y] && temp[_x][_y-1] && temp[_x][_y+1])
 				{
 					isPossible = true;
 				}
 			}
+			
+			if(!isGood)
+				for(var a:int = 0; a < mazeX; a++)
+					for(var c:int = 0; c < mazeY; c++)
+						temp[a][c] = !temp[a][c];
 			
 			return isPossible;
 		}
@@ -323,8 +380,6 @@ package objects
 				if(mazeList[_x-1][_y])
 					dir += "W";
 			}
-			
-			debug.replace("tulostanpa: "+ dir);
 			
 			return dir;
 		}
