@@ -1,6 +1,7 @@
 package screens
 {
 	import UIelements.Button;
+	import UIelements.OhjeIkkuna;
 	import UIelements.SlideList;
 	
 	import flash.display.Bitmap;
@@ -25,6 +26,7 @@ package screens
 		private var kuvaListSelection:YhdistelyKuvaButton;
 		
 		private var bg:Bitmap = Assets.getTexture("Yhdistely_bg");
+		private var ohje:OhjeIkkuna = new OhjeIkkuna("OhjeYhdistely");
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
 		
@@ -38,6 +40,16 @@ package screens
 			
 			myStage = _stage;
 			screenHandler = scrnHandle;
+			this.addChild(bg);
+			
+			this.addChild(ohje);
+			ohje.addEventListener(MouseEvent.CLICK, start);
+		}
+		
+		protected function start(event:MouseEvent):void
+		{
+			ohje.removeEventListener(MouseEvent.CLICK, start);
+			this.removeChild(ohje);
 			
 			textListSelection = new YhdistelyTekstiButton("Null", "", myStage);
 			textListSelection.visible = false;
@@ -239,7 +251,6 @@ package screens
 		
 		private function Draw():void
 		{
-			this.addChild(bg);
 			this.addChild(kuvaListSelection);
 			this.addChild(textListSelection);
 			

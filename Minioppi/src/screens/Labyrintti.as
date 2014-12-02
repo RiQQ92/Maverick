@@ -1,6 +1,7 @@
 package screens
 {
 	import UIelements.Button;
+	import UIelements.OhjeIkkuna;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
@@ -22,6 +23,8 @@ package screens
 		private var player:Player;
 		private var takaisin:Button = new Button("Tausta");
 		
+		private var ohje:OhjeIkkuna = new OhjeIkkuna("OhjeLabyrintti");
+		
 		public function Labyrintti(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			super();
@@ -31,6 +34,14 @@ package screens
 		
 			lab = new Maze(16, 12, myStage, false);
 			this.addChild(lab);
+			this.addChild(ohje);
+			ohje.addEventListener(MouseEvent.CLICK, start);
+		}
+		
+		private function start(evt:MouseEvent):void
+		{
+			ohje.removeEventListener(MouseEvent.CLICK, start);
+			this.removeChild(ohje);
 			
 			player = new Player(myStage, this, lab);
 			player.x = 0;

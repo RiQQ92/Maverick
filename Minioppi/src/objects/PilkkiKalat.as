@@ -8,7 +8,7 @@ package objects
 	public class PilkkiKalat extends Sprite
 	{
 		public var kName:String;
-		private var kala:Bitmap;
+		public var kala:Bitmap;
 		public var rotator:Number = 0;
 		public var direction:Boolean;
 		public var hitBox:Bitmap;

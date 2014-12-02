@@ -21,6 +21,8 @@ package screens
 	{
 		private var myStage:Stage;
 		private var screenHandler:ScreenHandler;
+		private var exit:Button = new Button("TakaisinNappi");
+		
 		public var debug:DebugText;
 		public var keyUp:Boolean;
 		public var keyDown:Boolean;
@@ -76,6 +78,9 @@ package screens
 			nuoli.scaleY = 0.7;
 			
 			this.addChild(bg);
+			this.addChild(exit);
+			exit.x = myStage.stageWidth-exit.width;
+			exit.visible = false;
 			this.addChild(ohje);
 			ohje.addEventListener(MouseEvent.CLICK, skipIntro);
 		}
@@ -84,6 +89,14 @@ package screens
 		{
 			ohje.removeEventListener(MouseEvent.CLICK, skipIntro);
 			this.removeChild(ohje);
+			
+			exit.addListener(
+				function(event:MouseEvent):void
+				{
+					screenHandler.inScreen = "menu";
+				}
+			);
+			
 			// pelin aloitus
 			tipS = getKalaTip();
 			
@@ -101,6 +114,7 @@ package screens
 			{
 				showTip();
 				myStage.removeChild(nuoli);
+				exit.visible = false;
 				pause = true;
 			});
 			addListeners();
@@ -116,6 +130,7 @@ package screens
 			{
 				myStage.removeChild(tip);
 				myStage.addChild(nuoli);
+				exit.visible = true;
 				pause = false;
 			});
 			myStage.addChild(tip);
@@ -311,7 +326,19 @@ package screens
 		
 		public function Destruct():void
 		{
+			myStage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			myStage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+			myStage.removeEventListener(Event.ENTER_FRAME, update);
+			myStage.removeChild(nuoli);
 			
+			kalat.forEach(removeFishes);
+			kalat = new Array();
+		}
+		
+		private function removeFishes(obj:*, index:*, arr:*):void
+		{
+			obj.removeChild(obj.kala);
+			obj.removeChild(obj.hitBox);
 		}
 	}
 }

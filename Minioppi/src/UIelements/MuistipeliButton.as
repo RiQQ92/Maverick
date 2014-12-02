@@ -94,7 +94,7 @@ package UIelements
 				{
 					if(!rewinding)
 					{
-						image.scaleX -= 0.05 * scaleFactor;
+						image.scaleX -= 0.1 * scaleFactor;
 						if(image.scaleX <= 0)
 						{
 							image.bitmapData = Assets.getTexture(imageS).bitmapData;
@@ -106,7 +106,7 @@ package UIelements
 					}
 					else
 					{
-						image.scaleX += 0.05 * scaleFactor;
+						image.scaleX += 0.1 * scaleFactor;
 						if(image.scaleX >= 0.4 * scaleFactor)
 						{
 							rewinding = !rewinding;
@@ -119,7 +119,7 @@ package UIelements
 				{
 					if(!rewinding)
 					{
-						image.scaleX -= 0.05 * scaleFactor;
+						image.scaleX -= 0.1 * scaleFactor;
 						if(image.scaleX <= 0)
 						{
 							image.bitmapData = Assets.getTexture("LehtiBackCrop").bitmapData;
@@ -129,7 +129,7 @@ package UIelements
 					}
 					else
 					{
-						image.scaleX += 0.05 * scaleFactor;
+						image.scaleX += 0.1 * scaleFactor;
 						if(image.scaleX >= 0.4 * scaleFactor)
 						{
 							rewinding = !rewinding;

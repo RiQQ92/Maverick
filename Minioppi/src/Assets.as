@@ -16,6 +16,9 @@ package
 		[Embed(source = "../Grafiikka/Labyrintti/LabyrinttiOhje.png")]
 		public static const OhjeLabyrintti:Class;
 		
+		[Embed(source = "../Grafiikka/Yhdistely/YhdistelyOhje.png")]
+		public static const OhjeYhdistely:Class;
+		
 		[Embed(source = "../Grafiikka/Pilkkipeli/PilkkiOhje.png")]
 		public static const OhjePilkki:Class;
 		//*********************
@@ -279,6 +282,8 @@ package
 		public static const Aani_nappi:Class;
 		[Embed(source="../Grafiikka/Muu/ButtonBlocker.png")]
 		public static const Button_Blocker:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/napit/lopeta_nappi.png")]
+		public static const TakaisinNappi:Class;
 		//********************
 		
 		// Aanet
