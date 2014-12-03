@@ -23,6 +23,873 @@ package
 		public static const OhjePilkki:Class;
 		//*********************
 		
+		//Palapeli
+		//*********************
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala1.png")]
+		public static const kuva1pala1:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala2.png")]
+		public static const kuva1pala2:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala3.png")]
+		public static const kuva1pala3:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala4.png")]
+		public static const kuva1pala4:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala5.png")]
+		public static const kuva1pala5:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala6.png")]
+		public static const kuva1pala6:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala7.png")]
+		public static const kuva1pala7:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala8.png")]
+		public static const kuva1pala8:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala9.png")]
+		public static const kuva1pala9:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala10.png")]
+		public static const kuva1pala10:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala11.png")]
+		public static const kuva1pala11:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala12.png")]
+		public static const kuva1pala12:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala13.png")]
+		public static const kuva1pala13:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala14.png")]
+		public static const kuva1pala14:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala15.png")]
+		public static const kuva1pala15:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala16.png")]
+		public static const kuva1pala16:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala17.png")]
+		public static const kuva1pala17:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala18.png")]
+		public static const kuva1pala18:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala19.png")]
+		public static const kuva1pala19:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala20.png")]
+		public static const kuva1pala20:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala21.png")]
+		public static const kuva1pala21:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala22.png")]
+		public static const kuva1pala22:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala23.png")]
+		public static const kuva1pala23:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala24.png")]
+		public static const kuva1pala24:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala25.png")]
+		public static const kuva1pala25:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala26.png")]
+		public static const kuva1pala26:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala27.png")]
+		public static const kuva1pala27:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala28.png")]
+		public static const kuva1pala28:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala29.png")]
+		public static const kuva1pala29:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala30.png")]
+		public static const kuva1pala30:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala31.png")]
+		public static const kuva1pala31:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala32.png")]
+		public static const kuva1pala32:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala33.png")]
+		public static const kuva1pala33:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala34.png")]
+		public static const kuva1pala34:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala35.png")]
+		public static const kuva1pala35:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala36.png")]
+		public static const kuva1pala36:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala37.png")]
+		public static const kuva1pala37:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala38.png")]
+		public static const kuva1pala38:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala39.png")]
+		public static const kuva1pala39:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala40.png")]
+		public static const kuva1pala40:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala41.png")]
+		public static const kuva1pala41:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala42.png")]
+		public static const kuva1pala42:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala43.png")]
+		public static const kuva1pala43:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala44.png")]
+		public static const kuva1pala44:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala45.png")]
+		public static const kuva1pala45:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala46.png")]
+		public static const kuva1pala46:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala47.png")]
+		public static const kuva1pala47:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala48.png")]
+		public static const kuva1pala48:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala1.png")]
+		public static const kuva2pala1:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala2.png")]
+		public static const kuva2pala2:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala3.png")]
+		public static const kuva2pala3:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala4.png")]
+		public static const kuva2pala4:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala5.png")]
+		public static const kuva2pala5:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala6.png")]
+		public static const kuva2pala6:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala7.png")]
+		public static const kuva2pala7:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala8.png")]
+		public static const kuva2pala8:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala9.png")]
+		public static const kuva2pala9:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala10.png")]
+		public static const kuva2pala10:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala11.png")]
+		public static const kuva2pala11:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala12.png")]
+		public static const kuva2pala12:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala13.png")]
+		public static const kuva2pala13:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala14.png")]
+		public static const kuva2pala14:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala15.png")]
+		public static const kuva2pala15:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala16.png")]
+		public static const kuva2pala16:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala17.png")]
+		public static const kuva2pala17:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala18.png")]
+		public static const kuva2pala18:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala19.png")]
+		public static const kuva2pala19:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala20.png")]
+		public static const kuva2pala20:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala21.png")]
+		public static const kuva2pala21:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala22.png")]
+		public static const kuva2pala22:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala23.png")]
+		public static const kuva2pala23:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala24.png")]
+		public static const kuva2pala24:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala25.png")]
+		public static const kuva2pala25:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala26.png")]
+		public static const kuva2pala26:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala27.png")]
+		public static const kuva2pala27:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala28.png")]
+		public static const kuva2pala28:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala29.png")]
+		public static const kuva2pala29:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala30.png")]
+		public static const kuva2pala30:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala31.png")]
+		public static const kuva2pala31:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala32.png")]
+		public static const kuva2pala32:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala33.png")]
+		public static const kuva2pala33:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala34.png")]
+		public static const kuva2pala34:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala35.png")]
+		public static const kuva2pala35:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala36.png")]
+		public static const kuva2pala36:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala37.png")]
+		public static const kuva2pala37:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala38.png")]
+		public static const kuva2pala38:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala39.png")]
+		public static const kuva2pala39:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala40.png")]
+		public static const kuva2pala40:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala41.png")]
+		public static const kuva2pala41:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala42.png")]
+		public static const kuva2pala42:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala43.png")]
+		public static const kuva2pala43:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala44.png")]
+		public static const kuva2pala44:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala45.png")]
+		public static const kuva2pala45:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala46.png")]
+		public static const kuva2pala46:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala47.png")]
+		public static const kuva2pala47:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 2 palat/pala48.png")]
+		public static const kuva2pala48:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala1.png")]
+		public static const kuva3pala1:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala2.png")]
+		public static const kuva3pala2:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala3.png")]
+		public static const kuva3pala3:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala4.png")]
+		public static const kuva3pala4:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala5.png")]
+		public static const kuva3pala5:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala6.png")]
+		public static const kuva3pala6:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala7.png")]
+		public static const kuva3pala7:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala8.png")]
+		public static const kuva3pala8:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala9.png")]
+		public static const kuva3pala9:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala10.png")]
+		public static const kuva3pala10:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala11.png")]
+		public static const kuva3pala11:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala12.png")]
+		public static const kuva3pala12:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala13.png")]
+		public static const kuva3pala13:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala14.png")]
+		public static const kuva3pala14:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala15.png")]
+		public static const kuva3pala15:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala16.png")]
+		public static const kuva3pala16:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala17.png")]
+		public static const kuva3pala17:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala18.png")]
+		public static const kuva3pala18:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala19.png")]
+		public static const kuva3pala19:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala20.png")]
+		public static const kuva3pala20:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala21.png")]
+		public static const kuva3pala21:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala22.png")]
+		public static const kuva3pala22:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala23.png")]
+		public static const kuva3pala23:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala24.png")]
+		public static const kuva3pala24:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala25.png")]
+		public static const kuva3pala25:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala26.png")]
+		public static const kuva3pala26:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala27.png")]
+		public static const kuva3pala27:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala28.png")]
+		public static const kuva3pala28:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala29.png")]
+		public static const kuva3pala29:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala30.png")]
+		public static const kuva3pala30:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala31.png")]
+		public static const kuva3pala31:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala32.png")]
+		public static const kuva3pala32:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala33.png")]
+		public static const kuva3pala33:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala34.png")]
+		public static const kuva3pala34:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala35.png")]
+		public static const kuva3pala35:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala36.png")]
+		public static const kuva3pala36:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala37.png")]
+		public static const kuva3pala37:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala38.png")]
+		public static const kuva3pala38:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala39.png")]
+		public static const kuva3pala39:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala40.png")]
+		public static const kuva3pala40:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala41.png")]
+		public static const kuva3pala41:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala42.png")]
+		public static const kuva3pala42:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala43.png")]
+		public static const kuva3pala43:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala44.png")]
+		public static const kuva3pala44:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala45.png")]
+		public static const kuva3pala45:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala46.png")]
+		public static const kuva3pala46:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala47.png")]
+		public static const kuva3pala47:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 3 palat/pala48.png")]
+		public static const kuva3pala48:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala1.png")]
+		public static const kuva4pala1:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala2.png")]
+		public static const kuva4pala2:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala3.png")]
+		public static const kuva4pala3:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala4.png")]
+		public static const kuva4pala4:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala5.png")]
+		public static const kuva4pala5:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala6.png")]
+		public static const kuva4pala6:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala7.png")]
+		public static const kuva4pala7:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala8.png")]
+		public static const kuva4pala8:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala9.png")]
+		public static const kuva4pala9:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala10.png")]
+		public static const kuva4pala10:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala11.png")]
+		public static const kuva4pala11:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala12.png")]
+		public static const kuva4pala12:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala13.png")]
+		public static const kuva4pala13:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala14.png")]
+		public static const kuva4pala14:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala15.png")]
+		public static const kuva4pala15:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala16.png")]
+		public static const kuva4pala16:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala17.png")]
+		public static const kuva4pala17:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala18.png")]
+		public static const kuva4pala18:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala19.png")]
+		public static const kuva4pala19:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala20.png")]
+		public static const kuva4pala20:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala21.png")]
+		public static const kuva4pala21:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala22.png")]
+		public static const kuva4pala22:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala23.png")]
+		public static const kuva4pala23:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala24.png")]
+		public static const kuva4pala24:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala25.png")]
+		public static const kuva4pala25:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala26.png")]
+		public static const kuva4pala26:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala27.png")]
+		public static const kuva4pala27:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala28.png")]
+		public static const kuva4pala28:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala29.png")]
+		public static const kuva4pala29:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala30.png")]
+		public static const kuva4pala30:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala31.png")]
+		public static const kuva4pala31:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala32.png")]
+		public static const kuva4pala32:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala33.png")]
+		public static const kuva4pala33:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala34.png")]
+		public static const kuva4pala34:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala35.png")]
+		public static const kuva4pala35:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala36.png")]
+		public static const kuva4pala36:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala37.png")]
+		public static const kuva4pala37:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala38.png")]
+		public static const kuva4pala38:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala39.png")]
+		public static const kuva4pala39:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala40.png")]
+		public static const kuva4pala40:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala41.png")]
+		public static const kuva4pala41:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala42.png")]
+		public static const kuva4pala42:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala43.png")]
+		public static const kuva4pala43:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala44.png")]
+		public static const kuva4pala44:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala45.png")]
+		public static const kuva4pala45:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala46.png")]
+		public static const kuva4pala46:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala47.png")]
+		public static const kuva4pala47:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 4 palat/pala48.png")]
+		public static const kuva4pala48:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala1.png")]
+		public static const kuva5pala1:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala2.png")]
+		public static const kuva5pala2:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala3.png")]
+		public static const kuva5pala3:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala4.png")]
+		public static const kuva5pala4:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala5.png")]
+		public static const kuva5pala5:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala6.png")]
+		public static const kuva5pala6:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala7.png")]
+		public static const kuva5pala7:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala8.png")]
+		public static const kuva5pala8:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala9.png")]
+		public static const kuva5pala9:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala10.png")]
+		public static const kuva5pala10:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala11.png")]
+		public static const kuva5pala11:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala12.png")]
+		public static const kuva5pala12:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala13.png")]
+		public static const kuva5pala13:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala14.png")]
+		public static const kuva5pala14:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala15.png")]
+		public static const kuva5pala15:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala16.png")]
+		public static const kuva5pala16:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala17.png")]
+		public static const kuva5pala17:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala18.png")]
+		public static const kuva5pala18:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala19.png")]
+		public static const kuva5pala19:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala20.png")]
+		public static const kuva5pala20:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala21.png")]
+		public static const kuva5pala21:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala22.png")]
+		public static const kuva5pala22:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala23.png")]
+		public static const kuva5pala23:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala24.png")]
+		public static const kuva5pala24:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala25.png")]
+		public static const kuva5pala25:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala26.png")]
+		public static const kuva5pala26:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala27.png")]
+		public static const kuva5pala27:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala28.png")]
+		public static const kuva5pala28:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala29.png")]
+		public static const kuva5pala29:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala30.png")]
+		public static const kuva5pala30:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala31.png")]
+		public static const kuva5pala31:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala32.png")]
+		public static const kuva5pala32:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala33.png")]
+		public static const kuva5pala33:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala34.png")]
+		public static const kuva5pala34:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala35.png")]
+		public static const kuva5pala35:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala36.png")]
+		public static const kuva5pala36:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala37.png")]
+		public static const kuva5pala37:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala38.png")]
+		public static const kuva5pala38:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala39.png")]
+		public static const kuva5pala39:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala40.png")]
+		public static const kuva5pala40:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala41.png")]
+		public static const kuva5pala41:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala42.png")]
+		public static const kuva5pala42:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala43.png")]
+		public static const kuva5pala43:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala44.png")]
+		public static const kuva5pala44:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala45.png")]
+		public static const kuva5pala45:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala46.png")]
+		public static const kuva5pala46:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala47.png")]
+		public static const kuva5pala47:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 5 palat/pala48.png")]
+		public static const kuva5pala48:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala1.png")]
+		public static const kuva6pala1:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala2.png")]
+		public static const kuva6pala2:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala3.png")]
+		public static const kuva6pala3:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala4.png")]
+		public static const kuva6pala4:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala5.png")]
+		public static const kuva6pala5:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala6.png")]
+		public static const kuva6pala6:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala7.png")]
+		public static const kuva6pala7:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala8.png")]
+		public static const kuva6pala8:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala9.png")]
+		public static const kuva6pala9:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala10.png")]
+		public static const kuva6pala10:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala11.png")]
+		public static const kuva6pala11:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala12.png")]
+		public static const kuva6pala12:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala13.png")]
+		public static const kuva6pala13:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala14.png")]
+		public static const kuva6pala14:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala15.png")]
+		public static const kuva6pala15:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala16.png")]
+		public static const kuva6pala16:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala17.png")]
+		public static const kuva6pala17:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala18.png")]
+		public static const kuva6pala18:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala19.png")]
+		public static const kuva6pala19:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala20.png")]
+		public static const kuva6pala20:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala21.png")]
+		public static const kuva6pala21:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala22.png")]
+		public static const kuva6pala22:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala23.png")]
+		public static const kuva6pala23:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala24.png")]
+		public static const kuva6pala24:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala25.png")]
+		public static const kuva6pala25:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala26.png")]
+		public static const kuva6pala26:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala27.png")]
+		public static const kuva6pala27:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala28.png")]
+		public static const kuva6pala28:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala29.png")]
+		public static const kuva6pala29:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala30.png")]
+		public static const kuva6pala30:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala31.png")]
+		public static const kuva6pala31:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala32.png")]
+		public static const kuva6pala32:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala33.png")]
+		public static const kuva6pala33:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala34.png")]
+		public static const kuva6pala34:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala35.png")]
+		public static const kuva6pala35:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala36.png")]
+		public static const kuva6pala36:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala37.png")]
+		public static const kuva6pala37:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala38.png")]
+		public static const kuva6pala38:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala39.png")]
+		public static const kuva6pala39:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala40.png")]
+		public static const kuva6pala40:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala41.png")]
+		public static const kuva6pala41:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala42.png")]
+		public static const kuva6pala42:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala43.png")]
+		public static const kuva6pala43:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala44.png")]
+		public static const kuva6pala44:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala45.png")]
+		public static const kuva6pala45:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala46.png")]
+		public static const kuva6pala46:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala47.png")]
+		public static const kuva6pala47:Class;
+		
+		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala48.png")]
+		public static const kuva6pala48:Class;
+		//*********************
+		
 		// Pilkkipeli
 		//********************
 		[Embed(source = "../Grafiikka/pilkkipeli/pilkkipeli.png")]
