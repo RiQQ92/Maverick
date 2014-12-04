@@ -14,6 +14,8 @@ package objects
 		public var speed:Number;
 		public var disabled:Boolean = false;
 		
+		public var available:Boolean = true;
+		
 		public function Onki()
 		{
 			speed = 0;

@@ -20,6 +20,10 @@ package objects
 		public var yOffSet:Number;
 		
 		public var hit:Boolean = false;
+		public var caught:Boolean = false;
+		
+		public var deleteTimer:int = 0;
+		public var deleteGo:Boolean = false;
 		
 		public function PilkkiKalat(kalaName:String, dir:Boolean)
 		{
@@ -135,6 +139,21 @@ package objects
 				kala.x -= speed;
 				hitBox.x -= speed;
 			}
+			
+			if (!caught)
+			{
+				deleteTimer ++;
+			}
+			if (deleteTimer >= 10*30)
+			{
+				deleteGo = true;
+			}
+		}
+		
+		public function caughtUpdate(locY:Number):void
+		{
+			this.kala.y = locY;
+			this.hitBox.y = locY;
 		}
 		
 	}
