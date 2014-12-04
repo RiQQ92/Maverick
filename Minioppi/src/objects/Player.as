@@ -57,9 +57,7 @@ package objects
 			cam = null;
 			this.removeChild(image);
 			
-			myStage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-			myStage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
-			myStage.removeEventListener(Event.ENTER_FRAME, update);
+			removeListeners();
 		}
 		
 		public function addListeners():void
@@ -123,6 +121,23 @@ package objects
 		
 		private function update(event:Event):void
 		{
+			/*
+			if(keyUp || keyDown || keyLeft || keyRight)
+			{
+				if(!image.isPlaying)
+				{
+					image.play();
+				}
+			}
+			else
+			{
+				if(image.isPlaying)
+				{
+					image.stop();
+				}
+			}
+			*/
+			
 			if(keyUp)
 			{
 				if((this.y) > 0)
@@ -160,7 +175,7 @@ package objects
 			{
 				for(var h:int; h < lab.animalList.length; h++)
 				{
-					if(this.hitTestObject(lab.animalList[h]))
+					if(this.hitTestObject(lab.animalList[h].hitbox))
 					{
 						if(!lab.animalList[h].isGood)
 						{

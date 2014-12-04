@@ -278,12 +278,16 @@ package
 		//********************
 		[Embed(source = "../Grafiikka/Muu/VCAM_zone.png")]
 		public static const VCAM_zone:Class;
+		[Embed(source = "../Grafiikka/Ohjeet/OhjePohja.png")]
+		public static const OhjePohja:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kaiutin_nappi.png")]
 		public static const Aani_nappi:Class;
 		[Embed(source="../Grafiikka/Muu/ButtonBlocker.png")]
 		public static const Button_Blocker:Class;
 		[Embed(source="../Grafiikka/alkuvalikko/napit/lopeta_nappi.png")]
 		public static const TakaisinNappi:Class;
+		[Embed(source="../Grafiikka/Muu/TimerBar.png")]
+		public static const TimerBar:Class;
 		//********************
 		
 		// Aanet

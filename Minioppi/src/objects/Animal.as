@@ -7,6 +7,8 @@ package objects
 	{
 		private var image:Bitmap;
 		
+		public var hitbox:Bitmap = Assets.getTexture("HitBox");
+		
 		public var isGood:Boolean;
 		
 		public function Animal(_isGood:Boolean)
@@ -19,7 +21,11 @@ package objects
 			else
 				image = randomGood();
 			
+			this.addChild(hitbox);
 			this.addChild(image);
+			hitbox.visible = false;
+			hitbox.x = image.width/2 -hitbox.width/2;
+			hitbox.y = image.height/2 -hitbox.height/2;
 		}
 		
 		// arpoo vaarattoman eläimen kuvan

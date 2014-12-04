@@ -71,7 +71,7 @@ package screens
 			
 			bg = Assets.getTexture("BGpilkkipeli");
 			
-			debug = new DebugText("", myStage);
+			//debug = new DebugText("", myStage);
 			ohje = new OhjeIkkuna("OhjePilkki");
 			nuoli = new Button("PilkkiNuoli");
 			nuoli.scaleX = 0.7;
@@ -118,7 +118,7 @@ package screens
 				pause = true;
 			});
 			addListeners();
-			this.addChild(debug);
+			//this.addChild(debug);
 		}
 		
 		private function showTip():void
