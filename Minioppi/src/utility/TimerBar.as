@@ -14,9 +14,9 @@ package utility
 		
 		private var bg:Bitmap = Assets.getTexture("TimerBar");
 		
-		public function TimerBar()
+		public function TimerBar(_countDown:Boolean = false, countMins:int = 2, countSecs:int = 30)
 		{
-			super();
+			super(_countDown, countMins, countSecs);
 			
 			font.size = 30;
 			font.align = TextFormatAlign.LEFT;

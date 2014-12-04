@@ -5,6 +5,7 @@ package utility
 	
 	public class CountTime extends Sprite
 	{
+		private var countDown:Boolean = false;
 		private var pause:Boolean = false;
 		
 		private var milliseconds:int = 0;
@@ -12,8 +13,18 @@ package utility
 		private var minutes:int = 0;
 		private var hours:int = 0;
 		
-		public function CountTime()
+		public function CountTime(_countDown:Boolean = false, countMins:int = 2, countSecs:int = 30)
 		{
+			trace(countMins);
+			
+			countDown = _countDown;
+			if(countDown)
+			{
+				minutes = countMins;
+				seconds = countSecs;
+				milliseconds = 29;
+			}
+			
 			this.addEventListener(Event.ENTER_FRAME, update);
 		}
 		
@@ -21,22 +32,45 @@ package utility
 		{
 			if(!pause)
 			{
-				milliseconds++;
-				
-				if(milliseconds >= 30)
+				if(!countDown)
 				{
-					milliseconds = 0;
-					seconds++;
+					milliseconds++;
+					
+					if(milliseconds >= 30)
+					{
+						milliseconds = 0;
+						seconds++;
+					}
+					if(seconds >= 60)
+					{
+						seconds = 0;
+						minutes++;
+					}
+					if(minutes >= 60)
+					{
+						minutes = 0;
+						hours++;
+					}
 				}
-				if(seconds >= 60)
+				else
 				{
-					seconds = 0;
-					minutes++;
-				}
-				if(minutes >= 60)
-				{
-					minutes = 0;
-					hours++;
+					milliseconds--;
+					
+					if(milliseconds < 0)
+					{
+						milliseconds = 29;
+						seconds--;
+					}
+					if(seconds < 0)
+					{
+						seconds = 59;
+						minutes--;
+					}
+					if(minutes < 0)
+					{
+						minutes = 59;
+						hours--;
+					}
 				}
 			}
 		}
