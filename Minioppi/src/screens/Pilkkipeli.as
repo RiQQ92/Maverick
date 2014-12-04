@@ -45,6 +45,8 @@ package screens
 		public var spawnTimer:int = 1.5;
 		public var koukkuY:Number;
 		
+		public var fishes:int;
+		
 		public function Pilkkipeli(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			myStage = _stage;
@@ -77,6 +79,8 @@ package screens
 			nuoli = new Button("PilkkiNuoli");
 			nuoli.scaleX = 0.7;
 			nuoli.scaleY = 0.7;
+			
+			fishes = 0;
 			
 			this.addChild(bg);
 			this.addChild(exit);
@@ -148,10 +152,15 @@ package screens
 		{
 			if (!pause)
 			{
+				
 				koukkuY = onki.koukku.y-230;
 				if (onki.available)
 				{
 					checkHit();
+				}
+				else
+				{
+					checkReel();
 				}
 				Speed();
 				onki.update();
@@ -162,7 +171,7 @@ package screens
 					{
 						kalat[i].update();
 					}
-					else
+					else if (kalat[i].done != true)
 					{
 						kalat[i].caughtUpdate(koukkuY-kalat[i].y);
 					}
@@ -173,8 +182,24 @@ package screens
 						kalat.splice(i, 1);
 					}
 				}
+				debug.replace(fishes.toString());
 			}
-			debug.replace(koukkuY.toString());
+		}
+		
+		private function checkReel():void
+		{
+			if (onki.koukku.y <= 260)
+			{
+				for (var i:int = 0; i<kalat.length; i++)
+				{
+					if (kalat[i].caught == true)
+					{
+						kalat[i].fishUp(kalat[i].x, kalat[i].y);
+						onki.available = true;
+						fishes ++;
+					}
+				}
+			}
 		}
 		
 		private function checkHit():void
@@ -189,6 +214,16 @@ package screens
 					{
 						kalat[i].caught = true;
 						onki.available = false;
+						if (kalat[i].direction == true)
+						{
+							kalat[i].kala.rotation = 90;
+							kalat[i].kala.x = 320-kalat[i].x+onki.koukku.width/2;
+						}
+						else
+						{
+							kalat[i].kala.rotation = -90;
+							kalat[i].kala.x = 320-kalat[i].x-onki.koukku.width/2;
+						}
 					}
 					else
 					{

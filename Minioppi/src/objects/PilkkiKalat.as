@@ -1,5 +1,7 @@
 package objects
 {
+	import com.greensock.TweenLite;
+	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	
@@ -21,6 +23,7 @@ package objects
 		
 		public var hit:Boolean = false;
 		public var caught:Boolean = false;
+		public var done:Boolean = false;
 		
 		public var deleteTimer:int = 0;
 		public var deleteGo:Boolean = false;
@@ -28,7 +31,7 @@ package objects
 		public function PilkkiKalat(kalaName:String, dir:Boolean)
 		{
 			hitBox = Assets.getTexture("HitBox");
-			hitBox.scaleX = 0.5;
+			hitBox.scaleX = 3;
 			hitBox.scaleY = 0.5;
 			direction = dir;
 			kName = kalaName;
@@ -49,10 +52,10 @@ package objects
 					if (!direction)
 					{
 						kala.scaleX = -0.4;
-						hitBox.x += kala.width/2-hitBox.width/2;
+						hitBox.x += kala.width/2-hitBox.width;
 					} else {
 						kala.scaleX = 0.4;
-						hitBox.x -= kala.width/2+hitBox.width/2;
+						hitBox.x -= kala.width/2;
 					}
 					kala.scaleY = 0.4;
 					yOffSet = hitBox.height*1.5;
@@ -61,10 +64,12 @@ package objects
 					if (!direction)
 					{
 						kala.scaleX = -0.2;
-						hitBox.x += kala.width/2-hitBox.width/2;
+						hitBox.scaleX = 1.5;
+						hitBox.x += kala.width/2-hitBox.width;
 					} else {
 						kala.scaleX = 0.2;
-						hitBox.x -= kala.width/2+hitBox.width/2;
+						hitBox.scaleX = 1.5;
+						hitBox.x -= kala.width/2;
 					}
 					kala.scaleY = 0.2;
 					yOffSet = hitBox.height*2;
@@ -73,10 +78,10 @@ package objects
 					if (!direction)
 					{
 						kala.scaleX = -0.3;
-						hitBox.x += kala.width/2-hitBox.width/2;
+						hitBox.x += kala.width/2-hitBox.width;
 					} else {
 						kala.scaleX = 0.3;
-						hitBox.x -= kala.width/2+hitBox.width/2;
+						hitBox.x -= kala.width/2;
 					}
 					kala.scaleY = 0.3;
 					yOffSet = hitBox.height*1.5;
@@ -85,10 +90,10 @@ package objects
 					if (!direction)
 					{
 						kala.scaleX = -0.325;
-						hitBox.x += kala.width/2-hitBox.width/2;
+						hitBox.x += kala.width/2-hitBox.width;
 					} else {
 						kala.scaleX = 0.325;
-						hitBox.x -= kala.width/2+hitBox.width/2;
+						hitBox.x -= kala.width/2;
 					}
 					kala.scaleY = 0.325;
 					yOffSet = hitBox.height*1.5;
@@ -97,10 +102,12 @@ package objects
 					if (!direction)
 					{
 						kala.scaleX = -0.25;
-						hitBox.x += kala.width/2-hitBox.width/2;
+						hitBox.scaleX = 1.5;
+						hitBox.x += kala.width/2-hitBox.width;
 					} else {
 						kala.scaleX = 0.25;
-						hitBox.x -= kala.width/2+hitBox.width/2;
+						hitBox.scaleX = 1.5;
+						hitBox.x -= kala.width/2;
 					}
 					kala.scaleY = 0.25;
 					yOffSet = hitBox.height*1.25;
@@ -154,6 +161,25 @@ package objects
 		{
 			this.kala.y = locY;
 			this.hitBox.y = locY;
+		}
+		
+		public function fishUp(offSetX:int, offSetY:int):void
+		{
+			var oX:int = offSetX;
+			var oY:int = offSetY;
+			this.hitBox.y += -200;
+			done = true;
+			
+			var loc:Object = {x:0, y:0, onComplete: goDelete};
+			loc.x = this.kala.x;
+			loc.y = this.kala.y-200;
+			
+			com.greensock.TweenLite.to(this.kala, 1, loc);
+		}
+		
+		public function goDelete():void
+		{
+			deleteGo = true;
 		}
 		
 	}
