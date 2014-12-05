@@ -208,7 +208,7 @@ package screens
 			if (!pause)
 			{
 				tipTimer++;
-				if (tipTimer >= 5*30)
+				if (tipTimer >= 120*30)
 				{
 					timeUp = true;
 				}
