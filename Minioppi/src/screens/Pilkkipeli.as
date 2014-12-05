@@ -28,7 +28,7 @@ package screens
 		public var debug:DebugText;
 		public var keyUp:Boolean;
 		public var keyDown:Boolean;
-		public var pause:Boolean = true;
+		public var pause:Boolean;
 		
 		public var bg:Bitmap;
 		public var ohje:OhjeIkkuna;
@@ -42,7 +42,7 @@ package screens
 		public var timer:TimerBar;
 		
 		public var kalaTimer:Number = 30;
-		public var kalat:Array = new Array;
+		public var kalat:Array;
 		public var kalaDir:Boolean = true;
 		public var kalaRandom:int = 0;
 		public var spawnTimer:int = 1.5;
@@ -51,6 +51,7 @@ package screens
 		
 		public var tipTimer:int;
 		public var timeUp:Boolean;
+		public var loopSkip:Boolean;
 		
 		public var fishes:int;
 		
@@ -64,8 +65,22 @@ package screens
 		
 		private function initialize():void
 		{
+			if (pilkkiScore != null)
+			{
+				this.removeChild(pilkkiScore);
+				loopSkip = true;
+			}
+			else
+			{
+				loopSkip = false;
+			}
+			
+			pause = true;
+			timeUp = false;
+			onki = new Onki();
 			tKalat = new Array();
 			kalaList = new Array();
+			kalat = new Array();
 			
 			tKalat.push("TAhven");
 			tKalat.push("THauki");
@@ -82,7 +97,7 @@ package screens
 			bg = Assets.getTexture("BGpilkkipeli");
 			tipTimer = 0;
 			
-			//debug = new DebugText("", myStage);
+			debug = new DebugText("test", myStage);
 			ohje = new OhjeIkkuna("OhjePilkki");
 			nuoli = new Button("PilkkiNuoli");
 			nuoli.scaleX = 0.7;
@@ -94,14 +109,17 @@ package screens
 			this.addChild(exit);
 			exit.x = myStage.stageWidth-exit.width;
 			exit.visible = false;
-			this.addChild(ohje);
-			ohje.addEventListener(MouseEvent.CLICK, skipIntro);
-		}
-		
-		private function skipIntro(event:MouseEvent):void
-		{
-			ohje.removeEventListener(MouseEvent.CLICK, skipIntro);
-			this.removeChild(ohje);
+			
+			if (!loopSkip)
+			{
+				this.addChild(ohje);
+				ohje.addEventListener(MouseEvent.CLICK, skipIntro);
+			}
+			else
+			{
+				tipS = getKalaTip();
+				startGame();
+			}
 			
 			exit.addListener(
 				function(event:MouseEvent):void
@@ -109,23 +127,28 @@ package screens
 					screenHandler.inScreen = "menu";
 				}
 			);
+		}
+		
+		private function skipIntro(event:MouseEvent):void
+		{
+			ohje.removeEventListener(MouseEvent.CLICK, skipIntro);
+			this.removeChild(ohje);
 			
 			// pelin aloitus
 			tipS = getKalaTip();
-			
 			startGame();
 		}
 		
 		private function startGame():void
 		{
 			timer = new TimerBar(true, 2, 0);
+			timer.stop();
 			timer.scaleX = 0.8;
 			timer.scaleY = 0.8;
 			timer.x = 640-timer.width;
-			timer.y = 480-timer.height/2;
+			timer.y = 480-timer.height;
 			this.addChild(timer);
 			
-			onki = new Onki();
 			onki.x = 320;
 			onki.y = -240;
 			this.addChild(onki);
@@ -167,6 +190,8 @@ package screens
 		{
 			if (timeUp)
 			{
+				myStage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+				myStage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 				myStage.removeEventListener(Event.ENTER_FRAME, update);
 				pause = true;
 				for (var j:int = 0; j<kalat.length; j++)
@@ -176,6 +201,7 @@ package screens
 				this.removeChild(exit);
 				myStage.removeChild(nuoli);
 				this.removeChild(timer);
+				this.removeChild(onki);
 				pilkkiScore = new ScoreWindow("Sait pilkittyä " + fishes.toString() + " kalaa", function():void{initialize();}, myStage);
 				this.addChild(pilkkiScore);
 			}
@@ -225,7 +251,6 @@ package screens
 						kalat.splice(i, 1);
 					}
 				}
-				debug.replace(fishes.toString());
 			}
 			else
 			{

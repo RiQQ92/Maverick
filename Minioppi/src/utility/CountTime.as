@@ -22,7 +22,7 @@ package utility
 			{
 				minutes = countMins;
 				seconds = countSecs;
-				milliseconds = 29;
+				milliseconds = 0;
 			}
 			
 			this.addEventListener(Event.ENTER_FRAME, update);
