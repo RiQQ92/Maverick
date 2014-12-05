@@ -76,7 +76,7 @@ package screens
 		private function start(evt:MouseEvent):void
 		{
 			time = new CountTime();
-			timer = new TimerBar(true,0 ,30);
+			timer = new TimerBar();
 			timer.x = 320;
 			timer.y = myStage.stageHeight-40;
 			
