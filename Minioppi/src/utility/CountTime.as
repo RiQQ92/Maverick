@@ -113,6 +113,9 @@ package utility
 			
 			str += seconds.toString()+"."+mills.toString();
 			
+			if(mills == 0)
+				{str += "0";}
+			
 			return str;
 		}
 	}
