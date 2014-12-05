@@ -50,5 +50,10 @@ package utility
 		{
 			super.Stop();
 		}
+		
+		public function resume():void
+		{
+			super.Continue();
+		}
 	}
 }

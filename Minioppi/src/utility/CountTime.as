@@ -9,25 +9,33 @@ package utility
 		private var pause:Boolean = false;
 		
 		private var milliseconds:int = 0;
-		private var seconds:int = 0;
-		private var minutes:int = 0;
+		private var _seconds:int = 0;
+		private var _minutes:int = 0;
 		private var hours:int = 0;
 		
 		public function CountTime(_countDown:Boolean = false, countMins:int = 2, countSecs:int = 30)
 		{
-			trace(countMins);
-			
 			countDown = _countDown;
 			if(countDown)
 			{
-				minutes = countMins;
-				seconds = countSecs;
+				_minutes = countMins;
+				_seconds = countSecs;
 				milliseconds = 29;
 			}
 			
 			this.addEventListener(Event.ENTER_FRAME, update);
 		}
 		
+		public function get minutes():int
+		{
+			return _minutes;
+		}
+
+		public function get seconds():int
+		{
+			return _seconds;
+		}
+
 		private function update(event:Event):void
 		{
 			if(!pause)
@@ -39,16 +47,16 @@ package utility
 					if(milliseconds >= 30)
 					{
 						milliseconds = 0;
-						seconds++;
+						_seconds++;
 					}
 					if(seconds >= 60)
 					{
-						seconds = 0;
-						minutes++;
+						_seconds = 0;
+						_minutes++;
 					}
 					if(minutes >= 60)
 					{
-						minutes = 0;
+						_minutes = 0;
 						hours++;
 					}
 				}
@@ -59,16 +67,16 @@ package utility
 					if(milliseconds < 0)
 					{
 						milliseconds = 29;
-						seconds--;
+						_seconds--;
 					}
 					if(seconds < 0)
 					{
-						seconds = 59;
-						minutes--;
+						_seconds = 59;
+						_minutes--;
 					}
 					if(minutes < 0)
 					{
-						minutes = 59;
+						_minutes = 59;
 						hours--;
 					}
 				}
@@ -88,8 +96,8 @@ package utility
 		public function Reset():void
 		{
 			milliseconds = 0;
-			seconds = 0;
-			minutes = 0;
+			_seconds = 0;
+			_minutes = 0;
 			hours = 0;
 		}
 		
