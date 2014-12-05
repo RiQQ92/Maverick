@@ -71,7 +71,7 @@ package screens
 			if(drawLine)
 			{
 				line.graphics.clear();
-				line.graphics.lineStyle(2, 0x00FF00, 1);
+				line.graphics.lineStyle(6, 0x00AA00, 1);
 				line.graphics.moveTo(clickX, clickY);
 				line.graphics.lineTo(mouseX, mouseY);
 			}
