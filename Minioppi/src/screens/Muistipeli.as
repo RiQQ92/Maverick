@@ -14,9 +14,12 @@ package screens
 	
 	import utility.DebugText;
 	import utility.ScreenHandler;
+	import utility.TimerBar;
 	
 	public class Muistipeli extends Sprite
 	{
+		private var exit:Button = new Button("TakaisinNappi");
+		
 		private var myStage:Stage;
 		private var screenHandler:ScreenHandler;
 		private var blocker:ButtonBlocker = new ButtonBlocker();
@@ -24,10 +27,10 @@ package screens
 		private var pauseTimer:int = 0;
 		
 		public var debug:DebugText;
+		public var timer:TimerBar;
 		
 		public var tip:OhjeIkkuna;
 		public var bg:Bitmap;
-		public var ui:Bitmap;
 		
 		public var cardShowTime:int = 40;
 		
@@ -52,7 +55,7 @@ package screens
 			debug = new DebugText("", myStage);
 			tip = new OhjeIkkuna("OhjeMuistipeli");
 			bg = Assets.getTexture("BgKanto");
-			ui = Assets.getTexture("UiMuistipeli");
+			timer = new TimerBar(false);
 			drawScreen();
 			this.addChild(tip);
 			tip.addEventListener(MouseEvent.CLICK, startGame);
@@ -62,6 +65,24 @@ package screens
 		{
 			tip.removeEventListener(MouseEvent.CLICK, startGame);
 			this.removeChild(tip);
+			
+			timer.x = 0;
+			timer.y = 0;
+			timer.scaleX = 0.8;
+			timer.scaleY = 0.8;
+			this.addChild(timer);
+			
+			exit.scaleX = 0.7;
+			exit.scaleY = 0.7;
+			exit.x = 640-exit.width;
+			exit.y = 480-exit.height*1.2;
+			this.addChild(exit);
+			exit.addListener(
+				function(event:MouseEvent):void
+				{
+					screenHandler.inScreen = "menu";
+				}
+			);
 			
 			//this.addChild(debug);
 			
@@ -296,7 +317,6 @@ package screens
 		private function drawScreen():void
 		{
 			this.addChild(bg);
-			this.addChild(ui);
 		}
 		
 		private function pickCards():void
