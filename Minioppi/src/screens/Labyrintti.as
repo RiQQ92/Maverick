@@ -62,6 +62,8 @@ package screens
 			if(firstStart)
 			{
 				this.addChild(ohje);
+				
+				ohje.addEventListener(MouseEvent.CLICK, start);
 			}
 			else
 			{
@@ -69,14 +71,12 @@ package screens
 				time.Reset();
 				this.addChild(score);
 			}
-			
-			ohje.addEventListener(MouseEvent.CLICK, start);
 		}
 		
 		private function start(evt:MouseEvent):void
 		{
 			time = new CountTime();
-			timer = new TimerBar(true,0 ,30);
+			timer = new TimerBar();
 			timer.x = 320;
 			timer.y = myStage.stageHeight-40;
 			
