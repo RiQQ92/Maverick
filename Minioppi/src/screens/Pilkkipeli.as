@@ -2,6 +2,7 @@ package screens
 {
 	import UIelements.Button;
 	import UIelements.OhjeIkkuna;
+	import UIelements.ScoreWindow;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
@@ -16,6 +17,7 @@ package screens
 	
 	import utility.DebugText;
 	import utility.ScreenHandler;
+	import utility.TimerBar;
 	
 	public class Pilkkipeli extends Sprite
 	{
@@ -37,6 +39,7 @@ package screens
 		public var kalaList:Array;
 		public var tipS:String = "";
 		public var tip:Button;
+		public var timer:TimerBar;
 		
 		public var kalaTimer:Number = 30;
 		public var kalat:Array = new Array;
@@ -44,6 +47,10 @@ package screens
 		public var kalaRandom:int = 0;
 		public var spawnTimer:int = 1.5;
 		public var koukkuY:Number;
+		public var pilkkiScore:ScoreWindow;
+		
+		public var tipTimer:int;
+		public var timeUp:Boolean;
 		
 		public var fishes:int;
 		
@@ -73,6 +80,7 @@ package screens
 			kalaList.push("Lohi");
 			
 			bg = Assets.getTexture("BGpilkkipeli");
+			tipTimer = 0;
 			
 			//debug = new DebugText("", myStage);
 			ohje = new OhjeIkkuna("OhjePilkki");
@@ -110,9 +118,16 @@ package screens
 		
 		private function startGame():void
 		{
+			timer = new TimerBar(true, 2, 0);
+			timer.scaleX = 0.8;
+			timer.scaleY = 0.8;
+			timer.x = 640-timer.width;
+			timer.y = 480-timer.height/2;
+			this.addChild(timer);
+			
 			onki = new Onki();
-			onki.x = myStage.width/2;
-			onki.y = -myStage.height/2;
+			onki.x = 320;
+			onki.y = -240;
 			this.addChild(onki);
 			showTip();
 			nuoli.addListener(function():void
@@ -150,8 +165,36 @@ package screens
 		
 		private function update(event:Event):void
 		{
+			if (timeUp)
+			{
+				myStage.removeEventListener(Event.ENTER_FRAME, update);
+				pause = true;
+				for (var j:int = 0; j<kalat.length; j++)
+				{
+					myStage.removeChild(kalat[j]);
+				}
+				this.removeChild(exit);
+				myStage.removeChild(nuoli);
+				this.removeChild(timer);
+				pilkkiScore = new ScoreWindow("Sait pilkittyä " + fishes.toString() + " kalaa", function():void{initialize();}, myStage);
+				this.addChild(pilkkiScore);
+			}
 			if (!pause)
 			{
+				tipTimer++;
+				if (tipTimer >= 5*30)
+				{
+					timeUp = true;
+				}
+				timer.resume();
+				if (tipTimer == 30*30 || tipTimer == 60*30 || tipTimer == 90*30)
+				{
+					tipS = getKalaTip();
+					showTip();
+					myStage.removeChild(nuoli);
+					exit.visible = false;
+					pause = true;
+				}
 				
 				koukkuY = onki.koukku.y-230;
 				if (onki.available)
@@ -183,6 +226,10 @@ package screens
 					}
 				}
 				debug.replace(fishes.toString());
+			}
+			else
+			{
+				timer.stop();
 			}
 		}
 		
