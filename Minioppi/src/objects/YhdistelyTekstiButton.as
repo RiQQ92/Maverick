@@ -13,7 +13,8 @@ package objects
 	public class YhdistelyTekstiButton extends Sprite
 	{
 		private var _ID:String;
-		private var clickFunc:Function;
+		private var clickPressFunc:Function;
+		private var clickReleaseFunc:Function;
 		
 		private var sound:Sound;
 		private var myStage:Stage;
@@ -71,11 +72,18 @@ package objects
 			text.text = str;
 		}
 		
-		public function addListener(eventFunc:Function):void
+		public function addListenerOnPress(eventFunc:Function):void
 		{
-			clickFunc = eventFunc;
-			bg.addEventListener(MouseEvent.CLICK, clickFunc);
-			text.addEventListener(MouseEvent.CLICK, clickFunc);
+			clickPressFunc = eventFunc;
+			bg.addEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
+			text.addEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
+		}
+		
+		public function addListenerOnRelease(eventFunc:Function):void
+		{
+			clickReleaseFunc = eventFunc;
+			bg.addEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
+			text.addEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
 		}
 		
 		public function get ID():String
@@ -90,9 +98,13 @@ package objects
 		
 		public function Destruct():void
 		{
-			bg.removeEventListener(MouseEvent.CLICK, clickFunc);
-			text.removeEventListener(MouseEvent.CLICK, clickFunc);
-			clickFunc = null;
+			bg.removeEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
+			text.removeEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
+			clickPressFunc = null;
+			
+			bg.removeEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
+			text.removeEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
+			clickReleaseFunc = null;
 		}
 	}
 }

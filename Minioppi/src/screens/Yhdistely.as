@@ -2,9 +2,12 @@ package screens
 {
 	import UIelements.Button;
 	import UIelements.OhjeIkkuna;
+	import UIelements.ScoreWindow;
 	import UIelements.SlideList;
 	
 	import flash.display.Bitmap;
+	import flash.display.GraphicsPath;
+	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
@@ -13,11 +16,23 @@ package screens
 	import objects.YhdistelyKuvaButton;
 	import objects.YhdistelyTekstiButton;
 	
+	import utility.CountTime;
 	import utility.ScreenHandler;
 	
 	public class Yhdistely extends Sprite
 	{
 		private const PICK_AMOUNT:int = 10;
+		
+		private var drawLine:Boolean = false;
+		private var firstStart:Boolean = true;
+		
+		private var clickX:int = 100;
+		private var clickY:int = 100;
+		
+		private var line:Shape = new Shape();
+		
+		private var time:CountTime;
+		private var score:ScoreWindow;
 		
 		private var kuvaLista:SlideList;
 		private var tekstiLista:SlideList;
@@ -27,6 +42,7 @@ package screens
 		
 		private var bg:Bitmap = Assets.getTexture("Yhdistely_bg");
 		private var ohje:OhjeIkkuna = new OhjeIkkuna("OhjeYhdistely");
+		private var exit:Button = new Button("TakaisinNappi");
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
 		
@@ -40,16 +56,75 @@ package screens
 			
 			myStage = _stage;
 			screenHandler = scrnHandle;
-			this.addChild(bg);
 			
-			this.addChild(ohje);
-			ohje.addEventListener(MouseEvent.CLICK, start);
+			Initialize();
+			myStage.addEventListener(MouseEvent.MOUSE_UP, deactivateDrawing);
+		}
+		
+		protected function deactivateDrawing(event:MouseEvent):void
+		{
+			drawLine = false;
+		}
+		
+		protected function update(event:Event):void
+		{
+			if(drawLine)
+			{
+				line.graphics.clear();
+				line.graphics.lineStyle(2, 0x00FF00, 1);
+				line.graphics.moveTo(clickX, clickY);
+				line.graphics.lineTo(mouseX, mouseY);
+			}
+			else
+			{
+				line.graphics.clear();
+			}
+		}
+		
+		private function Initialize():void
+		{
+			this.addChild(bg);
+			imageCards = new Array();
+			textCards = new Array();
+			
+			exit.x = myStage.stageWidth/2 -exit.width/2;
+			exit.y = myStage.stageHeight -exit.height;
+			exit.addListener(
+				function(event:MouseEvent):void
+				{
+					screenHandler.inScreen = "menu";
+				}
+			);
+			this.addChild(exit);
+			
+			if(firstStart)
+			{
+				this.addChild(ohje);
+				ohje.addEventListener(MouseEvent.CLICK, start);
+			}
+			else
+			{
+				score = new ScoreWindow(time.printTime(), start, myStage);
+				time.Reset();
+				this.addChild(score);
+			}
 		}
 		
 		protected function start(event:MouseEvent):void
 		{
-			ohje.removeEventListener(MouseEvent.CLICK, start);
-			this.removeChild(ohje);
+			time = new CountTime();
+			
+			if(!firstStart)
+			{
+				this.removeChild(score);
+			}
+			else
+			{
+				ohje.removeEventListener(MouseEvent.CLICK, start);
+				this.removeChild(ohje);
+			}
+			
+			firstStart = false;
 			
 			textListSelection = new YhdistelyTekstiButton("Null", "", myStage);
 			textListSelection.visible = false;
@@ -64,6 +139,7 @@ package screens
 			initNameArray();
 			randomCards();
 			allocLists();
+			myStage.addEventListener(Event.ENTER_FRAME, update);
 			Draw();
 		}
 		
@@ -130,7 +206,17 @@ package screens
 		private function addCard(animName:String):void
 		{
 			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage);
-			cardImage.addListener(function(evt:MouseEvent):void
+			cardImage.addListenerOnPress(function(evt:MouseEvent):void
+			{
+				drawLine = true;
+				clickX = mouseX;
+				clickY = mouseY;
+				
+				kuvaListSelection.visible = true;
+				kuvaListSelection.setNewContent(cardImage.ID);
+				checkPair();
+			});
+			cardImage.addListenerOnRelease(function(evt:MouseEvent):void
 			{
 				kuvaListSelection.visible = true;
 				kuvaListSelection.setNewContent(cardImage.ID);
@@ -138,7 +224,17 @@ package screens
 			});
 			
 			var cardText:YhdistelyTekstiButton = new YhdistelyTekstiButton(animName, animName, myStage);
-			cardText.addListener(function(evt:MouseEvent):void
+			cardText.addListenerOnPress(function(evt:MouseEvent):void
+			{
+				drawLine = true;
+				clickX = mouseX;
+				clickY = mouseY;
+				
+				textListSelection.visible = true;
+				textListSelection.setNewContent(cardText.ID);
+				checkPair();
+			});
+			cardText.addListenerOnRelease(function(evt:MouseEvent):void
 			{
 				textListSelection.visible = true;
 				textListSelection.setNewContent(cardText.ID);
@@ -230,12 +326,15 @@ package screens
 		
 		private function win():void
 		{
-			screenHandler.inScreen = "menu";
+			//screenHandler.inScreen = "menu";
+			Destruct();
+			Initialize();
 		}
 		
 		public function Destruct():void
 		{
 			this.removeChild(bg);
+			this.removeChild(exit);
 			this.removeChild(kuvaListSelection);
 			this.removeChild(textListSelection);
 			
@@ -262,6 +361,7 @@ package screens
 			
 			this.addChild(kuvaLista);
 			this.addChild(tekstiLista);
+			this.addChild(line);
 		}
 	}
 }

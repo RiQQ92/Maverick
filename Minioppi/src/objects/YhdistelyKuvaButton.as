@@ -18,7 +18,8 @@ package objects
 		private var bg:Button = new Button("YhdistelyBtn_bg");
 		public var image:Button;
 		
-		private var clickFunc:Function;
+		private var clickPressFunc:Function;
+		private var clickReleaseFunc:Function;
 		
 		public function YhdistelyKuvaButton(_image:String, _sound:String, _stage:Stage)
 		{
@@ -52,11 +53,18 @@ package objects
 			image.x = bg.width/2.5 - image.width/2;
 		}
 		
-		public function addListener(eventFunc:Function):void
+		public function addListenerOnPress(eventFunc:Function):void
 		{
-			clickFunc = eventFunc;
-			bg.addEventListener(MouseEvent.CLICK, clickFunc);
-			image.addEventListener(MouseEvent.CLICK, clickFunc);
+			clickPressFunc = eventFunc;
+			bg.addEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
+			image.addEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
+		}
+		
+		public function addListenerOnRelease(eventFunc:Function):void
+		{
+			clickReleaseFunc = eventFunc;
+			bg.addEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
+			image.addEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
 		}
 		
 		public function get ID():String
@@ -71,9 +79,13 @@ package objects
 		
 		public function Destruct():void
 		{
-			bg.removeEventListener(MouseEvent.CLICK, clickFunc);
-			image.removeEventListener(MouseEvent.CLICK, clickFunc);
-			clickFunc = null;
+			bg.removeEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
+			image.removeEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
+			clickPressFunc = null;
+			
+			bg.removeEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
+			image.removeEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
+			clickReleaseFunc = null;
 		}
 	}
 }
