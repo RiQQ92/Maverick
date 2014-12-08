@@ -25,6 +25,8 @@ package
 		
 		//Palapeli
 		//*********************
+		
+		/*
 		[Embed(source = "../Grafiikka/palapeli/kuva 1 palat/pala1.png")]
 		public static const kuva1pala1:Class;
 		
@@ -888,6 +890,8 @@ package
 		
 		[Embed(source = "../Grafiikka/palapeli/kuva 6 palat/pala48.png")]
 		public static const kuva6pala48:Class;
+		*/
+		
 		//*********************
 		
 		// Pilkkipeli
@@ -975,10 +979,102 @@ package
 		public static const LehtiMustikka:Class;
 		[Embed(source = "../Grafiikka/Muistipeli/Marjat/Lehti_Teksti_Mustikka.png")]
 		public static const LehtiTekstiMustikka:Class;
+		
 		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Ampiainen.png")]
 		public static const LehtiAmpiainen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Heinäsirkka.png")]
+		public static const LehtiHeinasirkka:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Kimalainen.png")]
+		public static const LehtiKimalainen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Kärpänen.png")]
+		public static const LehtiKarpanen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Leppäkerttu.png")]
+		public static const LehtiLeppakerttu:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Mehiläinen.png")]
+		public static const LehtiMehilainen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Nokkosperhonen.png")]
+		public static const LehtiNokkosperhonen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Sitruunaperhonen.png")]
+		public static const LehtiSitruunaperhonen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Sudenkorento.png")]
+		public static const LehtiSudenkorento:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Muurahainen.png")]
+		public static const LehtiMuurahainen:Class;
+		
 		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Ampiainen.png")]
 		public static const LehtiTekstiAmpiainen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Heinäsirkka.png")]
+		public static const LehtiTekstiHeinasirkka:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Kimalainen.png")]
+		public static const LehtiTekstiKimalainen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Kärpänen.png")]
+		public static const LehtiTekstiKarpanen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Leppäkerttu.png")]
+		public static const LehtiTekstiLeppakerttu:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Mehiläinen.png")]
+		public static const LehtiTekstiMehilainen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Nokkosperhonen.png")]
+		public static const LehtiTekstiNokkosperhonen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Sitruunaperhonen.png")]
+		public static const LehtiTekstiSitruunaperhonen:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Sudenkorento.png")]
+		public static const LehtiTekstiSudenkorento:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Ötökät/Lehti_Teksti_Muurahainen.png")]
+		public static const LehtiTekstiMuurahainen:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Chili.png")]
+		public static const LehtiChili:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Herne.png")]
+		public static const LehtiHerne:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Kaali.png")]
+		public static const LehtiKaali:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Kukkakaali.png")]
+		public static const LehtiKukkakaali:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Kurkku.png")]
+		public static const LehtiKurkku:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Lanttu.png")]
+		public static const LehtiLanttu:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Luumu.png")]
+		public static const LehtiLuumu:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Persilja.png")]
+		public static const LehtiPersilja:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Peruna.png")]
+		public static const LehtiPeruna:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Porkkana.png")]
+		public static const LehtiPorkkana:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Punajuuri.png")]
+		public static const LehtiPunajuuri:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Tilli.png")]
+		public static const LehtiTilli:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Tomaatti.png")]
+		public static const LehtiTomaatti:Class;
+		
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Chili.png")]
+		public static const LehtiTekstiChili:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Herne.png")]
+		public static const LehtiTekstiHerne:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Kaali.png")]
+		public static const LehtiTekstiKaali:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Kukkakaali.png")]
+		public static const LehtiTekstiKukkakaali:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Kurkku.png")]
+		public static const LehtiTekstiKurkku:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Lanttu.png")]
+		public static const LehtiTekstiLanttu:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Luumu.png")]
+		public static const LehtiTekstiLuumu:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Persilja.png")]
+		public static const LehtiTekstiPersilja:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Peruna.png")]
+		public static const LehtiTekstiPeruna:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Porkkana.png")]
+		public static const LehtiTekstiPorkkana:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Punajuuri.png")]
+		public static const LehtiTekstiPunajuuri:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Tilli.png")]
+		public static const LehtiTekstiTilli:Class;
+		[Embed(source = "../Grafiikka/Muistipeli/Vihannekset/Lehti_Teksti_Tomaatti.png")]
+		public static const LehtiTekstiTomaatti:Class;
 		//*********************
 		
 		// Alkumenu
