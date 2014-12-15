@@ -15,6 +15,7 @@ package screens
 	
 	import utility.CountTime;
 	import utility.ScreenHandler;
+	import utility.Time;
 	import utility.TimerBar;
 	
 	public class Labyrintti extends Sprite
@@ -67,9 +68,24 @@ package screens
 			}
 			else
 			{
-				score = new ScoreWindow(time.printTime(), start, myStage);
+				var strScore:String = "Vanha ennätys:\n"+Assets.labHighTime.getTimeString()+"\n\n";
+				var timeCompared:Time = new Time();
+				if(Assets.labHighTime.compareTimes(time.time))
+				{
+					strScore += "Suoritus aika:\n"+timer.time.getTimeString();
+					timeCompared.setTime(Assets.labHighTime.hours, Assets.labHighTime.minutes, Assets.labHighTime.seconds, Assets.labHighTime.milliseconds);
+				}
+				else
+				{
+					strScore += "Hurraa!!!\nTeit uuden ennätyksen!\n"+timer.time.getTimeString();
+					timeCompared.setTime(timer.time.hours, timer.time.minutes, timer.time.seconds, timer.time.milliseconds);
+				}
+				
+				score = new ScoreWindow(strScore, start, myStage);
 				time.Reset();
 				this.addChild(score);
+				
+				Assets.labHighTime = timeCompared;
 			}
 		}
 		
@@ -77,6 +93,7 @@ package screens
 		{
 			time = new CountTime();
 			timer = new TimerBar();
+			timer.time.setTime(0,0,0,0);
 			timer.x = 320;
 			timer.y = myStage.stageHeight-40;
 			
@@ -127,6 +144,8 @@ package screens
 		
 		public function Destruct():void
 		{
+			time.Destruct();
+			timer.destruct();
 			player.Destruct();
 			this.removeChild(player);
 		}
