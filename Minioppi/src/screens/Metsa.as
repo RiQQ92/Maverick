@@ -3,6 +3,7 @@ package screens
 	import Animaatiot_fla.karhu_animaatio_1;
 	
 	import UIelements.Button;
+	import UIelements.QuizWindow;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
@@ -15,6 +16,7 @@ package screens
 	{
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
+		private var popup:QuizWindow;
 		
 		private var exit:Button = new Button("TakaisinNappi");
 		private var bg:Bitmap = Assets.getTexture("Metsa_bg");
@@ -30,19 +32,26 @@ package screens
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			
-			this.addChild(bg);
-			this.addChild(exit);
+			kettu.buttonMode = true;
+			kettu.addEventListener(MouseEvent.MOUSE_DOWN, clickKettu);
+			
+			rabbit.buttonMode = true;
+			rabbit.addEventListener(MouseEvent.MOUSE_DOWN, clickRabbit);
+			
 			karhu.x = 370;
 			karhu.y = 250;
-			this.addChild(karhu);
+			karhu.karhu_mc.buttonMode = true;
+			karhu.karhu_mc.addEventListener(MouseEvent.MOUSE_DOWN, clickKarhu);
+			
 			snail.x = 320
 			snail.y = 240;
-			this.addChild(snail);
+			snail.buttonMode = true;
+			snail.addEventListener(MouseEvent.MOUSE_DOWN, clickSnail);
+			
 			bat.x = 320;
 			bat.y = 245;
-			this.addChild(bat);
-			this.addChild(kettu);
-			this.addChild(rabbit);
+			bat.buttonMode = true;
+			bat.addEventListener(MouseEvent.MOUSE_DOWN, clickBat);
 			
 			exit.addListener(
 				function(event:MouseEvent):void
@@ -50,11 +59,110 @@ package screens
 					screenHandler.inScreen = "menu";
 				}
 			);
+			
+			Draw();
+		}
+		
+		protected function clickRabbit(event:MouseEvent):void
+		{
+			pause();
+			popup = new QuizWindow("jae-nis", go, myStage);
+			this.addChild(popup);
+			trace("rabbit got klikd");
+		}
+		
+		protected function clickKettu(event:MouseEvent):void
+		{
+			pause();
+			popup = new QuizWindow("ket-tu", go, myStage);
+			this.addChild(popup);
+			trace("kettu got klikd");
+		}
+		
+		protected function clickKarhu(event:MouseEvent):void
+		{
+			pause();
+			popup = new QuizWindow("kar-hu", go, myStage);
+			this.addChild(popup);
+			trace("karhu got klikd");
+		}
+		
+		protected function clickSnail(event:MouseEvent):void
+		{
+			pause();
+			popup = new QuizWindow("e-ta-na", go, myStage);
+			this.addChild(popup);
+			trace("snail got klikd");
+		}
+		
+		protected function clickBat(event:MouseEvent):void
+		{
+			pause();
+			popup = new QuizWindow("le-pak-ko", go, myStage);
+			this.addChild(popup);
+			trace("bat got klikd");
+		}
+		
+		private function go(event:MouseEvent):void
+		{
+			this.removeChild(popup);
+			
+			karhu.karhu_mc.play();
+			karhu.play();
+			snail.play();
+			bat.play();
+			kettu.play();
+			rabbit.play();
+			
+			karhu.karhu_mc.mouseEnabled = true;
+			karhu.mouseEnabled = true;
+			snail.mouseEnabled = true;
+			bat.mouseEnabled = true;
+			kettu.mouseEnabled = true;
+			rabbit.mouseEnabled = true;
+		}
+		
+		private function pause():void
+		{
+			karhu.karhu_mc.stop();
+			karhu.stop();
+			snail.stop();
+			bat.stop();
+			kettu.stop();
+			rabbit.stop();
+			
+			karhu.karhu_mc.mouseEnabled = false;
+			karhu.mouseEnabled = false;
+			snail.mouseEnabled = false;
+			bat.mouseEnabled = false;
+			kettu.mouseEnabled = false;
+			rabbit.mouseEnabled = false;
+		}
+		
+		private function Draw():void
+		{
+			this.addChild(bg);
+			
+			this.addChild(exit);
+			
+			this.addChild(karhu);
+			this.addChild(snail);
+			this.addChild(bat);
+			this.addChild(kettu);
+			this.addChild(rabbit);
 		}
 		
 		public function Destruct():void
 		{
+			this.removeChild(bg);
 			
+			this.removeChild(exit);
+			
+			this.removeChild(karhu);
+			this.removeChild(snail);
+			this.removeChild(bat);
+			this.removeChild(kettu);
+			this.removeChild(rabbit);
 		}
 	}
 }
