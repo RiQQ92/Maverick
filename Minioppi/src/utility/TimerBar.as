@@ -9,7 +9,7 @@ package utility
 
 	public class TimerBar extends CountTime
 	{
-		private var time:TextField = new TextField();
+		private var timeText:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
 		
 		private var bg:Bitmap = Assets.getTexture("TimerBar");
@@ -21,24 +21,24 @@ package utility
 			font.size = 30;
 			font.align = TextFormatAlign.LEFT;
 			
-			time.selectable = false;
-			time.defaultTextFormat = font;
-			time.wordWrap = true;
-			time.multiline = true;
-			time.width = bg.width;
-			time.height = bg.height;
-			time.text = super.printTime();
-			time.autoSize = TextFieldAutoSize.CENTER;
+			timeText.selectable = false;
+			timeText.defaultTextFormat = font;
+			timeText.wordWrap = true;
+			timeText.multiline = true;
+			timeText.width = bg.width;
+			timeText.height = bg.height;
+			timeText.text = super.printTime();
+			timeText.autoSize = TextFieldAutoSize.CENTER;
 			
 			this.addChild(bg);
-			this.addChild(time);
+			this.addChild(timeText);
 			
 			this.addEventListener(Event.ENTER_FRAME, update);
 		}
 		
-		protected function update(event:Event):void
+		private function update(event:Event):void
 		{
-			time.text = super.printTime();
+			timeText.text = super.printTime();
 		}
 		
 		public function reset():void
@@ -56,5 +56,10 @@ package utility
 			super.Continue();
 		}
 		
+		public function destruct():void
+		{
+			this.removeEventListener(Event.ENTER_FRAME, update);
+			super.Destruct();
+		}
 	}
 }

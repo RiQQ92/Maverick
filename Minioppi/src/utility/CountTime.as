@@ -5,6 +5,8 @@ package utility
 	
 	public class CountTime extends Sprite
 	{
+		public var time:Time;
+		
 		private var countDown:Boolean = false;
 		private var pause:Boolean = false;
 		
@@ -24,6 +26,8 @@ package utility
 				seconds = countSecs;
 				milliseconds = 0;
 			}
+			
+			time = new Time();
 			
 			this.addEventListener(Event.ENTER_FRAME, update);
 		}
@@ -72,6 +76,8 @@ package utility
 						hours--;
 					}
 				}
+				var mills:int = (milliseconds * 1000)/ 30;
+				time.setTime(hours, minutes, seconds, mills);
 			}
 		}
 		
@@ -117,6 +123,11 @@ package utility
 				{str += "0";}
 			
 			return str;
+		}
+		
+		public function Destruct():void
+		{
+			this.removeEventListener(Event.ENTER_FRAME, update);
 		}
 	}
 }

@@ -6,6 +6,8 @@ package
 	import flash.media.Sound;
 	import flash.utils.Dictionary;
 	
+	import utility.Time;
+	
 	public class Assets
 	{
 		// Ohjeet
@@ -1257,6 +1259,11 @@ package
 		//********************
 		//[Embed(source = "../Aanet/Yhdistely/koira.mp3")]
 		//public static const Aani_yhdistely_koira:Class;
+		//********************
+		
+		// Global Variables
+		//********************
+		public static var labHighTime:Time = new Time();
 		//********************
 		
 		private static var gameTextures:Dictionary = new Dictionary();
