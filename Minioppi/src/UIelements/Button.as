@@ -5,6 +5,7 @@ package UIelements
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import flash.geom.ColorTransform;
+	import flash.ui.MouseCursor;
 	import flash.ui.MouseCursorData;
 	
 	public class Button extends Sprite
@@ -37,7 +38,6 @@ package UIelements
 			this.buttonMode = true;
 			
 			normal = image.bitmapData.clone();
-			//image.bitmapData.colorTransform(image.bitmapData.rect, normal);
 		}
 		
 		protected function resetColor(evt:MouseEvent):void
@@ -49,6 +49,8 @@ package UIelements
 		{
 			mouseDown = false;
 			image.bitmapData = normal.clone();
+			if(this.hitTestPoint(Assets.gameStage.mouseX, Assets.gameStage.mouseY))
+				image.bitmapData.colorTransform(image.bitmapData.rect, lightier);
 		}
 		
 		private function lighten(evt:MouseEvent):void

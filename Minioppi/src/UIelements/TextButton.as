@@ -45,7 +45,7 @@ package UIelements
 			bg.y = 0;
 			this.addChild(bg);
 			
-			text.x = bg.width/3 - text.width/2;
+			text.x = bg.width/2 - text.width/2;
 			text.y = bg.height/2 - text.height/2;
 			this.addChild(text);
 		}
