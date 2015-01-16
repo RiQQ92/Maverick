@@ -14,14 +14,14 @@ package objects
 		private var sound:Sound;
 		private var myStage:Stage;
 		
-		private var soundBtn:Button = new Button("Aani_nappi");
-		private var bg:Button = new Button("YhdistelyBtn_bg");
+		private var soundBtn:Button;
+		private var bg:Button;
 		public var image:Button;
 		
 		private var clickPressFunc:Function;
 		private var clickReleaseFunc:Function;
 		
-		public function YhdistelyKuvaButton(_image:String, _sound:String, _stage:Stage)
+		public function YhdistelyKuvaButton(_image:String, _sound:String, _stage:Stage, highlights:Boolean = true)
 		{
 			super();
 			
@@ -31,6 +31,10 @@ package objects
 			image = new Button("Yhdistely_"+_ID+"_kuva");
 			if(_sound != "")
 				sound = Assets.getSound("Aani_"+_sound);
+			soundBtn = new Button("Aani_nappi", highlights);
+			bg = new Button("YhdistelyBtn_bg", highlights);
+			image = new Button("Yhdistely_"+_ID+"_kuva", highlights);
+			//sound = Assets.getSound(_sound+"_aani");
 			
 			bg.x = 0;
 			bg.y = 0;
