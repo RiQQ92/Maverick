@@ -27,6 +27,7 @@ package utility
 		{
 			super();
 			myStage = _stage;
+			Assets.gameStage = myStage;
 		}
 		
 		/*

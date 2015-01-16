@@ -3,6 +3,7 @@ package
 	import com.greensock.TweenLite;
 	
 	import flash.display.Bitmap;
+	import flash.display.Stage;
 	import flash.media.Sound;
 	import flash.utils.Dictionary;
 	
@@ -1267,6 +1268,8 @@ package
 		//********************
 		
 		private static var gameTextures:Dictionary = new Dictionary();
+		
+		public static var gameStage:Stage;
 		
 		public static function getTexture(textureName:String):Bitmap
 		{

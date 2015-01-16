@@ -14,21 +14,23 @@ package objects
 		private var sound:Sound;
 		private var myStage:Stage;
 		
-		private var soundBtn:Button = new Button("Aani_nappi");
-		private var bg:Button = new Button("YhdistelyBtn_bg");
+		private var soundBtn:Button;
+		private var bg:Button;
 		public var image:Button;
 		
 		private var clickPressFunc:Function;
 		private var clickReleaseFunc:Function;
 		
-		public function YhdistelyKuvaButton(_image:String, _sound:String, _stage:Stage)
+		public function YhdistelyKuvaButton(_image:String, _sound:String, _stage:Stage, highlights:Boolean = true)
 		{
 			super();
 			
 			_ID = Assets.removeChars("-", _image);
 			myStage = _stage;
 			
-			image = new Button("Yhdistely_"+_ID+"_kuva");
+			soundBtn = new Button("Aani_nappi", highlights);
+			bg = new Button("YhdistelyBtn_bg", highlights);
+			image = new Button("Yhdistely_"+_ID+"_kuva", highlights);
 			//sound = Assets.getSound(_sound+"_aani");
 			
 			bg.x = 0;

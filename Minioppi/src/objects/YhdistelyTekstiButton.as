@@ -19,15 +19,18 @@ package objects
 		private var sound:Sound;
 		private var myStage:Stage;
 		
-		private var soundBtn:Button = new Button("Aani_nappi");
-		private var bg:Button = new Button("YhdistelyBtn_bg");
+		private var soundBtn:Button;
+		private var bg:Button;
 		
 		public var text:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
 		
-		public function YhdistelyTekstiButton(_text:String, _sound:String, _stage:Stage)
+		public function YhdistelyTekstiButton(_text:String, _sound:String, _stage:Stage, highlights:Boolean = true)
 		{
 			super();
+			
+			soundBtn = new Button("Aani_nappi", highlights);
+			bg = new Button("YhdistelyBtn_bg", highlights);
 			
 			_ID = _text;
 			_ID = Assets.removeChars("-", _ID);
