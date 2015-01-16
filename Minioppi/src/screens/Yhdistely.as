@@ -205,7 +205,7 @@ package screens
 		
 		private function addCard(animName:String):void
 		{
-			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage);
+			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, "lammas", myStage); // vaihda "lammas" -> animName kun kaikki eläinten äänet asennettu assets koodiin
 			cardImage.addListenerOnPress(function(evt:MouseEvent):void
 			{
 				drawLine = true;

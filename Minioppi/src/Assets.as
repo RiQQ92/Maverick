@@ -1257,8 +1257,8 @@ package
 		
 		// Aanet
 		//********************
-		//[Embed(source = "../Aanet/Yhdistely/koira.mp3")]
-		//public static const Aani_yhdistely_koira:Class;
+		[Embed(source = "../aanet/lammas.mp3")]
+		public static const Aani_lammas:Class;
 		//********************
 		
 		// Global Variables

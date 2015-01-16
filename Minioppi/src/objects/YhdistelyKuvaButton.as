@@ -29,7 +29,8 @@ package objects
 			myStage = _stage;
 			
 			image = new Button("Yhdistely_"+_ID+"_kuva");
-			//sound = Assets.getSound(_sound+"_aani");
+			if(_sound != "")
+				sound = Assets.getSound("Aani_"+_sound);
 			
 			bg.x = 0;
 			bg.y = 0;
@@ -74,7 +75,7 @@ package objects
 		
 		protected function onClickSound(event:MouseEvent):void
 		{
-			//sound.play();
+			sound.play();
 		}
 		
 		public function Destruct():void
