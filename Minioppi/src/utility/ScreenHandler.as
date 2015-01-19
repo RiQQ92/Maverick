@@ -10,6 +10,7 @@ package utility
 	import screens.Muistipeli;
 	import screens.Pilkkipeli;
 	import screens.Yhdistely;
+	import screens.CreditScreen;
 	
 	public class ScreenHandler extends Sprite
 	{
@@ -20,6 +21,7 @@ package utility
 		private var metsa:Metsa;
 		private var yhdistely:Yhdistely;
 		private var pilkki:Pilkkipeli;
+		private var credits:CreditScreen;
 		
 		private var _inScreen:String = "Empty";
 		
@@ -52,6 +54,14 @@ package utility
 				// avaa uuden näytön, jos ei yritetä avata samaa uudestaan
 				switch(value)
 				{
+					case "credits":
+						
+						credits = new CreditScreen(myStage, this);
+						credits.x = 0;
+						credits.y = 0;
+						this.addChild(credits);
+						
+						break;
 					case "menu":
 					
 						menu = new Menu(myStage, this);
@@ -113,6 +123,12 @@ package utility
 				// poistaa vanhan näytön, jos kutsuttu näyttö löytyi
 				switch(_inScreen)
 				{
+					case "credits":
+						
+						credits.Destruct();
+						this.removeChild(credits);
+						
+						break;
 					case "menu":
 						
 						menu.Destruct();
