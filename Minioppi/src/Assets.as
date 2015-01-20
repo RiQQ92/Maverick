@@ -1254,6 +1254,10 @@ package
 		public static const TakaisinNappi:Class;
 		[Embed(source="../Grafiikka/Muu/TimerBar.png")]
 		public static const TimerBar:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/napit/tekijat.png")]
+		public static const TekijatBtn:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/creditKuva.png")]
+		public static const CreditsBG:Class;
 		//********************
 		
 		// Aanet

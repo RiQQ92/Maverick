@@ -25,7 +25,7 @@ package screens
 		public var muistiBtn:GameButton = new GameButton("Muistipeli");
 		public var yhdistelyBtn:GameButton = new GameButton("Yhdistely");
 		public var pilkkiBtn:GameButton = new GameButton("Pilkki");
-		public var creditBtn:Button = new Button("TakaisinNappi", true);
+		public var creditBtn:Button = new Button("TekijatBtn", true);
 		
 		public function Menu(_stage:Stage, scrnHandle:ScreenHandler)
 		{
@@ -46,7 +46,7 @@ package screens
 			
 			creditBtn.scaleX = 0.5;
 			creditBtn.scaleY = 0.5;
-			creditBtn.x = 100;
+			creditBtn.x = 20;
 			creditBtn.y = 480-(creditBtn.height*2);
 			creditBtn.addListener(
 				function(event:MouseEvent):void
