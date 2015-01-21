@@ -100,7 +100,20 @@ package screens
 		{
 			checkWin();
 			
-			
+			if (sparkle.parent != null)
+			{
+				if (sparkle.currentFrame == sparkle.totalFrames)
+				{
+					this.removeChild(sparkle);
+				}
+			}
+			if (sparkle1.parent != null)
+			{
+				if (sparkle1.currentFrame == sparkle1.totalFrames)
+				{
+					this.removeChild(sparkle1);
+				}
+			}
 			
 			if (pause)
 			{
@@ -188,6 +201,8 @@ package screens
 				sparkle.y = flips[0].y+(sparkle.height/2);
 				sparkle1.x = flips[1].x+(sparkle1.width/2);
 				sparkle1.y = flips[1].y+(sparkle1.height/2);
+				sparkle.gotoAndPlay(1);
+				sparkle1.gotoAndPlay(1);
 				this.addChild(sparkle);
 				this.addChild(sparkle1);
 				cardsFound += 1;
