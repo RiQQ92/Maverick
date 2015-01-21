@@ -28,7 +28,6 @@ package objects
 			_ID = Assets.removeChars("-", _image);
 			myStage = _stage;
 			
-			image = new Button("Yhdistely_"+_ID+"_kuva");
 			if(_sound != "")
 				sound = Assets.getSound("Aani_"+_sound);
 			

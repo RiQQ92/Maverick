@@ -19,15 +19,28 @@ package UIelements
 		private var myStage:Stage;
 		private var func:Function;
 		private var bg:Bitmap = Assets.getTexture("OhjePohja");
+		private var image:Bitmap;
 		
 		public function QuizWindow(anim:String, functionToCall:Function, stage:Stage)
 		{
 			super();
 			
+			myStage = stage;
+			
 			correctAnim = anim;
 			bg.scaleY = 0.5;
 			
 			func = functionToCall;
+			
+			if(myStage.mouseY < myStage.stageHeight/2)
+				this.y = myStage.stageHeight/2;
+			
+			
+			var _ID:String = Assets.removeChars("-", anim);
+			
+			image = Assets.getTexture("Yhdistely_"+_ID+"_kuva");
+			image.x = (bg.width/3)*2 -image.width/2;
+			image.y = bg.height/2 -image.height/2;
 			
 			initAnimNames();
 			listButtons();
@@ -70,6 +83,7 @@ package UIelements
 		private function Draw():void
 		{
 			this.addChild(bg);
+			this.addChild(image);
 			
 			this.addChild(txt1);
 			this.addChild(txt2);

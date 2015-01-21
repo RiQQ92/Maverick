@@ -13,17 +13,20 @@ package UIelements
 	public class TextButton extends Sprite
 	{
 		private var _ID:String;
+		private var myStage:Stage;
 		private var clickPressFunc:Function;
 		private var clickReleaseFunc:Function;
 		
 		private var bg:Button = new Button("YhdistelyBtn_bg");
 		
-		public var text:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
+		public var text:TextField = new TextField();
 		
 		public function TextButton(_text:String, _stage:Stage)
 		{
 			super();
+			
+			myStage = _stage;
 			
 			_ID = _text;
 			_ID = Assets.removeChars("-", _ID);
