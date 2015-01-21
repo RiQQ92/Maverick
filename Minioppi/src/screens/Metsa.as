@@ -67,7 +67,7 @@ package screens
 		protected function clickRabbit(event:MouseEvent):void
 		{
 			pause();
-			popup = new QuizWindow("Jae-nis", go, myStage);
+			popup = new QuizWindow("Met-sae-jae-nis", go, myStage);
 			this.addChild(popup);
 			trace("rabbit got klikd");
 		}

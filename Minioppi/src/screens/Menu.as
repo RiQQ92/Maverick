@@ -33,9 +33,9 @@ package screens
 		public function Menu(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			//constructor, kutsutaan joka kerta kun luokka luodaan voi käyttää samana kun Initialize
-			Assets.BGMusic = new Sound();
-			Assets.BGMChannel = new SoundChannel();
-			Assets.BGMTransform = new SoundTransform();
+			//Assets.BGMusic = new Sound();
+			//Assets.BGMChannel = new SoundChannel();
+			//Assets.BGMTransform = new SoundTransform();
 			
 			Assets.BGMusic = Assets.getSound("Aani_menu");
 			Assets.BGMChannel = Assets.BGMusic.play();

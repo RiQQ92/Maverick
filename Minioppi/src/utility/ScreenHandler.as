@@ -49,9 +49,10 @@ package utility
 		public function set inScreen(value:String):void
 		{
 			var foundMatch:Boolean = true;
-			if(value != _inScreen)
+			if(value != _inScreen) // avaa uuden näytön, jos ei yritetä avata samaa uudestaan
 			{
-				// avaa uuden näytön, jos ei yritetä avata samaa uudestaan
+				Assets.BGMChannel.stop();	// pysäyttää vanhan näytön taustamusiikin
+				
 				switch(value)
 				{
 					case "credits":
@@ -171,8 +172,8 @@ package utility
 						
 						break;
 				}
-			
-				_inScreen = value;
+				
+				_inScreen = value;			// asettaa muistiin uuden näytön nimen
 			}
 		}
 	}

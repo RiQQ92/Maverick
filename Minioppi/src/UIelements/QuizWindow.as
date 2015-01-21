@@ -39,6 +39,8 @@ package UIelements
 			var _ID:String = Assets.removeChars("-", anim);
 			
 			image = Assets.getTexture("Yhdistely_"+_ID+"_kuva");
+			image.scaleX = 1.2;
+			image.scaleY = 1.2;
 			image.x = (bg.width/3)*2 -image.width/2;
 			image.y = bg.height/2 -image.height/2;
 			
