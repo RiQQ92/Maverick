@@ -126,12 +126,12 @@ package screens
 			
 			firstStart = false;
 			
-			textListSelection = new YhdistelyTekstiButton("Null", "", myStage);
+			textListSelection = new YhdistelyTekstiButton("Null", "", myStage, false);
 			textListSelection.visible = false;
 			textListSelection.x = myStage.stageWidth/2 + textListSelection.width/50;
 			textListSelection.y = myStage.stageHeight/2 - textListSelection.height/2;
 			
-			kuvaListSelection = new YhdistelyKuvaButton("Null", "", myStage);
+			kuvaListSelection = new YhdistelyKuvaButton("Null", "", myStage, false);
 			kuvaListSelection.visible = false;
 			kuvaListSelection.x = myStage.stageWidth/2 - kuvaListSelection.width - kuvaListSelection.width/10;
 			kuvaListSelection.y = myStage.stageHeight/2 - kuvaListSelection.height/2;
@@ -205,7 +205,7 @@ package screens
 		
 		private function addCard(animName:String):void
 		{
-			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage);
+			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, "lammas", myStage); // vaihda "lammas" -> animName kun kaikki eläinten äänet asennettu assets koodiin
 			cardImage.addListenerOnPress(function(evt:MouseEvent):void
 			{
 				drawLine = true;

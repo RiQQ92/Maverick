@@ -3,6 +3,7 @@ package
 	import com.greensock.TweenLite;
 	
 	import flash.display.Bitmap;
+	import flash.display.Stage;
 	import flash.media.Sound;
 	import flash.utils.Dictionary;
 	
@@ -1253,12 +1254,16 @@ package
 		public static const TakaisinNappi:Class;
 		[Embed(source="../Grafiikka/Muu/TimerBar.png")]
 		public static const TimerBar:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/napit/tekijat.png")]
+		public static const TekijatBtn:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/creditKuva.png")]
+		public static const CreditsBG:Class;
 		//********************
 		
 		// Aanet
 		//********************
-		//[Embed(source = "../Aanet/Yhdistely/koira.mp3")]
-		//public static const Aani_yhdistely_koira:Class;
+		[Embed(source = "../aanet/lammas.mp3")]
+		public static const Aani_lammas:Class;
 		//********************
 		
 		// Global Variables
@@ -1267,6 +1272,8 @@ package
 		//********************
 		
 		private static var gameTextures:Dictionary = new Dictionary();
+		
+		public static var gameStage:Stage;
 		
 		public static function getTexture(textureName:String):Bitmap
 		{
