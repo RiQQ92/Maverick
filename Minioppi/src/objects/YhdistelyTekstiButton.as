@@ -41,6 +41,7 @@ package objects
 			font.align = TextFormatAlign.CENTER;
 			
 			text.selectable = false;
+			text.mouseEnabled = false;
 			text.defaultTextFormat = font;
 			text.width = bg.width;
 			text.height = bg.height/3.25;
@@ -79,7 +80,6 @@ package objects
 		{
 			clickPressFunc = eventFunc;
 			bg.addEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
-			text.addEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
 		}
 		
 		public function addListenerOnRelease(eventFunc:Function):void

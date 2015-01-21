@@ -35,6 +35,7 @@ package UIelements
 			font.align = TextFormatAlign.CENTER;
 			
 			text.selectable = false;
+			text.mouseEnabled = false;
 			text.defaultTextFormat = font;
 			text.width = bg.width;
 			text.height = bg.height/3.25;
@@ -53,11 +54,9 @@ package UIelements
 		public function Destruct():void
 		{
 			bg.removeEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
-			text.removeEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
 			clickPressFunc = null;
 			
 			bg.removeEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
-			text.removeEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
 			clickReleaseFunc = null;
 		}
 	}

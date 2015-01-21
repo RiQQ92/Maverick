@@ -5,6 +5,8 @@ package
 	import flash.display.Bitmap;
 	import flash.display.Stage;
 	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import flash.utils.Dictionary;
 	
 	import utility.Time;
@@ -1264,6 +1266,9 @@ package
 		//********************
 		[Embed(source = "../aanet/lammas.mp3")]
 		public static const Aani_lammas:Class;
+		
+		[Embed(source = "../aanet/menu.mp3")]
+		public static const Aani_menu:Class;
 		//********************
 		
 		// Global Variables
@@ -1273,6 +1278,9 @@ package
 		
 		private static var gameTextures:Dictionary = new Dictionary();
 		
+		public static var BGMusic:Sound;
+		public static var BGMChannel:SoundChannel;
+		public static var BGMTransform:SoundTransform;
 		public static var gameStage:Stage;
 		
 		public static function getTexture(textureName:String):Bitmap

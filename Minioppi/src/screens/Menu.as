@@ -8,6 +8,9 @@ package screens
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.MouseEvent;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	
 	import utility.ScreenHandler;
 	
@@ -30,6 +33,15 @@ package screens
 		public function Menu(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			//constructor, kutsutaan joka kerta kun luokka luodaan voi käyttää samana kun Initialize
+			Assets.BGMusic = new Sound();
+			Assets.BGMChannel = new SoundChannel();
+			Assets.BGMTransform = new SoundTransform();
+			
+			Assets.BGMusic = Assets.getSound("Aani_menu");
+			Assets.BGMChannel = Assets.BGMusic.play();
+			Assets.BGMTransform.volume = 0.5;
+			Assets.BGMChannel.soundTransform = Assets.BGMTransform;
+			
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			Initialize();
