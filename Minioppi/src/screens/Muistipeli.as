@@ -40,6 +40,9 @@ package screens
 		public var cards:Array = new Array;
 		public var flips:Array = new Array;
 		
+		public var sparkle:twinklespir = new twinklespir();
+		public var sparkle1:twinklespir = new twinklespir();
+		
 		public var cardsFound:int = 0;
 		
 		public function Muistipeli(_stage:Stage, scrnHandle:ScreenHandler)
@@ -96,6 +99,22 @@ package screens
 		private function update(event:Event):void
 		{
 			checkWin();
+			
+			if (sparkle.parent != null)
+			{
+				if (sparkle.currentFrame == sparkle.totalFrames)
+				{
+					this.removeChild(sparkle);
+				}
+			}
+			if (sparkle1.parent != null)
+			{
+				if (sparkle1.currentFrame == sparkle1.totalFrames)
+				{
+					this.removeChild(sparkle1);
+				}
+			}
+			
 			if (pause)
 			{
 				if (blocker.parent == null)
@@ -178,6 +197,14 @@ package screens
 			// jos löytyy parit
 			if (card1 == card2)
 			{
+				sparkle.x = flips[0].x+(sparkle.width/2);
+				sparkle.y = flips[0].y+(sparkle.height/2);
+				sparkle1.x = flips[1].x+(sparkle1.width/2);
+				sparkle1.y = flips[1].y+(sparkle1.height/2);
+				sparkle.gotoAndPlay(1);
+				sparkle1.gotoAndPlay(1);
+				this.addChild(sparkle);
+				this.addChild(sparkle1);
 				cardsFound += 1;
 				this.removeChild(flips[0]);
 				this.removeChild(flips[1]);

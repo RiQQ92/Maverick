@@ -32,6 +32,7 @@
       </libraryPathEntry>
       <libraryPathEntry kind="1" linkType="1" path="MovieClips/Metsa"/>
       <libraryPathEntry kind="1" linkType="1" path="MovieClips/Labyrintti"/>
+      <libraryPathEntry kind="1" linkType="1" path="MovieClips/Effects"/>
     </libraryPath>
     <sourceAttachmentPath/>
   </compiler>

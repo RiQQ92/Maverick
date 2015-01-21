@@ -1204,6 +1204,8 @@ package
 		
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kana.png")]
 		public static const Yhdistely_Kana_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_karhu.png")]
+		public static const Yhdistely_Karhu_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lammas.png")]
 		public static const Yhdistely_Lammas_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_vuohi.png")]
