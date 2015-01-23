@@ -1286,50 +1286,108 @@ package
 		[Embed(source = "../aanet/menu.mp3")]
 		public static const Aani_menu:Class;
 		
+		[Embed(source = "../aanet/saneltu/karhu.mp3")]
+		public static const KarhuAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/lehmä.mp3")]
+		public static const LehmaeAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/koira.mp3")]
+		public static const KoiraAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/kissa.mp3")]
+		public static const KissaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/hevonen.mp3")]
+		public static const HevonenAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/sika.mp3")]
+		public static const SikaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/kana.mp3")]
+		public static const KanaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/lammas.mp3")]
+		public static const LammasAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/vuohi.mp3")]
+		public static const VuohiAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/sammakko.mp3")]
+		public static const SammakkoAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/undulaatti.mp3")]
+		public static const UndulaattiAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/kimalainen.mp3")]
+		public static const KimalainenAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/joutsen.mp3")]
+		public static const JoutsenAaniSaneltu:Class;
+		
 		[Embed(source = "../aanet/saneltu/haarapaasky.mp3")]
 		public static const HaarapaeaeskyAaniSaneltu:Class;
 		
 		[Embed(source = "../aanet/saneltu/harakka.mp3")]
 		public static const HarakkaAaniSaneltu:Class;
 		
-		[Embed(source = "../aanet/saneltu/joutsen.mp3")]
-		public static const JoutsenAaniSaneltu:Class;
-		
-		[Embed(source = "../aanet/saneltu/kana.mp3")]
-		public static const KanaAaniSaneltu:Class;
-		
-		[Embed(source = "../aanet/saneltu/kiuru.mp3")]
-		public static const KiuruAaniSaneltu:Class;
-		
-		[Embed(source = "../aanet/saneltu/kultahamsteri.mp3")]
-		public static const KultahamsteriAaniSaneltu:Class;
-		
-		[Embed(source = "../aanet/saneltu/lammas.mp3")]
-		public static const LammasAaniSaneltu:Class;
-		
-		[Embed(source = "../aanet/saneltu/laulujoutsen.mp3")]
-		public static const LaulujoutsenAaniSaneltu:Class;
-		
-		[Embed(source = "../aanet/saneltu/naurulokki.mp3")]
-		public static const NaurulokkiAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/jänis.mp3")]
+		public static const MetsaejaenisAaniSaneltu:Class;
 		
 		[Embed(source = "../aanet/saneltu/peippo.mp3")]
 		public static const PeippoAaniSaneltu:Class;
 		
-		[Embed(source = "../aanet/saneltu/sammakko.mp3")]
-		public static const SammakkoAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/sorsa.mp3")]
+		public static const SorsaAaniSaneltu:Class;
 		
-		[Embed(source = "../aanet/saneltu/sinisorsa.mp3")]
-		public static const SinisorsaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/ankka.mp3")]
+		public static const AnkkaAaniSaneltu:Class;
 		
-		[Embed(source = "../aanet/saneltu/undulaatti.mp3")]
-		public static const UndulaattiAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kukko.mp3")]
+		public static const KukkoAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/susi.mp3")]
+		public static const SusiAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/käärme.mp3")]
+		public static const KaeaermeAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/pöllö.mp3")]
+		public static const PoelloeAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/sisilisko.mp3")]
+		public static const SisiliskoAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/perhonen.mp3")]
+		public static const PerhonenAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/hamsteri.mp3")]
+		public static const HamsteriAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/etana.mp3")]
+		public static const EtanaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/rapu.mp3")]
+		public static const RapuAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/kilpikonna.mp3")]
+		public static const KilpikonnaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/orava.mp3")]
+		public static const OravaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/kettu.mp3")]
+		public static const KettuAaniSaneltu:Class;
+		
+		
+		[Embed(source = "../aanet/saneltu/kiuru.mp3")]
+		public static const KiuruAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/naurulokki.mp3")]
+		public static const NaurulokkiAaniSaneltu:Class;
 		
 		[Embed(source = "../aanet/saneltu/vastarakki.mp3")]
 		public static const VaestaeraekkiAaniSaneltu:Class;
-		
-		[Embed(source = "../aanet/saneltu/vuohi.mp3")]
-		public static const VuohiAaniSaneltu:Class;
 		//********************
 		
 		// Global Variables
