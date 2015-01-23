@@ -1275,6 +1275,51 @@ package
 		
 		[Embed(source = "../aanet/menu.mp3")]
 		public static const Aani_menu:Class;
+		
+		[Embed(source = "../aanet/saneltu/haarapaasky.mp3")]
+		public static const HaarapaeaeskyAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/harakka.mp3")]
+		public static const HarakkaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/joutsen.mp3")]
+		public static const JoutsenAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/kana.mp3")]
+		public static const KanaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/kiuru.mp3")]
+		public static const KiuruAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/kultahamsteri.mp3")]
+		public static const KultahamsteriAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/lammas.mp3")]
+		public static const LammasAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/laulujoutsen.mp3")]
+		public static const LaulujoutsenAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/naurulokki.mp3")]
+		public static const NaurulokkiAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/peippo.mp3")]
+		public static const PeippoAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/sammakko.mp3")]
+		public static const SammakkoAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/sinisorsa.mp3")]
+		public static const SinisorsaAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/undulaatti.mp3")]
+		public static const UndulaattiAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/vastarakki.mp3")]
+		public static const VaestaeraekkiAaniSaneltu:Class;
+		
+		[Embed(source = "../aanet/saneltu/vuohi.mp3")]
+		public static const VuohiAaniSaneltu:Class;
 		//********************
 		
 		// Global Variables
