@@ -1208,14 +1208,24 @@ package
 		public static const Yhdistely_Karhu_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kettu.png")]
 		public static const Yhdistely_Kettu_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_koira.png")]
+		public static const Yhdistely_Koira_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kissa.png")]
+		public static const Yhdistely_Kissa_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lepakko.png")]
 		public static const Yhdistely_Lepakko_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lammas.png")]
 		public static const Yhdistely_Lammas_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lehma.png")]
+		public static const Yhdistely_Lehmae_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_hevonen.png")]
+		public static const Yhdistely_Hevonen_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_vuohi.png")]
 		public static const Yhdistely_Vuohi_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_sammakko.png")]
 		public static const Yhdistely_Sammakko_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_sika.png")]
+		public static const Yhdistely_Sika_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kilpikonna.png")]
 		public static const Yhdistely_Kilpikonna_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_undulaatti.png")]
@@ -1287,6 +1297,7 @@ package
 		public static var BGMusic:Sound = new Sound();
 		public static var BGMChannel:SoundChannel = new SoundChannel();
 		public static var BGMTransform:SoundTransform = new SoundTransform();
+		public static var BGMute:Boolean = false;
 		public static var gameStage:Stage;
 		
 		public static function getTexture(textureName:String):Bitmap
