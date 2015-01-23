@@ -37,6 +37,7 @@ package screens
 			//Assets.BGMChannel = new SoundChannel();
 			//Assets.BGMTransform = new SoundTransform();
 			
+			Assets.BGMChannel.stop();	// pysäyttää vanhan näytön taustamusiikin
 			Assets.BGMusic = Assets.getSound("Aani_menu");
 			Assets.BGMChannel = Assets.BGMusic.play();
 			Assets.BGMTransform.volume = 0.5;

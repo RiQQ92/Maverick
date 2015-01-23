@@ -165,10 +165,10 @@ package screens
 			animalNames.push("Met-sae-jae-nis");
 			animalNames.push("Peip-po");
 			animalNames.push("Sor-sa");
+			animalNames.push("Kaeaer-me");
 			//animalNames.push("Ank-ka");
 			//animalNames.push("Kuk-ko");
 			//animalNames.push("Su-si");
-			//animalNames.push("Kaeaer-me");
 			//animalNames.push("Poel-loe");
 			
 			/*** Äänettömät ***/

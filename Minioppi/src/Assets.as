@@ -1204,6 +1204,8 @@ package
 		
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kana.png")]
 		public static const Yhdistely_Kana_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kaarme.png")]
+		public static const Yhdistely_Kaeaerme_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_karhu.png")]
 		public static const Yhdistely_Karhu_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kettu.png")]
@@ -1280,6 +1282,9 @@ package
 		
 		// Aanet
 		//********************
+		[Embed(source = "../aanet/buttonClick.mp3")]
+		public static const Aani_btnclick:Class;
+		
 		[Embed(source = "../aanet/lammas.mp3")]
 		public static const Aani_lammas:Class;
 		

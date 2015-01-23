@@ -5,12 +5,14 @@ package UIelements
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import flash.geom.ColorTransform;
+	import flash.media.Sound;
 	import flash.ui.MouseCursor;
 	import flash.ui.MouseCursorData;
 	
 	public class Button extends Sprite
 	{
 		private var mouseDown:Boolean = false;
+		private var sound:Sound = Assets.getSound("Aani_btnclick");
 		
 		private var lightier:ColorTransform = new ColorTransform(1.2,1.2,1.2,1);
 		private var darker:ColorTransform = new ColorTransform(0.8, 0.8, 0.8, 1);
@@ -80,11 +82,18 @@ package UIelements
 		{
 			clickFunc = eventFunc;
 			this.addEventListener(MouseEvent.CLICK, clickFunc);
+			this.addEventListener(MouseEvent.CLICK, clickSound);
+		}
+		
+		protected function clickSound(event:MouseEvent):void
+		{
+			sound.play();
 		}
 		
 		public function removeListeners():void
 		{
 			this.removeEventListener(MouseEvent.CLICK, clickFunc);
+			this.removeEventListener(MouseEvent.CLICK, clickSound);
 		}
 	}
 }

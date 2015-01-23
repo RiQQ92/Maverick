@@ -34,7 +34,6 @@ package objects
 			soundBtn = new Button("Aani_nappi", highlights);
 			bg = new Button("YhdistelyBtn_bg", highlights);
 			image = new Button("Yhdistely_"+_ID+"_kuva", highlights);
-			//sound = Assets.getSound(_sound+"_aani");
 			
 			bg.x = 0;
 			bg.y = 0;
