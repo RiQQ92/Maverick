@@ -13,17 +13,20 @@ package UIelements
 	public class TextButton extends Sprite
 	{
 		private var _ID:String;
+		private var myStage:Stage;
 		private var clickPressFunc:Function;
 		private var clickReleaseFunc:Function;
 		
 		private var bg:Button = new Button("YhdistelyBtn_bg");
 		
-		public var text:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
+		public var text:TextField = new TextField();
 		
 		public function TextButton(_text:String, _stage:Stage)
 		{
 			super();
+			
+			myStage = _stage;
 			
 			_ID = _text;
 			_ID = Assets.removeChars("-", _ID);
@@ -35,6 +38,7 @@ package UIelements
 			font.align = TextFormatAlign.CENTER;
 			
 			text.selectable = false;
+			text.mouseEnabled = false;
 			text.defaultTextFormat = font;
 			text.width = bg.width;
 			text.height = bg.height/3.25;
@@ -45,7 +49,7 @@ package UIelements
 			bg.y = 0;
 			this.addChild(bg);
 			
-			text.x = bg.width/3 - text.width/2;
+			text.x = bg.width/2 - text.width/2;
 			text.y = bg.height/2 - text.height/2;
 			this.addChild(text);
 		}
@@ -53,11 +57,9 @@ package UIelements
 		public function Destruct():void
 		{
 			bg.removeEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
-			text.removeEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
 			clickPressFunc = null;
 			
 			bg.removeEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
-			text.removeEventListener(MouseEvent.MOUSE_UP, clickReleaseFunc);
 			clickReleaseFunc = null;
 		}
 	}

@@ -3,7 +3,10 @@ package
 	import com.greensock.TweenLite;
 	
 	import flash.display.Bitmap;
+	import flash.display.Stage;
 	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import flash.utils.Dictionary;
 	
 	import utility.Time;
@@ -1201,6 +1204,12 @@ package
 		
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kana.png")]
 		public static const Yhdistely_Kana_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_karhu.png")]
+		public static const Yhdistely_Karhu_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kettu.png")]
+		public static const Yhdistely_Kettu_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lepakko.png")]
+		public static const Yhdistely_Lepakko_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lammas.png")]
 		public static const Yhdistely_Lammas_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_vuohi.png")]
@@ -1253,12 +1262,19 @@ package
 		public static const TakaisinNappi:Class;
 		[Embed(source="../Grafiikka/Muu/TimerBar.png")]
 		public static const TimerBar:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/napit/tekijat.png")]
+		public static const TekijatBtn:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/creditKuva.png")]
+		public static const CreditsBG:Class;
 		//********************
 		
 		// Aanet
 		//********************
-		//[Embed(source = "../Aanet/Yhdistely/koira.mp3")]
-		//public static const Aani_yhdistely_koira:Class;
+		[Embed(source = "../aanet/lammas.mp3")]
+		public static const Aani_lammas:Class;
+		
+		[Embed(source = "../aanet/menu.mp3")]
+		public static const Aani_menu:Class;
 		//********************
 		
 		// Global Variables
@@ -1267,6 +1283,11 @@ package
 		//********************
 		
 		private static var gameTextures:Dictionary = new Dictionary();
+		
+		public static var BGMusic:Sound = new Sound();
+		public static var BGMChannel:SoundChannel = new SoundChannel();
+		public static var BGMTransform:SoundTransform = new SoundTransform();
+		public static var gameStage:Stage;
 		
 		public static function getTexture(textureName:String):Bitmap
 		{

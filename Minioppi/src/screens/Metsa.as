@@ -35,6 +35,7 @@ package screens
 			kettu.buttonMode = true;
 			kettu.addEventListener(MouseEvent.MOUSE_DOWN, clickKettu);
 			
+			rabbit.mouseChildren = false;
 			rabbit.buttonMode = true;
 			rabbit.addEventListener(MouseEvent.MOUSE_DOWN, clickRabbit);
 			
@@ -66,7 +67,7 @@ package screens
 		protected function clickRabbit(event:MouseEvent):void
 		{
 			pause();
-			popup = new QuizWindow("jae-nis", go, myStage);
+			popup = new QuizWindow("Met-sae-jae-nis", go, myStage);
 			this.addChild(popup);
 			trace("rabbit got klikd");
 		}
@@ -74,7 +75,7 @@ package screens
 		protected function clickKettu(event:MouseEvent):void
 		{
 			pause();
-			popup = new QuizWindow("ket-tu", go, myStage);
+			popup = new QuizWindow("Ket-tu", go, myStage);
 			this.addChild(popup);
 			trace("kettu got klikd");
 		}
@@ -82,7 +83,7 @@ package screens
 		protected function clickKarhu(event:MouseEvent):void
 		{
 			pause();
-			popup = new QuizWindow("kar-hu", go, myStage);
+			popup = new QuizWindow("Kar-hu", go, myStage);
 			this.addChild(popup);
 			trace("karhu got klikd");
 		}
@@ -90,7 +91,7 @@ package screens
 		protected function clickSnail(event:MouseEvent):void
 		{
 			pause();
-			popup = new QuizWindow("e-ta-na", go, myStage);
+			popup = new QuizWindow("E-ta-na", go, myStage);
 			this.addChild(popup);
 			trace("snail got klikd");
 		}
@@ -98,7 +99,7 @@ package screens
 		protected function clickBat(event:MouseEvent):void
 		{
 			pause();
-			popup = new QuizWindow("le-pak-ko", go, myStage);
+			popup = new QuizWindow("Le-pak-ko", go, myStage);
 			this.addChild(popup);
 			trace("bat got klikd");
 		}
@@ -128,15 +129,15 @@ package screens
 			karhu.stop();
 			snail.stop();
 			bat.stop();
-			kettu.stop();
 			rabbit.stop();
+			kettu.stop();
 			
 			karhu.karhu_mc.mouseEnabled = false;
 			karhu.mouseEnabled = false;
 			snail.mouseEnabled = false;
 			bat.mouseEnabled = false;
-			kettu.mouseEnabled = false;
 			rabbit.mouseEnabled = false;
+			kettu.mouseEnabled = false;
 		}
 		
 		private function Draw():void

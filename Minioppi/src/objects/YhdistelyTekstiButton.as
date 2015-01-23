@@ -19,15 +19,18 @@ package objects
 		private var sound:Sound;
 		private var myStage:Stage;
 		
-		private var soundBtn:Button = new Button("Aani_nappi");
-		private var bg:Button = new Button("YhdistelyBtn_bg");
+		private var soundBtn:Button;
+		private var bg:Button;
 		
 		public var text:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
 		
-		public function YhdistelyTekstiButton(_text:String, _sound:String, _stage:Stage)
+		public function YhdistelyTekstiButton(_text:String, _sound:String, _stage:Stage, highlights:Boolean = true)
 		{
 			super();
+			
+			soundBtn = new Button("Aani_nappi", highlights);
+			bg = new Button("YhdistelyBtn_bg", highlights);
 			
 			_ID = _text;
 			_ID = Assets.removeChars("-", _ID);
@@ -38,6 +41,7 @@ package objects
 			font.align = TextFormatAlign.CENTER;
 			
 			text.selectable = false;
+			text.mouseEnabled = false;
 			text.defaultTextFormat = font;
 			text.width = bg.width;
 			text.height = bg.height/3.25;
@@ -76,7 +80,6 @@ package objects
 		{
 			clickPressFunc = eventFunc;
 			bg.addEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
-			text.addEventListener(MouseEvent.MOUSE_DOWN, clickPressFunc);
 		}
 		
 		public function addListenerOnRelease(eventFunc:Function):void

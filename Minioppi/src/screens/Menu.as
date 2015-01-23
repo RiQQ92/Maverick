@@ -8,6 +8,9 @@ package screens
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.MouseEvent;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	
 	import utility.ScreenHandler;
 	
@@ -25,10 +28,20 @@ package screens
 		public var muistiBtn:GameButton = new GameButton("Muistipeli");
 		public var yhdistelyBtn:GameButton = new GameButton("Yhdistely");
 		public var pilkkiBtn:GameButton = new GameButton("Pilkki");
+		public var creditBtn:Button = new Button("TekijatBtn", true);
 		
 		public function Menu(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			//constructor, kutsutaan joka kerta kun luokka luodaan voi käyttää samana kun Initialize
+			//Assets.BGMusic = new Sound();
+			//Assets.BGMChannel = new SoundChannel();
+			//Assets.BGMTransform = new SoundTransform();
+			
+			Assets.BGMusic = Assets.getSound("Aani_menu");
+			Assets.BGMChannel = Assets.BGMusic.play();
+			Assets.BGMTransform.volume = 0.5;
+			Assets.BGMChannel.soundTransform = Assets.BGMTransform;
+			
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			Initialize();
@@ -42,6 +55,17 @@ package screens
 			tausta.scaleY = 1;
 			tausta.x = 0;
 			tausta.y = 0;
+			
+			creditBtn.scaleX = 0.5;
+			creditBtn.scaleY = 0.5;
+			creditBtn.x = 20;
+			creditBtn.y = 480-(creditBtn.height*2);
+			creditBtn.addListener(
+				function(event:MouseEvent):void
+				{
+					screenHandler.inScreen = "credits";
+				}
+			);
 			
 			labyBtn.scaleX = 0.4;
 			labyBtn.scaleY = 0.4;
@@ -104,6 +128,7 @@ package screens
 		// poistetaan kaikki luodut lapset ja muu varattu muisti
 		public function Destruct():void
 		{
+			this.removeChild(creditBtn);
 			this.removeChild(tausta);
 			this.removeChild(labyBtn);
 			this.removeChild(metsaBtn);
@@ -123,6 +148,7 @@ package screens
 			this.addChild(pilkkiBtn);
 			this.addChild(yhdistelyBtn);
 			this.addChild(menuGameList);
+			this.addChild(creditBtn);
 		}
 	}
 }
