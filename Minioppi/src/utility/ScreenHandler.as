@@ -51,8 +51,6 @@ package utility
 			var foundMatch:Boolean = true;
 			if(value != _inScreen) // avaa uuden näytön, jos ei yritetä avata samaa uudestaan
 			{
-				Assets.BGMChannel.stop();	// pysäyttää vanhan näytön taustamusiikin
-				
 				switch(value)
 				{
 					case "credits":
