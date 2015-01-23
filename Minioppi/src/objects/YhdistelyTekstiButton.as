@@ -29,6 +29,10 @@ package objects
 		{
 			super();
 			
+			_sound = Assets.removeChars("-", _sound);
+			if(_sound != "")
+				sound = Assets.getSound(_sound+"AaniSaneltu");
+			
 			soundBtn = new Button("Aani_nappi", highlights);
 			bg = new Button("YhdistelyBtn_bg", highlights);
 			
@@ -96,7 +100,7 @@ package objects
 
 		protected function onClickSound(event:MouseEvent):void
 		{
-			//sound.play();
+			sound.play();
 		}
 		
 		public function Destruct():void
