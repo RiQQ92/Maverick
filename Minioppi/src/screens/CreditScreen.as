@@ -26,6 +26,7 @@ package screens
 			exitBtn.addListener(
 				function(event:MouseEvent):void
 				{
+					Assets.cameFromCredits = true;
 					screenHandler.inScreen = "menu";
 				}
 			);

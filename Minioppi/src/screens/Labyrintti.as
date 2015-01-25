@@ -40,6 +40,13 @@ package screens
 		{
 			super();
 			
+			Assets.BGMChannel.stop();	// pysäyttää vanhan näytön taustamusiikin
+			Assets.BGMusic = Assets.getSound("Aani_laby");
+			Assets.BGMChannel = Assets.BGMusic.play();
+			Assets.setBGMVolume(1); // äänen voimakkuus MIN 0.01 - MAX 1.00
+			Assets.BGMChannel.soundTransform = Assets.BGMTransform;
+			Assets.BGMChannel.addEventListener(Event.SOUND_COMPLETE, Assets.replayBGM);
+			
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			

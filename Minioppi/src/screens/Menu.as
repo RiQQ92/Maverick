@@ -7,6 +7,7 @@ package screens
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
@@ -33,16 +34,17 @@ package screens
 		public function Menu(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			//constructor, kutsutaan joka kerta kun luokka luodaan voi käyttää samana kun Initialize
-			//Assets.BGMusic = new Sound();
-			//Assets.BGMChannel = new SoundChannel();
-			//Assets.BGMTransform = new SoundTransform();
+			if(!Assets.cameFromCredits) // ei aloita alusta tausta musiikkia kun käy ja poistuu credits ruudusta
+			{
+				Assets.BGMChannel.stop();	// pysäyttää vanhan näytön taustamusiikin
+				Assets.BGMusic = Assets.getSound("Aani_menu");
+				Assets.BGMChannel = Assets.BGMusic.play();
+				Assets.setBGMVolume(1); // äänen voimakkuus MIN 0.01 - MAX 1.00
+				Assets.BGMChannel.soundTransform = Assets.BGMTransform;
+				Assets.BGMChannel.addEventListener(Event.SOUND_COMPLETE, Assets.replayBGM);
+			}
 			
-			Assets.BGMChannel.stop();	// pysäyttää vanhan näytön taustamusiikin
-			Assets.BGMusic = Assets.getSound("Aani_menu");
-			Assets.BGMChannel = Assets.BGMusic.play();
-			Assets.BGMTransform.volume = 0.5;
-			Assets.BGMChannel.soundTransform = Assets.BGMTransform;
-			
+			Assets.cameFromCredits = false;
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			Initialize();
