@@ -8,12 +8,22 @@ package screens
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
+	
+	import myEvents.MovieclipEvent;
 	
 	import utility.ScreenHandler;
 	
 	public class Metsa extends Sprite
 	{
+		private const ANIM_AMOUNT:int = 5;
+		
+		private var gamePaused:Boolean = false;
+		private var countFrames:int = 0;
+		
+		private var activeAnimals:Array = new Array();
+		
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
 		private var popup:QuizWindow;
@@ -29,6 +39,10 @@ package screens
 		public function Metsa(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			super();
+			
+			for(var i:int = 0; i < ANIM_AMOUNT; i++)
+				activeAnimals.push(false);
+			
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			
@@ -41,6 +55,7 @@ package screens
 			
 			karhu.x = 370;
 			karhu.y = 250;
+			
 			karhu.karhu_mc.buttonMode = true;
 			karhu.karhu_mc.addEventListener(MouseEvent.MOUSE_DOWN, clickKarhu);
 			
@@ -62,6 +77,98 @@ package screens
 			);
 			
 			Draw();
+			
+			karhu.stop();
+			karhu.stop();
+			snail.stop();
+			bat.stop();
+			kettu.stop();
+			rabbit.stop();
+			
+			karhu.karhu_mc.addEventListener(Event.ENTER_FRAME, checkPlayState);
+			karhu.addEventListener(Event.ENTER_FRAME, checkPlayState);
+			snail.addEventListener(Event.ENTER_FRAME, checkPlayState);
+			bat.addEventListener(Event.ENTER_FRAME, checkPlayState);
+			kettu.addEventListener(Event.ENTER_FRAME, checkPlayState);
+			rabbit.addEventListener(Event.ENTER_FRAME, checkPlayState);
+			
+			this.addEventListener(Event.ENTER_FRAME, gameLoop);
+		}
+		
+		protected function checkPlayState(event:Event):void
+		{
+			if(event.target.isPlaying)
+			{
+				if(event.target.currentFrame == event.target.totalFrames)
+				{
+					event.target.stop();
+				}
+			}
+		}
+		
+		protected function gameLoop(event:Event):void
+		{
+			if(!gamePaused)
+			{
+				if(countFrames > 5*30)
+				{
+					countFrames = 0;
+					
+					activateAnimal();
+				}
+				
+				countFrames++;
+			}
+		}
+		
+		private function activateAnimal():void
+		{
+			var isPlaying:Boolean = false;
+			
+			do{
+				var rand:int = Math.floor(Math.random()*5);
+				isPlaying = false;
+				switch(rand)
+				{
+					case 0:
+						if(karhu.isPlaying)
+							isPlaying = true;
+						else
+							karhu.play();
+						
+						break;
+					case 1:
+						if(snail.isPlaying)
+							isPlaying = true;
+						else
+							snail.play();
+						
+						break;
+					case 2:
+						if(bat.isPlaying)
+							isPlaying = true;
+						else
+							bat.play();
+						
+						break;
+					case 3:
+						if(rabbit.isPlaying)
+							isPlaying = true;
+						else
+							rabbit.play();
+						
+						break;
+					case 4:
+						if(kettu.isPlaying)
+							isPlaying = true;
+						else
+							kettu.play();
+						
+						break;
+					default:
+						break;
+				}
+			}while(isPlaying);
 		}
 		
 		protected function clickRabbit(event:MouseEvent):void
@@ -69,7 +176,6 @@ package screens
 			pause();
 			popup = new QuizWindow("Met-sae-jae-nis", go, myStage);
 			this.addChild(popup);
-			trace("rabbit got klikd");
 		}
 		
 		protected function clickKettu(event:MouseEvent):void
@@ -77,7 +183,6 @@ package screens
 			pause();
 			popup = new QuizWindow("Ket-tu", go, myStage);
 			this.addChild(popup);
-			trace("kettu got klikd");
 		}
 		
 		protected function clickKarhu(event:MouseEvent):void
@@ -85,7 +190,6 @@ package screens
 			pause();
 			popup = new QuizWindow("Kar-hu", go, myStage);
 			this.addChild(popup);
-			trace("karhu got klikd");
 		}
 		
 		protected function clickSnail(event:MouseEvent):void
@@ -93,7 +197,6 @@ package screens
 			pause();
 			popup = new QuizWindow("E-ta-na", go, myStage);
 			this.addChild(popup);
-			trace("snail got klikd");
 		}
 		
 		protected function clickBat(event:MouseEvent):void
@@ -101,43 +204,84 @@ package screens
 			pause();
 			popup = new QuizWindow("Le-pak-ko", go, myStage);
 			this.addChild(popup);
-			trace("bat got klikd");
 		}
 		
 		private function go(event:MouseEvent):void
 		{
 			this.removeChild(popup);
 			
-			karhu.karhu_mc.play();
-			karhu.play();
-			snail.play();
-			bat.play();
-			kettu.play();
-			rabbit.play();
+			if(activeAnimals[0])
+			{
+				activeAnimals[0] = false;
+				karhu.karhu_mc.stop();
+				karhu.stop();
+				karhu.karhu_mc.mouseEnabled = true;
+				karhu.mouseEnabled = true;
+			}
+			if(activeAnimals[1])
+			{
+				activeAnimals[1] = false;
+				snail.stop();
+				snail.mouseEnabled = true;
+			}
+			if(activeAnimals[2])
+			{
+				activeAnimals[2] = false;
+				bat.stop();
+				bat.mouseEnabled = true;
+			}
+			if(activeAnimals[3])
+			{
+				activeAnimals[3] = false;
+				rabbit.stop();
+				rabbit.mouseEnabled = true;
+			}
+			if(activeAnimals[4])
+			{
+				activeAnimals[4] = false;
+				kettu.stop();
+				kettu.mouseEnabled = true;
+			}
 			
-			karhu.karhu_mc.mouseEnabled = true;
-			karhu.mouseEnabled = true;
-			snail.mouseEnabled = true;
-			bat.mouseEnabled = true;
-			kettu.mouseEnabled = true;
-			rabbit.mouseEnabled = true;
+			gamePaused = false;
 		}
 		
 		private function pause():void
 		{
-			karhu.karhu_mc.stop();
-			karhu.stop();
-			snail.stop();
-			bat.stop();
-			rabbit.stop();
-			kettu.stop();
+			if(karhu.isPlaying)
+			{
+				activeAnimals[0] = true;
+				karhu.karhu_mc.stop();
+				karhu.stop();
+				karhu.karhu_mc.mouseEnabled = false;
+				karhu.mouseEnabled = false;
+			}
+			if(snail.isPlaying)
+			{
+				activeAnimals[1] = true;
+				snail.stop();
+				snail.mouseEnabled = false;
+			}
+			if(bat.isPlaying)
+			{
+				activeAnimals[2] = true;
+				bat.stop();
+				bat.mouseEnabled = false;
+			}
+			if(rabbit.isPlaying)
+			{
+				activeAnimals[3] = true;
+				rabbit.stop();
+				rabbit.mouseEnabled = false;
+			}
+			if(kettu.isPlaying)
+			{
+				activeAnimals[4] = true;
+				kettu.stop();
+				kettu.mouseEnabled = false;
+			}
 			
-			karhu.karhu_mc.mouseEnabled = false;
-			karhu.mouseEnabled = false;
-			snail.mouseEnabled = false;
-			bat.mouseEnabled = false;
-			rabbit.mouseEnabled = false;
-			kettu.mouseEnabled = false;
+			gamePaused = true;
 		}
 		
 		private function Draw():void
