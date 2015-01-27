@@ -126,12 +126,12 @@ package screens
 			
 			firstStart = false;
 			
-			textListSelection = new YhdistelyTekstiButton("Null", "", myStage);
+			textListSelection = new YhdistelyTekstiButton("Null", "", myStage, false);
 			textListSelection.visible = false;
 			textListSelection.x = myStage.stageWidth/2 + textListSelection.width/50;
 			textListSelection.y = myStage.stageHeight/2 - textListSelection.height/2;
 			
-			kuvaListSelection = new YhdistelyKuvaButton("Null", "", myStage);
+			kuvaListSelection = new YhdistelyKuvaButton("Null", "", myStage, false);
 			kuvaListSelection.visible = false;
 			kuvaListSelection.x = myStage.stageWidth/2 - kuvaListSelection.width - kuvaListSelection.width/10;
 			kuvaListSelection.y = myStage.stageHeight/2 - kuvaListSelection.height/2;
@@ -146,33 +146,43 @@ package screens
 		private function initNameArray():void
 		{
 			animalNames = new Array();
-			//animalNames.push("Ket-tu");
-			//animalNames.push("Kar-hu");
-			//animalNames.push("Su-si");
-			//animalNames.push("O-ra-va");
-			//animalNames.push("Leh-mä");
-			//animalNames.push("Koi-ra");
-			//animalNames.push("Si-ka");
-			//animalNames.push("Ank-ka");
-			//animalNames.push("Kuk-ko");
+			
+			animalNames.push("Kar-hu");
+			animalNames.push("Leh-mae");
+			animalNames.push("Koi-ra");
+			animalNames.push("Kis-sa");
+			animalNames.push("He-vo-nen");
+			animalNames.push("Si-ka");
 			animalNames.push("Ka-na");
 			animalNames.push("Lam-mas");
 			animalNames.push("Vuo-hi");
 			animalNames.push("Sam-mak-ko");
-			animalNames.push("Kil-pi-kon-na");
 			animalNames.push("Un-du-laat-ti");
-			animalNames.push("Ra-pu");
 			animalNames.push("Ki-ma-lai-nen");
 			animalNames.push("Jout-sen");
-			animalNames.push("E-ta-na");
 			animalNames.push("Haa-ra-paeaes-ky");
 			animalNames.push("Ha-rak-ka");
-			animalNames.push("Hams-te-ri");
 			animalNames.push("Met-sae-jae-nis");
-			animalNames.push("Per-ho-nen");
 			animalNames.push("Peip-po");
 			animalNames.push("Sor-sa");
-			animalNames.push("Si-si-lis-ko");
+			animalNames.push("Kaeaer-me");
+			//animalNames.push("Ank-ka");
+			//animalNames.push("Kuk-ko");
+			//animalNames.push("Su-si");
+			//animalNames.push("Poel-loe");
+			
+			/*** Äänettömät ***/
+			
+			//animalNames.push("Si-si-lis-ko");
+			//animalNames.push("Per-ho-nen");
+			//animalNames.push("Hams-te-ri");
+			//animalNames.push("E-ta-na");
+			//animalNames.push("Ra-pu");
+			//animalNames.push("Kil-pi-kon-na");
+			//animalNames.push("O-ra-va");
+			//animalNames.push("Ket-tu");
+			
+			/*** ********** ***/
 		}
 		
 		private function randomCards():void
@@ -205,7 +215,7 @@ package screens
 		
 		private function addCard(animName:String):void
 		{
-			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage);
+			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, "lammas", myStage); // vaihda "lammas" -> animName kun kaikki eläinten äänet asennettu assets koodiin
 			cardImage.addListenerOnPress(function(evt:MouseEvent):void
 			{
 				drawLine = true;

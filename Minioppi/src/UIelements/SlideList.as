@@ -61,12 +61,12 @@ package UIelements
 			itemList = new Dictionary();
 			
 			forward = new Button("ArrowRight");
-			forward.addEventListener(MouseEvent.CLICK, scrollBack);
+			forward.addListener(scrollBack);
 			forward.visible = false;
 			this.addChild(forward);
 			
 			rewind = new Button("ArrowLeft");
-			rewind.addEventListener(MouseEvent.CLICK, scrollForward);
+			rewind.addListener(scrollForward);
 			rewind.visible = false;
 			this.addChild(rewind);
 			

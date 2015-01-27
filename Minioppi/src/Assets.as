@@ -3,8 +3,14 @@ package
 	import com.greensock.TweenLite;
 	
 	import flash.display.Bitmap;
+	import flash.display.Stage;
+	import flash.events.Event;
 	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import flash.utils.Dictionary;
+	
+	import utility.Time;
 	
 	public class Assets
 	{
@@ -1199,12 +1205,30 @@ package
 		
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kana.png")]
 		public static const Yhdistely_Kana_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kaarme.png")]
+		public static const Yhdistely_Kaeaerme_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_karhu.png")]
+		public static const Yhdistely_Karhu_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kettu.png")]
+		public static const Yhdistely_Kettu_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_koira.png")]
+		public static const Yhdistely_Koira_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kissa.png")]
+		public static const Yhdistely_Kissa_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lepakko.png")]
+		public static const Yhdistely_Lepakko_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lammas.png")]
 		public static const Yhdistely_Lammas_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_lehma.png")]
+		public static const Yhdistely_Lehmae_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_hevonen.png")]
+		public static const Yhdistely_Hevonen_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_vuohi.png")]
 		public static const Yhdistely_Vuohi_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_sammakko.png")]
 		public static const Yhdistely_Sammakko_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_sika.png")]
+		public static const Yhdistely_Sika_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kilpikonna.png")]
 		public static const Yhdistely_Kilpikonna_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_undulaatti.png")]
@@ -1215,7 +1239,6 @@ package
 		public static const Yhdistely_Kimalainen_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_joutsen.png")]
 		public static const Yhdistely_Joutsen_kuva:Class;
-
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_etana.png")]
 		public static const Yhdistely_Etana_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_haarapaasky.png")]
@@ -1251,15 +1274,126 @@ package
 		public static const TakaisinNappi:Class;
 		[Embed(source="../Grafiikka/Muu/TimerBar.png")]
 		public static const TimerBar:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/napit/tekijat.png")]
+		public static const TekijatBtn:Class;
+		[Embed(source="../Grafiikka/alkuvalikko/creditKuva.png")]
+		public static const CreditsBG:Class;
 		//********************
 		
 		// Aanet
 		//********************
-		//[Embed(source = "../Aanet/Yhdistely/koira.mp3")]
-		//public static const Aani_yhdistely_koira:Class;
+		[Embed(source = "../aanet/buttonClick.mp3")]
+		public static const Aani_btnclick:Class;
+		[Embed(source = "../aanet/menu.mp3")]
+		public static const Aani_menu:Class;
+		[Embed(source = "../aanet/Jaunty_Gumption.mp3")]
+		public static const Aani_laby:Class;
+		
+		[Embed(source = "../aanet/lammas.mp3")]
+		public static const Aani_lammas:Class;
+		
+		[Embed(source = "../aanet/saneltu/karhu.mp3")]
+		public static const KarhuAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/lehma.mp3")]
+		public static const LehmaeAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/koira.mp3")]
+		public static const KoiraAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kissa.mp3")]
+		public static const KissaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/hevonen.mp3")]
+		public static const HevonenAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/sika.mp3")]
+		public static const SikaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kana.mp3")]
+		public static const KanaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/lammas.mp3")]
+		public static const LammasAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/vuohi.mp3")]
+		public static const VuohiAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/sammakko.mp3")]
+		public static const SammakkoAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/undulaatti.mp3")]
+		public static const UndulaattiAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kimalainen.mp3")]
+		public static const KimalainenAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/joutsen.mp3")]
+		public static const JoutsenAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/haarapaasky.mp3")]
+		public static const HaarapaeaeskyAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/harakka.mp3")]
+		public static const HarakkaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/janis.mp3")]
+		public static const MetsaejaenisAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/peippo.mp3")]
+		public static const PeippoAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/sorsa.mp3")]
+		public static const SorsaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/ankka.mp3")]
+		public static const AnkkaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kukko.mp3")]
+		public static const KukkoAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/susi.mp3")]
+		public static const SusiAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kaarme.mp3")]
+		public static const KaeaermeAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/pollo.mp3")]
+		public static const PoelloeAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/sisilisko.mp3")]
+		public static const SisiliskoAaniSaneltu:Class;
+		/*
+		[Embed(source = "../aanet/saneltu/perhonen.mp3")]	// tämä bugii, ei anna flashbuilderin rakentaa projektia ja flashbuilder jumittuu
+		public static const PerhonenAaniSaneltu:Class;		// en voi ymmärtää, mutta tuskallisen metsästyksen jälkeen löydetty
+		*/
+		[Embed(source = "../aanet/saneltu/hamsteri.mp3")]
+		public static const HamsteriAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/etana.mp3")]
+		public static const EtanaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/rapu.mp3")]
+		public static const RapuAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kilpikonna.mp3")]
+		public static const KilpikonnaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/orava.mp3")]
+		public static const OravaAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kettu.mp3")]
+		public static const KettuAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/kiuru.mp3")]
+		public static const KiuruAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/naurulokki.mp3")]
+		public static const NaurulokkiAaniSaneltu:Class;
+		[Embed(source = "../aanet/saneltu/vastarakki.mp3")]
+		public static const VaestaeraekkiAaniSaneltu:Class;
 		//********************
 		
+		// Global Variables
+		//********************
+		public static var cameFromCredits:Boolean = false;
+		public static var labHighTime:Time = new Time();
+		
+		public static var BGMusic:Sound = new Sound();
+		public static var BGMChannel:SoundChannel = new SoundChannel();
+		public static var BGMTransform:SoundTransform = new SoundTransform();
+		public static var BGMute:Boolean = false;
+		
+		public static var gameStage:Stage;
+		//********************
+		
+		private static var BGMVolume:Number = 1;
 		private static var gameTextures:Dictionary = new Dictionary();
+		
+		public static function setBGMVolume(volume:Number):void
+		{
+			BGMVolume = volume;
+			BGMTransform.volume = BGMVolume;
+			BGMChannel.soundTransform = BGMTransform;
+		}
+		
+		public static function replayBGM(event:Event):void
+		{
+			BGMChannel = BGMusic.play();
+			BGMTransform.volume = BGMVolume;
+			BGMChannel.soundTransform = BGMTransform;
+			BGMChannel.addEventListener(Event.SOUND_COMPLETE, replayBGM);
+		}
 		
 		public static function getTexture(textureName:String):Bitmap
 		{
