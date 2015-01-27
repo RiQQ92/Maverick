@@ -40,6 +40,8 @@ package objects
 			_ID = Assets.removeChars("-", _ID);
 			var pattern:RegExp = /ae/g;
 			_text = _text.replace(pattern, "ä");
+			pattern = /oe/g;
+			_text = _text.replace(pattern, "ö");
 			
 			font.size = 20;
 			font.align = TextFormatAlign.CENTER;
@@ -52,7 +54,6 @@ package objects
 			text.text = _text;
 			
 			myStage = _stage;
-			//sound = Assets.getSound(_sound);
 			
 			bg.scaleY = 0.35;
 			bg.x = 0;

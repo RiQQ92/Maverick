@@ -28,8 +28,10 @@ package objects
 			_ID = Assets.removeChars("-", _image);
 			myStage = _stage;
 			
+			_sound = Assets.removeChars("-", _sound);
 			if(_sound != "")
-				sound = Assets.getSound("Aani_"+_sound);
+				sound = Assets.getSound(_sound+"AaniSaneltu");
+				//sound = Assets.getSound("Aani_"+_sound); // luultavasti ei käytetä
 			
 			soundBtn = new Button("Aani_nappi", highlights);
 			bg = new Button("YhdistelyBtn_bg", highlights);

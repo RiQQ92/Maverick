@@ -32,6 +32,8 @@ package UIelements
 			_ID = Assets.removeChars("-", _ID);
 			var pattern:RegExp = /ae/g;
 			_text = _text.replace(pattern, "ä");
+			pattern = /oe/g;
+			_text = _text.replace(pattern, "ö");
 			
 			font.size = 20;
 			font.color = 0x000000;

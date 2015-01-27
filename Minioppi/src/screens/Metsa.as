@@ -1,7 +1,5 @@
 package screens
 {
-	import Animaatiot_fla.karhu_animaatio_1;
-	
 	import UIelements.Button;
 	import UIelements.QuizWindow;
 	
@@ -11,14 +9,13 @@ package screens
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
-	import myEvents.MovieclipEvent;
-	
 	import utility.ScreenHandler;
 	
 	public class Metsa extends Sprite
 	{
-		private const ANIM_AMOUNT:int = 5;
+		private const ANIM_AMOUNT:int = 6;
 		
+		private var karhuPaused:Boolean = false;
 		private var gamePaused:Boolean = false;
 		private var countFrames:int = 0;
 		
@@ -30,7 +27,8 @@ package screens
 		
 		private var exit:Button = new Button("TakaisinNappi");
 		private var bg:Bitmap = Assets.getTexture("Metsa_bg");
-		private var karhu:karhu_animaatio_1 = new karhu_animaatio_1();
+		private var siili:Siili = new Siili();
+		private var karhu:Karhu = new Karhu();
 		private var bat:Lepakko = new Lepakko();
 		private var snail:etanaAnimoitu = new etanaAnimoitu();
 		private var rabbit:Rabbit = new Rabbit();
@@ -39,6 +37,8 @@ package screens
 		public function Metsa(_stage:Stage, scrnHandle:ScreenHandler)
 		{
 			super();
+			
+			Assets.setBGMVolume(0.5);
 			
 			for(var i:int = 0; i < ANIM_AMOUNT; i++)
 				activeAnimals.push(false);
@@ -49,23 +49,27 @@ package screens
 			kettu.buttonMode = true;
 			kettu.addEventListener(MouseEvent.MOUSE_DOWN, clickKettu);
 			
+			siili.buttonMode = true;
+			siili.addEventListener(MouseEvent.MOUSE_DOWN, clickSiili);
+			
 			rabbit.mouseChildren = false;
 			rabbit.buttonMode = true;
 			rabbit.addEventListener(MouseEvent.MOUSE_DOWN, clickRabbit);
 			
 			karhu.x = 370;
 			karhu.y = 250;
-			
 			karhu.karhu_mc.buttonMode = true;
 			karhu.karhu_mc.addEventListener(MouseEvent.MOUSE_DOWN, clickKarhu);
 			
 			snail.x = 320
 			snail.y = 240;
+			snail.mouseChildren = false;
 			snail.buttonMode = true;
 			snail.addEventListener(MouseEvent.MOUSE_DOWN, clickSnail);
 			
 			bat.x = 320;
 			bat.y = 245;
+			bat.mouseChildren = false;
 			bat.buttonMode = true;
 			bat.addEventListener(MouseEvent.MOUSE_DOWN, clickBat);
 			
@@ -78,18 +82,28 @@ package screens
 			
 			Draw();
 			
-			karhu.stop();
+			karhu.karhu_mc.stop();
 			karhu.stop();
 			snail.stop();
 			bat.stop();
 			kettu.stop();
+			siili.stop();
 			rabbit.stop();
+			
+			karhu.karhu_mc.visible = false;
+			karhu.visible = false;
+			snail.visible = false;
+			bat.visible = false;
+			rabbit.visible = false;
+			kettu.visible = false;
+			siili.visible = false;
 			
 			karhu.karhu_mc.addEventListener(Event.ENTER_FRAME, checkPlayState);
 			karhu.addEventListener(Event.ENTER_FRAME, checkPlayState);
 			snail.addEventListener(Event.ENTER_FRAME, checkPlayState);
 			bat.addEventListener(Event.ENTER_FRAME, checkPlayState);
 			kettu.addEventListener(Event.ENTER_FRAME, checkPlayState);
+			siili.addEventListener(Event.ENTER_FRAME, checkPlayState);
 			rabbit.addEventListener(Event.ENTER_FRAME, checkPlayState);
 			
 			this.addEventListener(Event.ENTER_FRAME, gameLoop);
@@ -102,6 +116,7 @@ package screens
 				if(event.target.currentFrame == event.target.totalFrames)
 				{
 					event.target.stop();
+					event.target.visible = false;
 				}
 			}
 		}
@@ -110,7 +125,7 @@ package screens
 		{
 			if(!gamePaused)
 			{
-				if(countFrames > 5*30)
+				if(countFrames > 4*30)
 				{
 					countFrames = 0;
 					
@@ -126,43 +141,81 @@ package screens
 			var isPlaying:Boolean = false;
 			
 			do{
-				var rand:int = Math.floor(Math.random()*5);
+				var rand:int = Math.floor(Math.random()*ANIM_AMOUNT);
 				isPlaying = false;
 				switch(rand)
 				{
 					case 0:
 						if(karhu.isPlaying)
+						{
 							isPlaying = true;
+						}
 						else
+						{
 							karhu.play();
+							karhu.visible = true;
+							karhu.karhu_mc.visible = true;
+							karhu.mouseChildren = true;
+						}
 						
 						break;
 					case 1:
 						if(snail.isPlaying)
+						{
 							isPlaying = true;
+						}
 						else
+						{
 							snail.play();
+							snail.visible = true;
+						}
 						
 						break;
 					case 2:
 						if(bat.isPlaying)
+						{
 							isPlaying = true;
+						}
 						else
+						{
 							bat.play();
+							bat.visible = true;
+						}
 						
 						break;
 					case 3:
 						if(rabbit.isPlaying)
 							isPlaying = true;
 						else
+						{
 							rabbit.play();
+							rabbit.visible = true;
+						}
 						
 						break;
 					case 4:
 						if(kettu.isPlaying)
+						{
 							isPlaying = true;
+						}
 						else
+						{
 							kettu.play();
+							kettu.visible = true;
+						}
+						
+						break;
+					
+					case 5:
+						if(siili.isPlaying)
+						{
+							isPlaying = true;
+						}
+						else
+						{
+							siili.play();
+							siili.visible = true;
+						}
 						
 						break;
 					default:
@@ -182,6 +235,13 @@ package screens
 		{
 			pause();
 			popup = new QuizWindow("Ket-tu", go, myStage);
+			this.addChild(popup);
+		}
+		
+		protected function clickSiili(event:MouseEvent):void
+		{
+			pause();
+			popup = new QuizWindow("Sii-li", go, myStage);
 			this.addChild(popup);
 		}
 		
@@ -213,34 +273,46 @@ package screens
 			if(activeAnimals[0])
 			{
 				activeAnimals[0] = false;
-				karhu.karhu_mc.stop();
-				karhu.stop();
+				if(karhuPaused)
+				{
+					karhu.karhu_mc.play();
+					karhuPaused = false;
+				}
+				
+				karhu.mouseChildren = true;
+				karhu.play();
 				karhu.karhu_mc.mouseEnabled = true;
 				karhu.mouseEnabled = true;
 			}
 			if(activeAnimals[1])
 			{
 				activeAnimals[1] = false;
-				snail.stop();
+				snail.play();
 				snail.mouseEnabled = true;
 			}
 			if(activeAnimals[2])
 			{
 				activeAnimals[2] = false;
-				bat.stop();
+				bat.play();
 				bat.mouseEnabled = true;
 			}
 			if(activeAnimals[3])
 			{
 				activeAnimals[3] = false;
-				rabbit.stop();
+				rabbit.play();
 				rabbit.mouseEnabled = true;
 			}
 			if(activeAnimals[4])
 			{
 				activeAnimals[4] = false;
-				kettu.stop();
+				kettu.play();
 				kettu.mouseEnabled = true;
+			}
+			if(activeAnimals[5])
+			{
+				activeAnimals[5] = false;
+				siili.play();
+				siili.mouseEnabled = true;
 			}
 			
 			gamePaused = false;
@@ -251,8 +323,13 @@ package screens
 			if(karhu.isPlaying)
 			{
 				activeAnimals[0] = true;
-				karhu.karhu_mc.stop();
+				if(karhu.karhu_mc.isPlaying)
+				{
+					karhu.karhu_mc.stop();
+					karhuPaused = true;
+				}
 				karhu.stop();
+				karhu.mouseChildren = false;
 				karhu.karhu_mc.mouseEnabled = false;
 				karhu.mouseEnabled = false;
 			}
@@ -280,6 +357,12 @@ package screens
 				kettu.stop();
 				kettu.mouseEnabled = false;
 			}
+			if(siili.isPlaying)
+			{
+				activeAnimals[5] = true;
+				siili.stop();
+				siili.mouseEnabled = false;
+			}
 			
 			gamePaused = true;
 		}
@@ -294,6 +377,7 @@ package screens
 			this.addChild(snail);
 			this.addChild(bat);
 			this.addChild(kettu);
+			this.addChild(siili);
 			this.addChild(rabbit);
 		}
 		
@@ -307,6 +391,7 @@ package screens
 			this.removeChild(snail);
 			this.removeChild(bat);
 			this.removeChild(kettu);
+			this.removeChild(siili);
 			this.removeChild(rabbit);
 		}
 	}

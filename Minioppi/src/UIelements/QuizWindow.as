@@ -6,15 +6,17 @@ package UIelements
 	import flash.events.MouseEvent;
 	import flash.sensors.Accelerometer;
 	
+	import objects.YhdistelyTekstiButton;
+	
 	public class QuizWindow extends Sprite
 	{
 		private var arwAnimNames:Array;
 		
 		private var correctAnim:String;
 		
-		private var txt1:TextButton;
-		private var txt2:TextButton;
-		private var txt3:TextButton;
+		private var txt1:YhdistelyTekstiButton;
+		private var txt2:YhdistelyTekstiButton;
+		private var txt3:YhdistelyTekstiButton;
 		
 		private var myStage:Stage;
 		private var func:Function;
@@ -56,14 +58,15 @@ package UIelements
 			arwAnimNames.push("Ket-tu");
 			arwAnimNames.push("Kar-hu");
 			arwAnimNames.push("Su-si");
+			arwAnimNames.push("Sii-li");
 			arwAnimNames.push("O-ra-va");
-			arwAnimNames.push("Leh-mä");
+			arwAnimNames.push("Leh-mae");
 			arwAnimNames.push("Koi-ra");
 			arwAnimNames.push("Si-ka");
 			arwAnimNames.push("Ank-ka");
-			arwAnimNames.push("Kuk-ko");
 			arwAnimNames.push("Ka-na");
 			arwAnimNames.push("Lam-mas");
+			arwAnimNames.push("Le-pak-ko");
 			arwAnimNames.push("Vuo-hi");
 			arwAnimNames.push("Sam-mak-ko");
 			arwAnimNames.push("Kil-pi-kon-na");
@@ -76,10 +79,12 @@ package UIelements
 			arwAnimNames.push("Ha-rak-ka");
 			arwAnimNames.push("Hams-te-ri");
 			arwAnimNames.push("Met-sae-jae-nis");
-			arwAnimNames.push("Per-ho-nen");
 			arwAnimNames.push("Peip-po");
 			arwAnimNames.push("Sor-sa");
-			arwAnimNames.push("Si-si-lis-ko");
+			/*ei toimi*/
+			//arwAnimNames.push("Kuk-ko");
+			//arwAnimNames.push("Per-ho-nen");
+			//arwAnimNames.push("Si-si-lis-ko");
 		}
 		
 		private function Draw():void
@@ -109,28 +114,28 @@ package UIelements
 			}
 			
 			// set texts to boxes
-			txt1 = new TextButton(arrAnims[0], myStage);
+			txt1 = new YhdistelyTekstiButton(arrAnims[0], arrAnims[0], myStage);
 			txt1.x = bg.width/2 - txt1.width;
 			txt1.y = 50;
 			txt1.buttonMode = true;
 			
-			txt2 = new TextButton(arrAnims[1], myStage);
+			txt2 = new YhdistelyTekstiButton(arrAnims[1], arrAnims[1], myStage);
 			txt2.x = bg.width/2 - txt2.width;
 			txt2.y = 50 + 10 + txt2.height*1;
 			txt2.buttonMode = true;
 			
-			txt3 = new TextButton(arrAnims[2], myStage);
+			txt3 = new YhdistelyTekstiButton(arrAnims[2], arrAnims[2], myStage);
 			txt3.x = bg.width/2 - txt3.width;
 			txt3.y = 50 + 20 + txt3.height*2;
 			txt3.buttonMode = true;
 			
 			// set valid answer box
 			if(rand == 0)
-				txt1.addEventListener(MouseEvent.CLICK, func);
+				txt1.addListenerOnRelease(func);
 			else if(rand == 1)
-				txt2.addEventListener(MouseEvent.CLICK, func);
+				txt2.addListenerOnRelease(func);
 			else
-				txt3.addEventListener(MouseEvent.CLICK, func);
+				txt3.addListenerOnRelease(func);
 		}
 		
 		private function getRandomAnimNames(amount:int):Array

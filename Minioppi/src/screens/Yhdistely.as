@@ -54,6 +54,8 @@ package screens
 		{
 			super();
 			
+			Assets.setBGMVolume(0.5);
+			
 			myStage = _stage;
 			screenHandler = scrnHandle;
 			
@@ -165,7 +167,8 @@ package screens
 			animalNames.push("Met-sae-jae-nis");
 			animalNames.push("Peip-po");
 			animalNames.push("Sor-sa");
-			animalNames.push("Kaeaer-me");
+			/* ei kuvia*/
+			//animalNames.push("Kaeaer-me");
 			//animalNames.push("Ank-ka");
 			//animalNames.push("Kuk-ko");
 			//animalNames.push("Su-si");
@@ -173,14 +176,14 @@ package screens
 			
 			/*** Äänettömät ***/
 			
-			//animalNames.push("Si-si-lis-ko");
-			//animalNames.push("Per-ho-nen");
-			//animalNames.push("Hams-te-ri");
-			//animalNames.push("E-ta-na");
-			//animalNames.push("Ra-pu");
-			//animalNames.push("Kil-pi-kon-na");
-			//animalNames.push("O-ra-va");
-			//animalNames.push("Ket-tu");
+			///*eitoimi*///animalNames.push("Si-si-lis-ko");
+			///*eitoimivaaääntä*///animalNames.push("Per-ho-nen");
+			animalNames.push("Hams-te-ri");
+			animalNames.push("E-ta-na");
+			animalNames.push("Ra-pu");
+			animalNames.push("Kil-pi-kon-na");
+			animalNames.push("O-ra-va");
+			animalNames.push("Ket-tu");
 			
 			/*** ********** ***/
 		}
@@ -215,7 +218,7 @@ package screens
 		
 		private function addCard(animName:String):void
 		{
-			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, "lammas", myStage); // vaihda "lammas" -> animName kun kaikki eläinten äänet asennettu assets koodiin
+			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage); // vaihda "lammas" -> animName kun kaikki eläinten äänet asennettu assets koodiin
 			cardImage.addListenerOnPress(function(evt:MouseEvent):void
 			{
 				drawLine = true;
