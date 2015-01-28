@@ -503,6 +503,7 @@ package
 		//********************
 		public static var cameFromCredits:Boolean = false;
 		public static var labHighTime:Time = new Time();
+		public static var yhdistelyHighTime:Time = new Time();
 		
 		public static var BGMusic:Sound = new Sound();
 		public static var BGMChannel:SoundChannel = new SoundChannel();

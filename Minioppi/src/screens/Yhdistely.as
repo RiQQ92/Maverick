@@ -18,6 +18,7 @@ package screens
 	
 	import utility.CountTime;
 	import utility.ScreenHandler;
+	import utility.Time;
 	
 	public class Yhdistely extends Sprite
 	{
@@ -106,9 +107,28 @@ package screens
 			}
 			else
 			{
-				score = new ScoreWindow(time.printTime(), start, myStage);
+				//score = new ScoreWindow(time.printTime(), start, myStage);
+				//time.Reset();
+				//this.addChild(score);
+				
+				var strScore:String = "Vanha ennätys:\n"+Assets.yhdistelyHighTime.getTimeString()+"\n\n";
+				var timeCompared:Time = new Time();
+				if(Assets.yhdistelyHighTime.compareTimes(time.time))
+				{
+				//	strScore += "Suoritus aika:\n"+time.time.getTimeString();
+					timeCompared.setTime(Assets.yhdistelyHighTime.hours, Assets.yhdistelyHighTime.minutes, Assets.yhdistelyHighTime.seconds, Assets.yhdistelyHighTime.milliseconds);
+				}
+				else
+				{
+				//	strScore += "Hurraa!!!\nTeit uuden ennätyksen!\n"+time.time.getTimeString();
+				//	timeCompared.setTime(time.time.hours, time.time.minutes, time.time.seconds, time.time.milliseconds);
+				}
+				
+				score = new ScoreWindow(strScore, start, myStage);
 				time.Reset();
 				this.addChild(score);
+				
+				Assets.yhdistelyHighTime = timeCompared;
 			}
 		}
 		
@@ -218,7 +238,7 @@ package screens
 		
 		private function addCard(animName:String):void
 		{
-			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage); // vaihda "lammas" -> animName kun kaikki eläinten äänet asennettu assets koodiin
+			var cardImage:YhdistelyKuvaButton = new YhdistelyKuvaButton(animName, animName, myStage);
 			cardImage.addListenerOnPress(function(evt:MouseEvent):void
 			{
 				drawLine = true;
@@ -339,7 +359,6 @@ package screens
 		
 		private function win():void
 		{
-			//screenHandler.inScreen = "menu";
 			Destruct();
 			Initialize();
 		}
