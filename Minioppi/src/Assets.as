@@ -25,6 +25,9 @@ package
 		[Embed(source = "../Grafiikka/Yhdistely/YhdistelyOhje.png")]
 		public static const OhjeYhdistely:Class;
 		
+		[Embed(source = "../Grafiikka/Metsa/MetsaOhje.png")]
+		public static const OhjeMetsa:Class;
+		
 		[Embed(source = "../Grafiikka/Pilkkipeli/PilkkiOhje.png")]
 		public static const OhjePilkki:Class;
 		//*********************

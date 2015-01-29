@@ -1,7 +1,9 @@
 package screens
 {
 	import UIelements.Button;
+	import UIelements.OhjeIkkuna;
 	import UIelements.QuizWindow;
+	import UIelements.ScoreWindow;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
@@ -9,7 +11,9 @@ package screens
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
+	import utility.CountTime;
 	import utility.ScreenHandler;
+	import utility.Time;
 	
 	public class Metsa extends Sprite
 	{
@@ -17,16 +21,24 @@ package screens
 		
 		private var karhuPaused:Boolean = false;
 		private var gamePaused:Boolean = false;
+		private var firstStart:Boolean = true;
+		
+		private var animsFound:int = 0;
 		private var countFrames:int = 0;
 		
-		private var activeAnimals:Array = new Array();
+		private var activeAnimals:Array;
+		private var score:ScoreWindow;
+		private var time:CountTime;
+		private var endTime:Time = new Time(0, 0, 45, 0);
 		
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
 		private var popup:QuizWindow;
 		
+		private var ohje:OhjeIkkuna = new OhjeIkkuna("OhjeMetsa");
 		private var exit:Button = new Button("TakaisinNappi");
 		private var bg:Bitmap = Assets.getTexture("Metsa_bg");
+		
 		private var siili:Siili = new Siili();
 		private var karhu:Karhu = new Karhu();
 		private var bat:Lepakko = new Lepakko();
@@ -40,11 +52,19 @@ package screens
 			
 			Assets.setBGMVolume(0.5);
 			
-			for(var i:int = 0; i < ANIM_AMOUNT; i++)
-				activeAnimals.push(false);
-			
 			myStage = _stage;
 			screenHandler = scrnHandle;
+			
+			Draw();
+			Initialize();
+		}
+		
+		private function Initialize():void
+		{
+			activeAnimals = new Array();
+			
+			for(var i:int = 0; i < ANIM_AMOUNT; i++)
+				activeAnimals.push(false);
 			
 			kettu.buttonMode = true;
 			kettu.addEventListener(MouseEvent.MOUSE_DOWN, clickKettu);
@@ -80,15 +100,13 @@ package screens
 				}
 			);
 			
-			Draw();
-			
-			karhu.karhu_mc.stop();
-			karhu.stop();
-			snail.stop();
-			bat.stop();
-			kettu.stop();
-			siili.stop();
-			rabbit.stop();
+			karhu.karhu_mc.gotoAndStop(1);
+			karhu.gotoAndStop(1);
+			snail.gotoAndStop(1);
+			bat.gotoAndStop(1);
+			kettu.gotoAndStop(1);
+			siili.gotoAndStop(1);
+			rabbit.gotoAndStop(1);
 			
 			karhu.karhu_mc.visible = false;
 			karhu.visible = false;
@@ -97,6 +115,51 @@ package screens
 			rabbit.visible = false;
 			kettu.visible = false;
 			siili.visible = false;
+			
+			if(firstStart)
+			{
+				this.addChild(ohje);
+				ohje.addEventListener(MouseEvent.CLICK, start);
+			}
+			else
+			{
+				var strScore:String = "";
+				if(animsFound < 6)
+				{
+					strScore += "Löysit "+animsFound+" eläintä.";
+				}
+				else if(animsFound < 16)
+				{
+					strScore += "Heinoa! Löysit "+animsFound+" eläintä.";
+				}
+				else
+				{
+					strScore += "SUPER MAHTAVAA!\nLöysit "+animsFound+" eläintä.";
+				}
+				
+				score = new ScoreWindow(strScore, start, myStage);
+				time.Reset();
+				this.addChild(score);
+			}
+			
+		}
+		
+		protected function start(event:MouseEvent):void
+		{
+			animsFound = 0;
+			time = new CountTime();
+			
+			if(!firstStart)
+			{
+				this.removeChild(score);
+			}
+			else
+			{
+				ohje.removeEventListener(MouseEvent.CLICK, start);
+				this.removeChild(ohje);
+			}
+			
+			firstStart = false;
 			
 			karhu.karhu_mc.addEventListener(Event.ENTER_FRAME, checkPlayState);
 			karhu.addEventListener(Event.ENTER_FRAME, checkPlayState);
@@ -125,7 +188,7 @@ package screens
 		{
 			if(!gamePaused)
 			{
-				if(countFrames > 4*30)
+				if(countFrames > 2*30)
 				{
 					countFrames = 0;
 					
@@ -134,6 +197,18 @@ package screens
 				
 				countFrames++;
 			}
+			
+			if(endTime.compareTimes(time.time))
+			{
+				gameFinish();
+			}
+		}
+		
+		private function gameFinish():void
+		{
+			this.removeEventListener(Event.ENTER_FRAME, gameLoop);
+			
+			Initialize();
 		}
 		
 		private function activateAnimal():void
@@ -269,6 +344,7 @@ package screens
 		private function go(event:MouseEvent):void
 		{
 			this.removeChild(popup);
+			animsFound++;
 			
 			if(activeAnimals[0])
 			{

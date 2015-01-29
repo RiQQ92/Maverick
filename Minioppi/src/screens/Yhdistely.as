@@ -107,21 +107,17 @@ package screens
 			}
 			else
 			{
-				//score = new ScoreWindow(time.printTime(), start, myStage);
-				//time.Reset();
-				//this.addChild(score);
-				
 				var strScore:String = "Vanha ennätys:\n"+Assets.yhdistelyHighTime.getTimeString()+"\n\n";
 				var timeCompared:Time = new Time();
 				if(Assets.yhdistelyHighTime.compareTimes(time.time))
 				{
-				//	strScore += "Suoritus aika:\n"+time.time.getTimeString();
+					strScore += "Suoritus aika:\n"+time.time.getTimeString();
 					timeCompared.setTime(Assets.yhdistelyHighTime.hours, Assets.yhdistelyHighTime.minutes, Assets.yhdistelyHighTime.seconds, Assets.yhdistelyHighTime.milliseconds);
 				}
 				else
 				{
-				//	strScore += "Hurraa!!!\nTeit uuden ennätyksen!\n"+time.time.getTimeString();
-				//	timeCompared.setTime(time.time.hours, time.time.minutes, time.time.seconds, time.time.milliseconds);
+					strScore += "Hurraa!!!\nTeit uuden ennätyksen!\n"+time.time.getTimeString();
+					timeCompared.setTime(time.time.hours, time.time.minutes, time.time.seconds, time.time.milliseconds);
 				}
 				
 				score = new ScoreWindow(strScore, start, myStage);
