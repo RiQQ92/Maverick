@@ -121,6 +121,8 @@ package utility
 			
 			if(mills == 0)
 				{str += "0";}
+			if(mills < 100)
+				{str += "0";}
 			
 			return str;
 		}

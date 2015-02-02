@@ -12,6 +12,7 @@ package utility
 		private var timeText:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
 		
+		private var bg_copy:Bitmap = Assets.getTexture("TimerBar");
 		private var bg:Bitmap = Assets.getTexture("TimerBar");
 		
 		public function TimerBar(_countDown:Boolean = false, countMins:int = 2, countSecs:int = 30)
@@ -23,13 +24,15 @@ package utility
 			
 			timeText.selectable = false;
 			timeText.defaultTextFormat = font;
-			timeText.wordWrap = true;
-			timeText.multiline = true;
+			timeText.wordWrap = false;
+			timeText.multiline = false;
 			timeText.width = bg.width;
 			timeText.height = bg.height;
+			timeText.mask = bg_copy;
 			timeText.text = super.printTime();
 			timeText.autoSize = TextFieldAutoSize.CENTER;
 			
+			this.addChild(bg_copy);
 			this.addChild(bg);
 			this.addChild(timeText);
 			

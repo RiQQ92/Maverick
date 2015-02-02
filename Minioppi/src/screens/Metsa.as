@@ -61,6 +61,11 @@ package screens
 		
 		private function Initialize():void
 		{
+			if(popup)
+				if(this.contains(popup))
+					this.removeChild(popup);
+			
+			gamePaused = false;
 			activeAnimals = new Array();
 			
 			for(var i:int = 0; i < ANIM_AMOUNT; i++)
@@ -124,13 +129,21 @@ package screens
 			else
 			{
 				var strScore:String = "";
-				if(animsFound < 6)
+				if(animsFound == 0)
+				{
+					strScore += "Voi harmi. Et löytänyt yhtäkään eläintä.";
+				}
+				else if(animsFound == 1)
+				{
+					strScore += "Löysit "+animsFound+" eläimen.";
+				}
+				else if(animsFound < 5)
 				{
 					strScore += "Löysit "+animsFound+" eläintä.";
 				}
-				else if(animsFound < 16)
+				else if(animsFound < 14)
 				{
-					strScore += "Heinoa! Löysit "+animsFound+" eläintä.";
+					strScore += "Hienoa! Löysit "+animsFound+" eläintä.";
 				}
 				else
 				{
@@ -243,6 +256,7 @@ package screens
 						{
 							snail.play();
 							snail.visible = true;
+							snail.mouseEnabled = true;
 						}
 						
 						break;
@@ -255,6 +269,7 @@ package screens
 						{
 							bat.play();
 							bat.visible = true;
+							bat.mouseEnabled = true;
 						}
 						
 						break;
@@ -265,6 +280,7 @@ package screens
 						{
 							rabbit.play();
 							rabbit.visible = true;
+							rabbit.mouseEnabled = true;
 						}
 						
 						break;
@@ -277,10 +293,10 @@ package screens
 						{
 							kettu.play();
 							kettu.visible = true;
+							kettu.mouseEnabled = true;
 						}
 						
 						break;
-					
 					case 5:
 						if(siili.isPlaying)
 						{
@@ -290,6 +306,7 @@ package screens
 						{
 							siili.play();
 							siili.visible = true;
+							siili.mouseEnabled = true;
 						}
 						
 						break;
@@ -304,6 +321,10 @@ package screens
 			pause();
 			popup = new QuizWindow("Met-sae-jae-nis", go, myStage);
 			this.addChild(popup);
+			
+			rabbit.gotoAndStop(1);
+			rabbit.visible = false;
+			activeAnimals[3] = false;
 		}
 		
 		protected function clickKettu(event:MouseEvent):void
@@ -311,6 +332,10 @@ package screens
 			pause();
 			popup = new QuizWindow("Ket-tu", go, myStage);
 			this.addChild(popup);
+			
+			kettu.gotoAndStop(1);
+			kettu.visible = false;
+			activeAnimals[4] = false;
 		}
 		
 		protected function clickSiili(event:MouseEvent):void
@@ -318,6 +343,10 @@ package screens
 			pause();
 			popup = new QuizWindow("Sii-li", go, myStage);
 			this.addChild(popup);
+			
+			siili.gotoAndStop(1);
+			siili.visible = false;
+			activeAnimals[5] = false;
 		}
 		
 		protected function clickKarhu(event:MouseEvent):void
@@ -325,6 +354,12 @@ package screens
 			pause();
 			popup = new QuizWindow("Kar-hu", go, myStage);
 			this.addChild(popup);
+			
+			karhu.karhu_mc.gotoAndStop(1);
+			karhu.gotoAndStop(1);
+			karhu.karhu_mc.visible = false;
+			karhu.visible = false;
+			activeAnimals[0] = false;
 		}
 		
 		protected function clickSnail(event:MouseEvent):void
@@ -332,6 +367,10 @@ package screens
 			pause();
 			popup = new QuizWindow("E-ta-na", go, myStage);
 			this.addChild(popup);
+			
+			snail.gotoAndStop(1);
+			snail.visible = false;
+			activeAnimals[1] = false;
 		}
 		
 		protected function clickBat(event:MouseEvent):void
@@ -339,6 +378,10 @@ package screens
 			pause();
 			popup = new QuizWindow("Le-pak-ko", go, myStage);
 			this.addChild(popup);
+			
+			bat.gotoAndStop(1);
+			bat.visible = false;
+			activeAnimals[2] = false;
 		}
 		
 		private function go(event:MouseEvent):void
@@ -449,11 +492,11 @@ package screens
 			
 			this.addChild(exit);
 			
+			this.addChild(siili);
 			this.addChild(karhu);
 			this.addChild(snail);
-			this.addChild(bat);
 			this.addChild(kettu);
-			this.addChild(siili);
+			this.addChild(bat);
 			this.addChild(rabbit);
 		}
 		
