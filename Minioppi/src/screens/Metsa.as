@@ -29,7 +29,7 @@ package screens
 		private var activeAnimals:Array;
 		private var score:ScoreWindow;
 		private var time:CountTime;
-		private var endTime:Time = new Time(0, 0, 45, 0);
+		private var endTime:Time = new Time(0, 0, 8, 0);
 		
 		private var screenHandler:ScreenHandler;
 		private var myStage:Stage;
@@ -319,7 +319,7 @@ package screens
 		protected function clickRabbit(event:MouseEvent):void
 		{
 			pause();
-			popup = new QuizWindow("Met-sae-jae-nis", go, myStage);
+			popup = new QuizWindow("Jae-nis", go, myStage);
 			this.addChild(popup);
 			
 			rabbit.gotoAndStop(1);

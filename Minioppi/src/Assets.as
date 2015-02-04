@@ -380,7 +380,9 @@ package
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kultahamsteri.png")]
 		public static const Yhdistely_Hamsteri_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_metsajanis.png")]
-		public static const Yhdistely_Metsaejaenis_kuva:Class;
+		public static const Yhdistely_Jaenis_kuva:Class;
+		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_orava.png")]
+		public static const Yhdistely_Orava_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_perhonen.png")]
 		public static const Yhdistely_Perhonen_kuva:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_peippo.png")]
@@ -461,7 +463,7 @@ package
 		[Embed(source = "../aanet/saneltu/harakka.mp3")]
 		public static const HarakkaAaniSaneltu:Class;
 		[Embed(source = "../aanet/saneltu/janis.mp3")]
-		public static const MetsaejaenisAaniSaneltu:Class;
+		public static const JaenisAaniSaneltu:Class;
 		[Embed(source = "../aanet/saneltu/peippo.mp3")]
 		public static const PeippoAaniSaneltu:Class;
 		[Embed(source = "../aanet/saneltu/sorsa.mp3")]

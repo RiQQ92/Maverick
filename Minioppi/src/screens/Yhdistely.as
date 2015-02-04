@@ -180,11 +180,11 @@ package screens
 			animalNames.push("Jout-sen");
 			animalNames.push("Haa-ra-paeaes-ky");
 			animalNames.push("Ha-rak-ka");
-			animalNames.push("Met-sae-jae-nis");
+			animalNames.push("Jae-nis");
 			animalNames.push("Peip-po");
 			animalNames.push("Sor-sa");
+			animalNames.push("Kaeaer-me");
 			/* ei kuvia*/
-			//animalNames.push("Kaeaer-me");
 			//animalNames.push("Ank-ka");
 			//animalNames.push("Kuk-ko");
 			//animalNames.push("Su-si");

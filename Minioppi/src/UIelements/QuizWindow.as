@@ -78,7 +78,7 @@ package UIelements
 			arwAnimNames.push("Haa-ra-paeaes-ky");
 			arwAnimNames.push("Ha-rak-ka");
 			arwAnimNames.push("Hams-te-ri");
-			arwAnimNames.push("Met-sae-jae-nis");
+			arwAnimNames.push("Jae-nis");
 			arwAnimNames.push("Peip-po");
 			arwAnimNames.push("Sor-sa");
 			/*ei toimi*/

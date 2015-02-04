@@ -3,6 +3,7 @@ package UIelements
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
@@ -12,6 +13,7 @@ package UIelements
 	public class ScoreWindow extends Sprite
 	{
 		private var myStage:Stage;
+		private var counter:int = 0;
 		private var func:Function;
 		private var text:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
@@ -40,7 +42,17 @@ package UIelements
 			this.addChild(bg);
 			this.addChild(text);
 			
-			this.addEventListener(MouseEvent.CLICK, func);
+			this.addEventListener(Event.ENTER_FRAME, wait);
+		}
+		
+		private function wait(event:Event):void
+		{
+			if(counter > 30*2)
+			{
+				this.removeEventListener(Event.ENTER_FRAME, wait);
+				this.addEventListener(MouseEvent.CLICK, func);
+			}
+			counter++;
 		}
 	}
 }

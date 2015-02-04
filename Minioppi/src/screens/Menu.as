@@ -70,8 +70,8 @@ package screens
 				}
 			);
 			
-			labyBtn.scaleX = 0.4;
-			labyBtn.scaleY = 0.4;
+			labyBtn.scaleX = 1;
+			labyBtn.scaleY = 1;
 			labyBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
@@ -79,8 +79,8 @@ package screens
 				}
 			);
 			
-			metsaBtn.scaleX = 0.4;
-			metsaBtn.scaleY = 0.4;
+			metsaBtn.scaleX = 1;
+			metsaBtn.scaleY = 1;
 			metsaBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
@@ -88,8 +88,8 @@ package screens
 				}
 			);
 			
-			pilkkiBtn.scaleX = 0.4;
-			pilkkiBtn.scaleY = 0.4;
+			pilkkiBtn.scaleX = 1;
+			pilkkiBtn.scaleY = 1;
 			pilkkiBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
@@ -97,8 +97,8 @@ package screens
 				}
 			);
 			
-			muistiBtn.scaleX = 0.4;
-			muistiBtn.scaleY = 0.4;
+			muistiBtn.scaleX = 1;
+			muistiBtn.scaleY = 1;
 			muistiBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
@@ -106,8 +106,8 @@ package screens
 				}
 			);
 			
-			yhdistelyBtn.scaleX = 0.4;
-			yhdistelyBtn.scaleY = 0.4;
+			yhdistelyBtn.scaleX = 1;
+			yhdistelyBtn.scaleY = 1;
 			yhdistelyBtn.button.addListener(
 				function(event:MouseEvent):void
 				{
