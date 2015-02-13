@@ -332,7 +332,7 @@ package
 		public static const Yhdistely_bg:Class;
 		[Embed(source = "../Grafiikka/Yhdistely/Yhdistely_kortti_pohja.png")]
 		public static const YhdistelyBtn_bg:Class;
-		[Embed(source = "../Grafiikka/alkuvalikko/napit/ketju.png")]
+		[Embed(source = "../Grafiikka/Muu/null.png")]
 		public static const Yhdistely_Null_kuva:Class;
 		
 		[Embed(source = "../Grafiikka/Yhdistely/kortit/kortti_kana.png")]

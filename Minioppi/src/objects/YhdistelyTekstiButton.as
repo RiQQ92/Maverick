@@ -25,7 +25,7 @@ package objects
 		public var text:TextField = new TextField();
 		private var font:TextFormat = new TextFormat();
 		
-		public function YhdistelyTekstiButton(_text:String, _sound:String, _stage:Stage, highlights:Boolean = true)
+		public function YhdistelyTekstiButton(_text:String, _sound:String, _stage:Stage, highlights:Boolean = true, useSound:Boolean = true)
 		{
 			super();
 			
@@ -33,7 +33,6 @@ package objects
 			if(_sound != "")
 				sound = Assets.getSound(_sound+"AaniSaneltu");
 			
-			soundBtn = new Button("Aani_nappi", highlights);
 			bg = new Button("YhdistelyBtn_bg", highlights);
 			
 			_ID = _text;
@@ -64,10 +63,14 @@ package objects
 			text.y = bg.height/2 - text.height/2;
 			this.addChild(text);
 			
-			soundBtn.x = (bg.width - bg.width/6) - soundBtn.width/2;
-			soundBtn.y = bg.height/2 - soundBtn.height/2;
-			this.addChild(soundBtn);
-			soundBtn.addEventListener(MouseEvent.CLICK, onClickSound);
+			if(useSound)
+			{
+				soundBtn = new Button("Aani_nappi", highlights);
+				soundBtn.x = (bg.width - bg.width/6) - soundBtn.width/2;
+				soundBtn.y = bg.height/2 - soundBtn.height/2;
+				this.addChild(soundBtn);
+				soundBtn.addEventListener(MouseEvent.CLICK, onClickSound);
+			}
 		}
 		
 		public function setNewContent(str:String):void

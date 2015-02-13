@@ -21,7 +21,7 @@ package objects
 		private var clickPressFunc:Function;
 		private var clickReleaseFunc:Function;
 		
-		public function YhdistelyKuvaButton(_image:String, _sound:String, _stage:Stage, highlights:Boolean = true)
+		public function YhdistelyKuvaButton(_image:String, _sound:String, _stage:Stage, highlights:Boolean = true, useSound:Boolean = true)
 		{
 			super();
 			
@@ -33,7 +33,7 @@ package objects
 				sound = Assets.getSound(_sound+"AaniSaneltu");
 				//sound = Assets.getSound("Aani_"+_sound); // luultavasti ei käytetä
 			
-			soundBtn = new Button("Aani_nappi", highlights);
+			
 			bg = new Button("YhdistelyBtn_bg", highlights);
 			image = new Button("Yhdistely_"+_ID+"_kuva", highlights);
 			
@@ -45,10 +45,14 @@ package objects
 			image.y = bg.height/2 - image.height/2;
 			this.addChild(image);
 			
-			soundBtn.x = (bg.width - bg.width/6) - soundBtn.width/2;
-			soundBtn.y = bg.height/2 - soundBtn.height/2;
-			this.addChild(soundBtn);
-			soundBtn.addEventListener(MouseEvent.CLICK, onClickSound);
+			if(useSound)
+			{	
+				soundBtn = new Button("Aani_nappi", highlights);
+				soundBtn.x = (bg.width - bg.width/6) - soundBtn.width/2;
+				soundBtn.y = bg.height/2 - soundBtn.height/2;
+				this.addChild(soundBtn);
+				soundBtn.addEventListener(MouseEvent.CLICK, onClickSound);
+			}
 		}
 		
 		public function setNewContent(str:String):void
