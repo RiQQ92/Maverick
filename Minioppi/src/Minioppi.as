@@ -20,9 +20,15 @@ package
 		
 		public function Minioppi()
 		{
+			/** Error on loading video on finished build, removed due to lack of time **/
+			/*
 			var url:URLRequest = new URLRequest("../MovieClips/Metsa/maverick.swf");
 			loader.load(url);
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, startListener);
+			*/
+			screenHandler = new ScreenHandler(stage);
+			this.addChild(screenHandler);
+			screenHandler.inScreen = "menu";
 		}
 		
 		private function startListener (e:Event):void

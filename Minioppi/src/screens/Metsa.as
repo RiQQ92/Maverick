@@ -500,8 +500,30 @@ package screens
 			this.addChild(rabbit);
 		}
 		
+		private function removeListeners():void
+		{
+			karhu.karhu_mc.removeEventListener(Event.ENTER_FRAME, checkPlayState);
+			karhu.removeEventListener(Event.ENTER_FRAME, checkPlayState);
+			snail.removeEventListener(Event.ENTER_FRAME, checkPlayState);
+			bat.removeEventListener(Event.ENTER_FRAME, checkPlayState);
+			kettu.removeEventListener(Event.ENTER_FRAME, checkPlayState);
+			siili.removeEventListener(Event.ENTER_FRAME, checkPlayState);
+			rabbit.removeEventListener(Event.ENTER_FRAME, checkPlayState);
+			
+			kettu.removeEventListener(MouseEvent.MOUSE_DOWN, clickKettu);
+			siili.removeEventListener(MouseEvent.MOUSE_DOWN, clickSiili);
+			rabbit.removeEventListener(MouseEvent.MOUSE_DOWN, clickRabbit);
+			karhu.karhu_mc.removeEventListener(MouseEvent.MOUSE_DOWN, clickKarhu);
+			snail.removeEventListener(MouseEvent.MOUSE_DOWN, clickSnail);
+			bat.removeEventListener(MouseEvent.MOUSE_DOWN, clickBat);
+			
+			this.removeEventListener(Event.ENTER_FRAME, gameLoop);
+		}
+		
 		public function Destruct():void
 		{
+			removeListeners();
+			
 			this.removeChild(bg);
 			
 			this.removeChild(exit);
